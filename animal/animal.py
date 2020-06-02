@@ -33,7 +33,7 @@ class Animal(BaseCog):
     async def cat(self, ctx):
         """Shows a cat"""
         try:
-            fp = random.choice(os.listdir("/home/dash/dwnlds/.joshi/"))
+            fp = random.choice(os.listdir("http://dash.pallas.feralhosting.com/.joshi/"))
             await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
         except:
             await ctx.send("API Error")
