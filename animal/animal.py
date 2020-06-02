@@ -35,7 +35,7 @@ class Animal(BaseCog):
     async def cat(self, ctx):
         """Shows a cat"""
         
-                await ctx.trigger_typing()
+        await ctx.trigger_typing()
 
         async def fetcher() -> str:
             url = "http://dash.pallas.feralhosting.com/.joshi/0cw20v7v_183_l.jpg"
