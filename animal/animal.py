@@ -34,11 +34,20 @@ class Animal(BaseCog):
     @commands.cooldown(1, 60, commands.BucketType.guild)
     async def cat(self, ctx):
         """Shows a cat"""
+        
+                await ctx.trigger_typing()
+
+        async def fetcher() -> str:
+            url = "http://dash.pallas.feralhosting.com/.joshi/0cw20v7v_183_l.jpg"
+            async with self.__session.get(url) as response:
+                return (await response.json())["url"]
+
         try:
-            fp = random.choice(os.listdir("http://dash.pallas.feralhosting.com/.joshi"))
-            await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
+            file = await self.__get_image_carefully(fetcher)
+            await ctx.send(file=file)
+        
         except:
-            await ctx.send("API Error")
+            await ctx.send("NOJOSHIFORYOU")
 
     @commands.command()
     @commands.cooldown(1, 120, commands.BucketType.guild)
