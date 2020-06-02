@@ -8,6 +8,8 @@ from redbot.core import commands
 
 # Libs
 import aiohttp
+import os
+import random
 
 catapi = "http://aws.random.cat/meow"
 dogapi = "https://dog.ceo/api/breeds/image/random"
