@@ -21,7 +21,6 @@ class Joshiplz(BaseCog):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
      
-     
     @commands.command()
     @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshi(self, ctx):
@@ -31,26 +30,6 @@ class Joshiplz(BaseCog):
             await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
         except:
             await ctx.send("Nope")
-
-"""
-    @commands.command()
-    @commands.cooldown(1, 120, commands.BucketType.guild)
-    async def cats(self, ctx, amount : int = 5):
-        #Throws a cat bomb!
-
-        #Defaults to 5, max is 10
-        results = []
-        if amount > 10 or amount < 1:
-            amount = 5
-        try:
-            for x in range(0,amount):
-                async with self.session.get(self.catapi) as r:
-                    api_result = await r.json()
-                    results.append(api_result['file'])
-            await ctx.send("\n".join(results))
-        except:
-            await ctx.send("API Error")
-"""
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
