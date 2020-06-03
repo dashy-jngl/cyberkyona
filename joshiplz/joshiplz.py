@@ -32,12 +32,13 @@ class Joshiplz(BaseCog):
     @commands.command()
     async def joshi(self, ctx):
         #1x joshi!
+        channel = chann.
         try:
             path ='/home/dash/data/.joshi'
             files = os.listdir(path)
             index = random.randrange(0, len(files))
 #            file = path+"/"+files[index]
-            await ctx.send(path+"/"+files[index])
+            channel.send(file=discord.File(path+"/"+files[index]))
             
         except:
             await ctx.send("Nope")
