@@ -26,7 +26,7 @@ class Joshiplz(BaseCog):
     async def joshi(self, ctx):
         #1x joshi!
         try:
-            fp = random.choice(os.listdir("http://dash.pallas.feralhosting.com/.joshi"))
+            fp = random.choice(os.listdir("/home/dash/data/.joshi/"))
             await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
         except:
             await ctx.send("Nope")
