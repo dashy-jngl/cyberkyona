@@ -65,6 +65,6 @@ class Joshiplz(BaseCog):
         
         
     def cog_unload(self):
-    self.bot.loop.create_task(self.session.close())
+        self.bot.loop.create_task(self.session.close())
 
     __del__ = cog_unload
