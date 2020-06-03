@@ -19,6 +19,8 @@ import aiohttp
 #import logging
 #from typing import Awaitable, Callable
 
+joshipath = '/home/dash/data/.joshi'
+
 BaseCog = getattr(commands, "Cog", object)
 
 
@@ -32,8 +34,8 @@ class Joshiplz(BaseCog):
     @commands.command()
     async def joshi(self, ctx):
         #1x joshi!
+        path = joshipath
         try:
-            path ='/home/dash/data/.joshi'
             files = os.listdir(path)
             index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
