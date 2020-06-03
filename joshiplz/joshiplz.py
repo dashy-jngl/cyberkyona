@@ -38,7 +38,7 @@ class Joshiplz(BaseCog):
             index = random.randrange(0, len(files))
 #            file = path+"/"+files[index]
 #            fp = path
-            channel.send(file=discord.File(/home/dash/data/.joshi/0cw20v7v_198_l.jpg)
+            channel.send(file=discord.File('/home/dash/data/.joshi/0cw20v7v_198_l.jpg')
             
         except:
             await ctx.send("Nope")
