@@ -37,9 +37,6 @@ class Joshiplz(BaseCog):
             file = random.choice(os.listdir("/home/dash/data/.joshi"))
             await ctx.send(file=file)
             
-            fp = await random.choice(os.listdir("/home/dash/data/.joshi/"))
-            await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
-            
         except:
             await ctx.send("Nope")
 
