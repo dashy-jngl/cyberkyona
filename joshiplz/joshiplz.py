@@ -34,7 +34,7 @@ class Joshiplz(BaseCog):
     
     def __init__(self, bot):
         self.bot = bot
-        self.session = aiohttp.ClientSession(loop=self.bot.loop)
+        self.__session = aiohttp.ClientSession()
 
 
     @commands.command()
