@@ -34,7 +34,7 @@ class Joshiplz(BaseCog):
     async def joshi(self, ctx):
         #1x joshi!
         try:
-            path ='/code/github/python'
+            path ='/home/dash/data/.joshi'
             files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(files[index])
