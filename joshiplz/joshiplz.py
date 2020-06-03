@@ -10,7 +10,6 @@ from redbot.core import commands
 # Libs
 import os
 import random
-import dircache
 #import urllib.request
 
 
