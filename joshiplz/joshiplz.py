@@ -32,7 +32,6 @@ class Joshiplz(BaseCog):
     @commands.command()
     async def joshi(self, ctx):
         #1x joshi!
-        channel = chann.
         try:
             path ='/home/dash/data/.joshi'
             files = os.listdir(path)
