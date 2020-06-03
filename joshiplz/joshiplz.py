@@ -5,11 +5,21 @@ import discord
 
 # Red
 from redbot.core import commands
+from .errors import RetryLimitExceeded
+
 
 # Libs
 import aiohttp
 import os
 import random
+
+#import aiohttp
+import asyncio
+import discord
+import io
+import logging
+import os
+from typing import Awaitable, Callable
 
 BaseCog = getattr(commands, "Cog", object)
 
@@ -17,25 +27,43 @@ BaseCog = getattr(commands, "Cog", object)
 class Joshiplz(BaseCog):
     #JoshiSpam!
 
-    def __init__(self, bot):
-        self.bot = bot
-        self.session = aiohttp.ClientSession(loop=self.bot.loop)
-     
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
+        self.__session = aiohttp.ClientSession()
+
+    def cog_unload(self) -> None:
+        if self.__session:
+            asyncio.get_event_loop().create_task(self.__session.close())
+
     @commands.command()
-    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshi(self, ctx):
-        #1x joshi!
+    async def joshi(self, ctx: commands.Context) -> None:
+        """Get a random bird."""
+
+        await ctx.trigger_typing()
+
+        async def fetcher() -> str:
+            url = "http://dash.pallas.feralhosting.com/.joshi/"
+            async with self.__session.get(url) as response:
+                return (await response.json())[0]
+
         try:
-            file = await random.choice(os.listdir("/home/dash/data/.joshi/"))
+            file = await self.__get_image_carefully(fetcher)
             await ctx.send(file=file)
-            
-           # fp = await random.choice(os.listdir("/home/dash/data/.joshi/"))
-           # await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
-            
-        except:
-            await ctx.send("Nope")
+        except (aiohttp.ClientError, RetryLimitExceeded):
+            log.warning("API call failed; unable to get bird picture")
+            await ctx.send("I was unable to get a bird picture.")
 
-    def cog_unload(self):
-        self.bot.loop.create_task(self.session.close())
-
-    __del__ = cog_unload
+    async def __get_image_carefully(self, fetcher: Callable[[], Awaitable[str]]) -> discord.File:
+        for x in range(Joshiplz.RETRY_LIMIT):
+            try:
+                img_url = await fetcher()
+                filename = os.path.basename(img_url)
+                async with self.__session.head(img_url) as size_check:
+                    if size_check.content_length is None or size_check.content_length > Randimals.SIZE_LIMIT:
+                        continue
+                    async with self.__session.get(img_url) as image:
+                        return discord.File(io.BytesIO(await image.read()), filename=filename)
+            except aiohttp.ClientError:
+                continue
+        raise RetryLimitExceeded()
