@@ -36,7 +36,7 @@ class Joshiplz(BaseCog):
             path ='/home/dash/data/.joshi'
             files = os.listdir(path)
             index = random.randrange(0, len(files))
-            await ctx.send(files[index])
+            await ctx.send(file=files[index])
             
         except:
             await ctx.send("Nope")
