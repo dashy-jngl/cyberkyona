@@ -35,13 +35,34 @@ class Joshiplz(BaseCog):
         try:
             path ='/home/dash/data/.joshi'
             files = os.listdir(path)
-            index = random.randrange(0, len(files))
+            index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
 #            fp = path
             await ctx.send(file=discord.File(path+"/"+files[index]))
             
         except:
             await ctx.send("Nope")
+            
+    @commands.command()
+    @commands.cooldown(1, 60, commands.BucketType.guild)
+    async def joshiplz(self, ctx, amount : int = 5):
+        """Throws a dog bomb!
+
+        Defaults to 5, max is 10"""
+        results = []
+        if amount > 10 or amount < 1:
+            amount = 5
+        try:
+            for x in range(0,amount):
+                path ='/home/dash/data/.joshi'
+                files = os.listdir(path)
+                index = random.randrange(1, len(files))
+#               file = path+"/"+files[index]
+#               fp = path
+            await ctx.send(file=discord.File(path+"/"+files[index]))     
+        
+        except:
+            await ctx.send("oop")
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
