@@ -52,7 +52,7 @@ class Joshiplz(BaseCog):
             file = await self.__get_image_carefully(fetcher)
             await ctx.send(file=file)
         except (aiohttp.ClientError, RetryLimitExceeded):
-            log.warning("API call failed; unable to get bird picture")
+            #log.warning("API call failed; unable to get bird picture")
             await ctx.send("I was unable to get a bird picture.")
 
     async def __get_image_carefully(self, fetcher: Callable[[], Awaitable[str]]) -> discord.File:
