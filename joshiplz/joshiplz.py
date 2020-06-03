@@ -59,8 +59,8 @@ class Joshiplz(BaseCog):
                 index = random.randrange(1, len(files))
 #               file = path+"/"+files[index]
 #               fp = path
-                ctx.send(file=discord.File(path+"/"+files[index]))
-            await ctx.send(':hikariHeart:')     
+                await ctx.send(file=discord.File(path+"/"+files[index]))
+            await ctx.send('<:hikariHeart:706347703088447508>')     
         
         except:
             await ctx.send("oop")
