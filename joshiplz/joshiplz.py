@@ -44,7 +44,7 @@ class Joshiplz(BaseCog):
             await ctx.send("Nope")
             
     @commands.command()
-    @commands.cooldown(1, 60, commands.BucketType.guild)
+#    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshiplz(self, ctx, amount : int = 5):
         """Throws a dog bomb!
 
@@ -59,7 +59,8 @@ class Joshiplz(BaseCog):
                 index = random.randrange(1, len(files))
 #               file = path+"/"+files[index]
 #               fp = path
-            await ctx.send(file=discord.File(path+"/"+files[index]))     
+                ctx.send(file=discord.File(path+"/"+files[index]))
+            await ctx.send(':hikariHeart:')     
         
         except:
             await ctx.send("oop")
