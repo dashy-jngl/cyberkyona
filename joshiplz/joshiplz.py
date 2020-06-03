@@ -44,7 +44,7 @@ class Joshiplz(BaseCog):
             await ctx.send("Nope")
             
     @commands.command()
-    @commands.cooldown(1, 60, commands.BucketType.guild)
+#    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshiplz(self, ctx, amount : int = 5):
         """Throws a dog bomb!
 
