@@ -26,15 +26,10 @@ BaseCog = getattr(commands, "Cog", object)
 
 class Joshiplz(BaseCog):
     #JoshiSpam!
+    def __init__(self, bot):
+        self.bot = bot
+        self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-
-        self.__session = aiohttp.ClientSession()
-
-    def cog_unload(self) -> None:
-        if self.__session:
-            asyncio.get_event_loop().create_task(self.__session.close())
 
     @commands.command()
     async def joshi(self, ctx: commands.Context) -> None:
@@ -67,3 +62,9 @@ class Joshiplz(BaseCog):
             except aiohttp.ClientError:
                 continue
         raise RetryLimitExceeded()
+        
+        
+    def cog_unload(self):
+    self.bot.loop.create_task(self.session.close())
+
+    __del__ = cog_unload
