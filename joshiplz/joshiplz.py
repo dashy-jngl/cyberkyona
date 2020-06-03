@@ -32,9 +32,18 @@ class Joshiplz(BaseCog):
     # number of times we can fail to get an acceptable image before giving up
     RETRY_LIMIT = 10
     
-    def __init__(self, bot):
-        self.bot = bot
+#    def __init__(self, bot):
+#        self.bot = bot
+#        self.__session = aiohttp.ClientSession()
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
         self.__session = aiohttp.ClientSession()
+
+    def cog_unload(self) -> None:
+        if self.__session:
+            asyncio.get_event_loop().create_task(self.__session.close())
+
 
 
     @commands.command()
@@ -70,7 +79,7 @@ class Joshiplz(BaseCog):
         raise RetryLimitExceeded()
         
         
-    def cog_unload(self):
-        self.bot.loop.create_task(self.session.close())
+#    def cog_unload(self):
+#        self.bot.loop.create_task(self.session.close())
 
-    __del__ = cog_unload
+#    __del__ = cog_unload
