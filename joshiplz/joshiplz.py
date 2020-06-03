@@ -34,7 +34,7 @@ class Joshiplz(BaseCog):
     async def joshi(self, ctx):
         #1x joshi!
         try:
-            file = await random.choice(os.listdir("/home/dash/data/.joshi"))
+            file = random.choice(os.listdir("/home/dash/data/.joshi"))
             await ctx.send(file=file)
             
             fp = await random.choice(os.listdir("/home/dash/data/.joshi/"))
