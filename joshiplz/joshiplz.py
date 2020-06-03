@@ -4,7 +4,8 @@
 import discord
 
 # Red
-from redbot.core import commands
+from redbot.core 
+import commands
 
 # Libs
 import aiohttp
@@ -26,7 +27,7 @@ class Joshiplz(BaseCog):
     async def joshi(self, ctx):
         #1x joshi!
         try:
-            fp = await random.choice(os.listdir("/home/dash/data/.joshi/"))
+            fp = random.choice(os.listdir("/home/dash/data/.joshi/"))
             await bot.send_file(ctx.message.channel, "randomimagefoldername/{}".format(fp))
         except:
             await ctx.send("Nope")
