@@ -1,4 +1,4 @@
-from redbot.core.bot import Red
+#from redbot.core.bot import Red
 
 from .joshiplz import Joshiplz
 
