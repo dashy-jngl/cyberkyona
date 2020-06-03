@@ -26,6 +26,12 @@ BaseCog = getattr(commands, "Cog", object)
 
 class Joshiplz(BaseCog):
     #JoshiSpam!
+    
+    # 8MB; not using 1024 because not sure how exactly Discord does it, erring on small side
+    SIZE_LIMIT = 1000 * 1000 * 8
+    # number of times we can fail to get an acceptable image before giving up
+    RETRY_LIMIT = 10
+    
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
