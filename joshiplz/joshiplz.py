@@ -53,7 +53,7 @@ class Joshiplz(BaseCog):
         await ctx.trigger_typing()
 
         async def fetcher() -> str:
-            url = "http://dash.pallas.feralhosting.com/.joshi/"
+            url = "http://dash.pallas.feralhosting.com/.joshi?count=1"
             async with self.__session.get(url) as response:
                 return (await response.json())[0]
 
