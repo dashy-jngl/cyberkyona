@@ -30,7 +30,6 @@ class Joshiplz(BaseCog):
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
      
     @commands.command()
-    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshi(self, ctx):
         #1x joshi!
         try:
