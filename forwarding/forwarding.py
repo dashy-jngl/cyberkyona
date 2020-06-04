@@ -81,10 +81,10 @@ class Forwarding(commands.Cog):
             embed.set_image(url=message.attachments[0].url)
             embed.set_footer(text=f"User ID: {message.author.id}")
             return
-#            await message.author.send(
+"""            await message.author.send(
                 "Message has been delivered. Note that if you've added multiple attachments, I've sent only the first one."
-            )
-        await self._send_to(embed)
+            )"""
+        await self._send_to(embed) 
 
     @commands.command()
     @checks.admin()
