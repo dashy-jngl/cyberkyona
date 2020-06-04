@@ -69,7 +69,7 @@ class Forwarding(commands.Cog):
             )
             embed.set_author(name=message.author, icon_url=message.author.avatar_url)
             embed.set_footer(text=f"User ID: {message.author.id}")
-            return
+            await self._send_to(embed)
 #            await message.author.send("Message has been delivered.")
         else:
             embed = discord.Embed(
@@ -80,9 +80,9 @@ class Forwarding(commands.Cog):
             embed.set_author(name=message.author, icon_url=message.author.avatar_url)
             embed.set_image(url=message.attachments[0].url)
             embed.set_footer(text=f"User ID: {message.author.id}")
-            return
+            await self._send_to(embed)
 #            await message.author.send("Message has been delivered. Note that if you've added multiple attachments, I've sent only the first one.")
-        await self._send_to(embed) 
+        return 
 
     @commands.command()
     @checks.admin()
