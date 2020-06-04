@@ -1,4 +1,4 @@
-# Post animal pics by Eslyium#1949 & Yukirin#0048
+# post lewds plz
 
 # Discord
 import discord
@@ -37,7 +37,7 @@ class Lewdplz(BaseCog):
         #1x joshi!
         path = lewdpath
         try:
-            path = nsfwpath
+#            path = nsfwpath
             files = os.listdir(path)
             index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
@@ -49,7 +49,7 @@ class Lewdplz(BaseCog):
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def lewds(self, ctx, amount : int = 5):
+    async def lewds(self, ctx, amount : int = 3):
         """Throws a dog bomb!
 
         Defaults to 5, max is 10"""
