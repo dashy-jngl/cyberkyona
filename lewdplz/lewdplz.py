@@ -33,7 +33,7 @@ class Lewdplz(BaseCog):
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
      
     @commands.command()
-    async def lewd(self, ctx):
+    async def lewdplz(self, ctx):
         #1x joshi!
         path = lewdpath
         try:
@@ -49,8 +49,8 @@ class Lewdplz(BaseCog):
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def lewds(self, ctx, amount : int = 3):
-        """Throws a dog bomb!
+    async def lewdsplz(self, ctx, amount : int = 3):
+        """Throws a love bomb!
 
         Defaults to 5, max is 10"""
         results = []
@@ -64,7 +64,7 @@ class Lewdplz(BaseCog):
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
-            await ctx.send('<:ShidaUp:638771591840530443>')     
+            await ctx.send('<:minaLikes:717907722959585401>')     
         
         except:
             await ctx.send("oop")
