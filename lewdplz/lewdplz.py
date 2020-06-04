@@ -64,7 +64,7 @@ class Lewdplz(BaseCog):
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
-            await ctx.send('<:minaLikes:717907722959585401>')     
+            return     
         
         except:
             await ctx.send("oop")
