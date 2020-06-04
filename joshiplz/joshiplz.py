@@ -1,4 +1,4 @@
-# Post animal pics by Eslyium#1949 & Yukirin#0048
+# make JoshiPlz
 
 # Discord
 import discord
@@ -36,6 +36,7 @@ class Joshiplz(BaseCog):
         #1x joshi!
         path = joshipath
         try:
+            path ='/home/dash/data/.joshi'
             files = os.listdir(path)
             index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
@@ -47,20 +48,20 @@ class Joshiplz(BaseCog):
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx, amount : int = 5):
-        """Throws a dog bomb!
+    async def joshiplz(self, ctx, amount : int = 3):
+        """Throws a joshi bomb!
 
         Defaults to 5, max is 10"""
         results = []
-        if amount > 10 or amount < 1:
-            amount = 5
+        path = joshipath
+        if amount > 10:
+            amount = 12
+        if amount < 1:
+            amount = 1
         try:
             for x in range(0,amount):
-                path ='/home/dash/data/.joshi'
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
-#               file = path+"/"+files[index]
-#               fp = path
                 await ctx.send(file=discord.File(path+"/"+files[index]))
             await ctx.send('<:jungleKyonaToast:712170504156348446>')     
         
