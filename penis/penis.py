@@ -41,7 +41,7 @@ class Penis(commands.Cog):
             await ctx.send(ctx.message.author.name+"**'s size is:**\n" + msg)
 
 
-   @commands.command()
+    @commands.command()
     async def simp(self, ctx: commands.Context, user: discord.Member = None) -> None:
         # pp
         
