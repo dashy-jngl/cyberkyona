@@ -30,7 +30,7 @@ class Penis(commands.Cog):
                 bot_msg: List[str] = [
                     ("bigger than yours"),
                     ("if i told you i'd have to fuck you"),
-                    ("haha sorry motherfucker"),
+                    ("haha sorry"),
                     ("you wish"),
                 ]
                 await ctx.send(f"{choice(bot_msg)} {ctx.author.name}")
