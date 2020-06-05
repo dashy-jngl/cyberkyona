@@ -4,7 +4,6 @@ from redbot.core import commands
 from redbot.core.utils.chat_formatting import pagify
 from random import choice
 from redbot.core.i18n import Translator, cog_i18n
-
 from typing import List
 
 class Penis(commands.Cog):
@@ -33,10 +32,10 @@ class Penis(commands.Cog):
             if user.id == self.bot.user.id:
                 user = ctx.message.author
                 bot_msg: List[str] = [
-                    _("Bigger than yours!"),
-                    _("If i told you i'd have to fuck you!"),
-                    _("haha sorry motherfucker!"),
-                    _("You wish!"),
+                    ("Bigger than yours!"),
+                    ("If i told you i'd have to fuck you!"),
+                    ("haha sorry motherfucker!"),
+                    ("You wish!"),
                 ]
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")
 
