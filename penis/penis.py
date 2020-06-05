@@ -7,6 +7,17 @@ from redbot.core.utils.chat_formatting import pagify
 class Penis(commands.Cog):
     """Penis related commands."""
 
+    def __init__(self, bot):
+        self.bot = bot
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """
+            Thanks Sinbad!
+        """
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nCog Version: {self.__version__}"
+
+
     @commands.command()
     async def penis(self, ctx: commands.Context, user: discord.Member = None) -> None:
         """
