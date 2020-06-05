@@ -2,7 +2,7 @@ import discord
 import random
 from redbot.core import commands
 from redbot.core.utils.chat_formatting import pagify
-import choice
+from random import choice
 from redbot.core.i18n import Translator, cog_i18n
 
 from typing import List
