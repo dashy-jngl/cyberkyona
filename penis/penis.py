@@ -23,7 +23,7 @@ class Penis(commands.Cog):
 
         for user in users:
             random.seed(str(user.id))
-            length = random.randint(0, 30)
+            length = index = random.randrange(1,30)
             #if ctx.bot.user.id == user.id:
             #    length = 50
             #else:
