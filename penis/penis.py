@@ -28,12 +28,12 @@ class Penis(commands.Cog):
             if user.id == self.bot.user.id:
                 user = ctx.message.author
                 bot_msg: List[str] = [
-                    (", bigger than yours!"),
-                    (", if i told you i'd have to fuck you!"),
-                    (", haha sorry motherfucker!"),
-                    (", you wish!"),
+                    ("bigger than yours"),
+                    ("if i told you i'd have to fuck you"),
+                    ("haha sorry motherfucker"),
+                    ("you wish"),
                 ]
-                await ctx.send(f"{ctx.author.name} {choice(bot_msg)}")
+                await ctx.send(f"{choice(bot_msg)} {ctx.author.name}")
 
             else:
                 await ctx.send(user.mention + msg)
