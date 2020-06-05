@@ -39,3 +39,26 @@ class Penis(commands.Cog):
                 await ctx.send(user.mention + msg)
         else:
             await ctx.send(ctx.message.author.name+"**'s size is:**\n" + msg)
+
+
+   @commands.command()
+    async def simp(self, ctx: commands.Context, user: discord.Member = None) -> None:
+        # pp
+        
+        msg = " "
+        simp = random.randint(0, 100)
+        if user:
+            if user.id == self.bot.user.id:
+                user = ctx.message.author
+                bot_msg: List[str] = [
+                    ("I only simp for Kyona"),
+                    ("I only simp for Asuka"),
+                    ("I only simp for Io"),
+                    ("I only simp for Taya"),
+                ]
+                await ctx.send(f"{choice(bot_msg)}")
+
+            else:
+                await ctx.send(user.name + "**'s Simprate is:**\n" + simp +"%")
+        else:
+            await ctx.send(ctx.message.author.name + "**'s Simprate is:**\n" + simp +"%")
