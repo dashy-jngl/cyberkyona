@@ -13,18 +13,14 @@ class Penis(commands.Cog):
         self.bot = bot
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
-        """
-            Thanks Sinbad!
-        """
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
 
     @commands.command()
     async def penis(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        """
-            pp
-        """
+        # pp
+        
         msg = " "
         length = random.randint(0, 30)
         msg = "8{}D".format("=" * length)
@@ -32,12 +28,12 @@ class Penis(commands.Cog):
             if user.id == self.bot.user.id:
                 user = ctx.message.author
                 bot_msg: List[str] = [
-                    ("Bigger than yours!"),
-                    ("If i told you i'd have to fuck you!"),
-                    ("haha sorry motherfucker!"),
-                    ("You wish!"),
+                    (", bigger than yours!"),
+                    (", if i told you i'd have to fuck you!"),
+                    (", haha sorry motherfucker!"),
+                    (", you wish!"),
                 ]
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")
+                await ctx.send(f"{ctx.author.name} {choice(bot_msg)}")
 
             else:
                 await ctx.send(user.mention + msg)
