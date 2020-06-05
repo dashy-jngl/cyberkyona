@@ -14,7 +14,7 @@ class Penis(commands.Cog):
         """
         msg = " "
         length = random.randint(0, 30)
-        msg = = "8{}D".format("=" * length)
+        msg = "8{}D".format("=" * length)
         if user:
             if user.id == self.bot.user.id:
                 user = ctx.message.author
