@@ -36,7 +36,7 @@ class Penis(commands.Cog):
                 await ctx.send(f"{choice(bot_msg)} {ctx.author.name}")
 
             else:
-                await ctx.send(user.mention + msg)
+                await ctx.send(user.name + msg)
         else:
             await ctx.send(ctx.message.author.name+"**'s size is:**\n" + msg)
 
@@ -60,6 +60,6 @@ class Penis(commands.Cog):
                 await ctx.send(f"{choice(bot_msg)}")
 
             else:
-                await ctx.send(user.name + "**'s Simprate is:**\n" + simp +"%")
+                await ctx.send("**" + user.name + "'s Simprate is: " + simp +"%**")
         else:
-            await ctx.send(ctx.message.author.name + "**'s Simprate is:**\n" + simp +"%")
+            await ctx.send("**" + user.name + "'s Simprate is: " + simp +"%**")
