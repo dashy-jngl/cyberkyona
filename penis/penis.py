@@ -32,7 +32,7 @@ class Penis(commands.Cog):
             dongs[user] = "8{}D".format("=" * length)
 
 #        random.setstate(state)
-        dongs = sorted(length)
+        dongs = sorted(dongs.items())
 
         for user, dong in dongs:
             msg += "**{}'s size:**\n{}\n".format(user.display_name, dong)
