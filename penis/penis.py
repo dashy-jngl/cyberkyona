@@ -46,7 +46,8 @@ class Penis(commands.Cog):
         # pp
         
         msg = " "
-        simp = random.randint(0, 100)
+        simprate = random.randint(0, 100)
+        simp = str(simprate)
         if user:
             if user.id == self.bot.user.id:
                 user = ctx.message.author
