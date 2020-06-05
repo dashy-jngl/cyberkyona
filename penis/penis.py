@@ -23,7 +23,7 @@ class Penis(commands.Cog):
 
         for user in users:
             random.seed(str(user.id))
-            length = index = random.randrange(1,30)
+            length = random.randrange(1,30)
             #if ctx.bot.user.id == user.id:
             #    length = 50
             #else:
@@ -32,7 +32,7 @@ class Penis(commands.Cog):
             dongs[user] = "8{}D".format("=" * length)
 
 #        random.setstate(state)
-        dongs = sorted(dongs.items())
+        dongs = sorted(dongs.items(), key=lambda x: x[1])
 
         for user, dong in dongs:
             msg += "**{}'s size:**\n{}\n".format(user.display_name, dong)
