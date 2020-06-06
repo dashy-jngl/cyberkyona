@@ -310,7 +310,7 @@ class Insult(commands.Cog):
                 ]
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
             
-            elif user.id == 713995207384760370:
+            elif user.id == 713995207384760370: #cyberKyona
                 user = ctx.message.author
                 bot_msg = [
                     _(
@@ -326,8 +326,23 @@ class Insult(commands.Cog):
                         " Kyona-chan #1"
                     ),
                 ]
-                
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
+            elif user.id == 338135974158794752: #dashy
+                user = ctx.message.author
+                bot_msg = [
+                    _(
+                        "<:natsuReally:717898844964388884>"
+                    ),
+                    _(
+                        "<:makiItohPeace:717898761099280456>"
+                    ),
+                    _(
+                        "Dont let <@713995207384760370> see that!"
+                    ),
+                    _(
+                        "<:konamiWut:717661695731826688>"
+                    ),
+                ]                
+                await ctx.send(f"{choice(bot_msg)}")
             
             else:
                 await ctx.send(user.mention + msg + choice(insults))
