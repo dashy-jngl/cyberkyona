@@ -323,6 +323,7 @@ class Insult(commands.Cog):
                         " Kyona-chan #1"
                     ),
                 ]
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")    
             elif user.id == 338135974158794752: #dashy
                 user = ctx.message.author
                 bot_msg = [
