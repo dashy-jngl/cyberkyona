@@ -281,7 +281,7 @@ class Insult(commands.Cog):
     @commands.command(aliases=["takeitback"])
     async def insult(self, ctx: commands.Context, user: discord.Member = None) -> None:
         """
-            Insult the user
+            insults motherfucker!
 
             `user` the user you would like to insult
         """
