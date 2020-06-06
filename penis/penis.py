@@ -19,7 +19,7 @@ class Penis(commands.Cog):
 
     @commands.command()
     async def penis(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        """ tests a users PP"""
+        """ - PP MotherFuckers!"""
         
         msg = " "
         length = random.randint(0, 30)
@@ -43,7 +43,7 @@ class Penis(commands.Cog):
 
     @commands.command()
     async def simp(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        """ tests a users simprate"""
+        """ - simpRate MotherFuckers!"""
         
         msg = " "
         simprate = random.randint(50, 100)
