@@ -305,12 +305,12 @@ class Insult(commands.Cog):
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
             
             elif user.id == 713995207384760370:
-                 user = ctx.message.author
+                user = ctx.message.author
                 bot_msg = [
                     _(
-                        "No, i simp for her!"
+                        "No, I simp for her!"
                     ),
-                    ]
+                ]
                 
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
             
