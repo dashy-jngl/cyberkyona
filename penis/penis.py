@@ -34,7 +34,17 @@ class Penis(commands.Cog):
                     ("you wish"),
                 ]
                 await ctx.send(f"{choice(bot_msg)} {ctx.author.name}")
-
+###
+            elif user.id == 713995207384760370: #cyberKyona
+                user = ctx.message.author
+                bot_msg: List[str] = [
+                    (f"{ctx.author.name} She'll ban you you know."),
+                    (f"Sorry motherfucker, im not THAT crazy! {ctx.author.name}"),
+                    ("<a:tamNoYukEw:698479875610378280>"),
+                    ("<:thatsNotWrestlingGgr:707427714940010539>"),
+                ]
+                await ctx.send(f"{choice(bot_msg)}")
+###                
             else:
                 await ctx.send("**" + user.name + "'s** size is:\n" + "**" + msg + "**")
         else:
