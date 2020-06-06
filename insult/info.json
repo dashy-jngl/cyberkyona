@@ -1,0 +1,28 @@
+{
+    "author" : [
+        "Airen",
+        "JennJenn",
+        "TrustyJAID"
+    ],
+    "description" : "Insult people in a creative way",
+    "disabled" : false,
+    "hidden" : false,
+    "install_msg" : "Usage: `[p]insult <user>`",
+    "max_bot_version" : "0.0.0",
+    "min_bot_version" : "3.1.8",
+    "min_python_version" : [
+        3,
+        7,
+        2
+    ],
+    "name" : "Insult",
+    "permissions" : [],
+    "required_cogs" : {},
+    "requirements" : [],
+    "short" : "Insult people in a creative way",
+    "tags" : [
+        "fun",
+        "insults"
+    ],
+    "type" : "COG"
+}
