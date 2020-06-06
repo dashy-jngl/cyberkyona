@@ -19,7 +19,7 @@ class Penis(commands.Cog):
 
     @commands.command()
     async def penis(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        # pp
+        """ tests a users PP"""
         
         msg = " "
         length = random.randint(0, 30)
@@ -43,10 +43,10 @@ class Penis(commands.Cog):
 
     @commands.command()
     async def simp(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        # pp
+        """ tests a users simprate"""
         
         msg = " "
-        simprate = random.randint(0, 100)
+        simprate = random.randint(50, 100)
         simp = str(simprate)
         if user:
             if user.id == self.bot.user.id:
@@ -60,6 +60,6 @@ class Penis(commands.Cog):
                 await ctx.send(f"{choice(bot_msg)}")
 
             else:
-                await ctx.send("**" + user.name + "'s** Simprate is:\n\n" + "**" +  simp +"%**")
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            await ctx.send("**" + ctx.message.author.name + "'s** Simprate is:\n\n" + "**" +  simp +"%**")
+            await ctx.send("**" + ctx.message.author.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
