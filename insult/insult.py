@@ -336,7 +336,7 @@ class Insult(commands.Cog):
                         "<:makiItohPeace:717898761099280456>"
                     ),
                     _(
-                        "Dont let <@713995207384760370> see that!"
+                        "{ctx.author.mention} Dont let <@713995207384760370> see that!"
                     ),
                     _(
                         "<:konamiWut:717661695731826688>"
