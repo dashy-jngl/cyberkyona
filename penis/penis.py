@@ -38,7 +38,7 @@ class Penis(commands.Cog):
             elif user.id == 713995207384760370: #cyberKyona
                 user = ctx.message.author
                 bot_msg: List[str] = [
-                    (f"{ctx.author.mention} She'll ban you you know."),
+                    (f"{ctx.author.mention} She'll ban you, you know."),
                     (f"Sorry motherfucker, im not THAT crazy! {ctx.author.mention}"),
                     ("<a:tamNoYukEw:698479875610378280>"),
                     ("<:thatsNotWrestlingGgr:707427714940010539>"),
