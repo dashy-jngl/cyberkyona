@@ -266,18 +266,15 @@ insults: List[str] = [
 
 @cog_i18n(_)
 class Insult(commands.Cog):
-    """Airenkun's Insult Cog"""
 
-    __author__ = ["Airen", "JennJenn", "TrustyJAID"]
+    __author__ = ["Airen", "JennJenn", "TrustyJAID", "dasher"]
     __version__ = "1.0.0"
 
     def __init__(self, bot):
         self.bot = bot
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
-        """
-            Thanks Sinbad!
-        """
+        
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
@@ -336,7 +333,7 @@ class Insult(commands.Cog):
                         "<:makiItohPeace:717898761099280456>"
                     ),
                     _(
-                        f"{ctx.author.mention} Dont let <@713995207384760370> see that!"
+                        f"{ctx.author.mention} Don't let <@713995207384760370> see that!"
                     ),
                     _(
                         "<:konamiWut:717661695731826688>"
