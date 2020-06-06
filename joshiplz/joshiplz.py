@@ -11,7 +11,7 @@ from redbot.core import commands
 import os
 import random
 #import urllib.request
-
+#from random import choice
 
 import aiohttp
 #import asyncio
@@ -19,7 +19,15 @@ import aiohttp
 #import logging
 #from typing import Awaitable, Callable
 
-joshipath = '/home/dash/data/.joshi'
+joshi_path = [
+    (
+        "/home/dash/data/.joshi"
+    ),
+    (
+        "/home/dash/data/.wwe"
+    ),
+]                
+
 
 BaseCog = getattr(commands, "Cog", object)
 
@@ -33,10 +41,9 @@ class Joshiplz(BaseCog):
      
     @commands.command()
     async def joshi(self, ctx):
-        #1x joshi!
-        path = joshipath
+        """ - 1x joshi! """
         try:
-            path ='/home/dash/data/.joshi'
+            path = choice(joshipath)
             files = os.listdir(path)
             index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
@@ -49,12 +56,12 @@ class Joshiplz(BaseCog):
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshiplz(self, ctx, amount : int = 3):
-        """Throws a joshi bomb!
+        """ - Throws a Joshi bomb!
 
-        Defaults to 5, max is 10"""
+        Defaults to 3, max is 12"""
         results = []
         path = joshipath
-        if amount > 10:
+        if amount > 12:
             amount = 12
         if amount < 1:
             amount = 1
@@ -63,8 +70,8 @@ class Joshiplz(BaseCog):
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
-#            await ctx.send('<:jungleKyonaToast:712170504156348446>')     
-            return
+            await ctx.send('<:jungleKyonaToast:712170504156348446>')     
+        
         except:
             await ctx.send("oop")
 
