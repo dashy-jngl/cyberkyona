@@ -60,6 +60,6 @@ class Penis(commands.Cog):
                 await ctx.send(f"{choice(bot_msg)}")
 
             else:
-                await ctx.send("**" + user.name + "'s** Simprate is: /n" + "**" +  simp +"%**")
+                await ctx.send("**" + user.name + "'s** Simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            await ctx.send("**" + ctx.message.author.name + "'s Simprate is: " + "**" +  simp +"%**")
+            await ctx.send("**" + ctx.message.author.name + "'s Simprate is:\n\n" + "**" +  simp +"%**")
