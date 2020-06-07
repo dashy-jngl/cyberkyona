@@ -11,7 +11,7 @@ from redbot.core import commands
 import os
 import random
 #import urllib.request
-#from random import choice
+from random import choice
 
 import aiohttp
 #import asyncio
