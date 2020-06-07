@@ -43,7 +43,7 @@ class Joshiplz(BaseCog):
     async def joshi(self, ctx):
         """ - 1x joshi! """
         try:
-            path = choice(joshipath)
+            path = choice(joshi_path)
             files = os.listdir(path)
             index = random.randrange(1, len(files))
 #            file = path+"/"+files[index]
