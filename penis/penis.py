@@ -45,6 +45,8 @@ class Penis(commands.Cog):
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
 ###                
+            else:
+                await ctx.send("**" + ctx.message.author.name + "'s** size is:\n" + "**" + msg + "**")
         else:
             await ctx.send("**" + ctx.message.author.name + "'s** size is:\n" + "**" + msg + "**")
 
