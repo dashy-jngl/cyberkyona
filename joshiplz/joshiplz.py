@@ -70,7 +70,7 @@ class Joshiplz(BaseCog):
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
-            await ctx.send('<:jungleKyonaToast:712170504156348446>')     
+            return     
         
         except:
             await ctx.send("oop")
