@@ -45,8 +45,6 @@ class Penis(commands.Cog):
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
 ###                
-            else:
-                await ctx.send("**" + user.name + "'s** size is:\n" + "**" + msg + "**")
         else:
             await ctx.send("**" + ctx.message.author.name + "'s** size is:\n" + "**" + msg + "**")
 
@@ -68,7 +66,17 @@ class Penis(commands.Cog):
                     ("I only simp for Taya"),
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
-
+            elif user.id == 338135974158794752: #dashy
+                user = ctx.message.author
+                simprate = random.randint(100, 200)
+                simp = str(simprate)
+                bot_msg: List[str] = [
+                    (f"{ctx.author.mention} She'll ban you, you know."),
+                    (f"Sorry motherfucker, im not THAT crazy! {ctx.author.mention}"),
+                    ("<a:tamNoYukEw:698479875610378280>"),
+                    ("<:thatsNotWrestlingGgr:707427714940010539>"),
+                ]
+                await ctx.send(f"{choice(bot_msg)}")            
             else:
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
