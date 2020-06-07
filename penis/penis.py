@@ -72,13 +72,7 @@ class Penis(commands.Cog):
                 user = ctx.message.author
                 simprate = random.randint(100, 200)
                 simp = str(simprate)
-                bot_msg: List[str] = [
-                    (f"{ctx.author.mention} She'll ban you, you know."),
-                    (f"Sorry motherfucker, im not THAT crazy! {ctx.author.mention}"),
-                    ("<a:tamNoYukEw:698479875610378280>"),
-                    ("<:thatsNotWrestlingGgr:707427714940010539>"),
-                ]
-                await ctx.send(f"{choice(bot_msg)}")            
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
             else:
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
