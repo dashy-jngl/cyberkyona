@@ -60,13 +60,13 @@ class Joshiplz(BaseCog):
 
         Defaults to 3, max is 12"""
         results = []
-        path = joshipath
         if amount > 12:
             amount = 12
         if amount < 1:
             amount = 1
         try:
             for x in range(0,amount):
+                path = choice(joshi_path)
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
