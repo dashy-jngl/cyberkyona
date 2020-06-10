@@ -51,7 +51,7 @@ class Joshiplz(BaseCog):
             await ctx.send(file=discord.File(path+"/"+files[index]))
             
         except:
-            await ctx.send("Nope")
+            await ctx.send("<:jungleKyonaLook:695168285586751509>")
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
@@ -73,7 +73,7 @@ class Joshiplz(BaseCog):
             return     
         
         except:
-            await ctx.send("oop")
+            await ctx.send("<:jungleKyonaLook:695168285586751509>")
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
