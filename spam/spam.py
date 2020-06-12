@@ -53,7 +53,7 @@ class Spam(BaseCog):
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 try:
-                    await ctx.send("<@357228673331494913>")
+                    ctx.send("<@357228673331494913>")
                 await ctx.send(file=discord.File(path+"/"+files[index]))
             return     
         
