@@ -84,6 +84,6 @@ class Penis(commands.Cog):
                 simp = str(simprate)
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")    
             else:
-                await ctx.send("**" + ctx.author.mention + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            await ctx.send("**" + ctx.message.author.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
