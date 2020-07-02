@@ -56,7 +56,7 @@ class Penis(commands.Cog):
         """ - simpRate MotherFuckers!"""
         
         msg = " "
-        simprate = random.randint(50, 100)
+        simprate = random.randint(75, 125)
         simp = str(simprate)
         if user:
             if user.id == self.bot.user.id:
