@@ -82,7 +82,12 @@ class Penis(commands.Cog):
                 #user = ctx.message.author
                 simprate = random.randint(100, 200)
                 simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")    
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            elif user.id == 404141277358325771: #Ksupreme
+                #user = ctx.message.author
+                simprate = random.randint(100, 200)
+                simp = str(simprate)
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
             else:
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
