@@ -19,6 +19,14 @@ import aiohttp
 #import logging
 #from typing import Awaitable, Callable
 
+mayu_path = "/home/dash/data/.mayu"
+hardy_path = "/home/dash/data/.hardy"
+dashy_path = "/home/dash/data/.dashy"
+frog_path = "/home/dash/data/.frog"
+asuka_path = "/home/dash/data/.asuka"
+tiger_path = "/home/dash/data/.tiger"
+light_path = "/home/dash/data/.light"
+
 joshi_path = [
     (
         "/home/dash/data/.joshi"
@@ -66,7 +74,12 @@ class Joshiplz(BaseCog):
             amount = 1
         try:
             for x in range(0,amount):
-                path = choice(joshi_path)
+                if user.id == 338135974158794752: #dashy
+                    spice = random.randint(1,2)
+                    if spice == 1 
+                        path == dashy_path
+                    elif spice == 2
+                        path = choice(joshi_path)
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
