@@ -76,9 +76,9 @@ class Joshiplz(BaseCog):
             for x in range(0,amount):
                 if user.id == 338135974158794752: #dashy
                     spice = random.randint(1,2)
-                    if spice == 1 
+                    if spice == 1: 
                         path == dashy_path
-                    elif spice == 2
+                    elif spice == 2:
                         path = choice(joshi_path)
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
