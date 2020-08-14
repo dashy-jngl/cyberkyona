@@ -80,6 +80,8 @@ class Joshiplz(BaseCog):
                         path == dashy_path
                     elif spice == 2:
                         path = choice(joshi_path)
+                    else
+                        path = choice(joshi_path)
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
