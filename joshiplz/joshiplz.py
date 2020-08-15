@@ -72,6 +72,7 @@ class Joshiplz(BaseCog):
             amount = 12
         if amount < 1:
             amount = 1
+        user = ctx.message.author
         try:
             for x in range(0,amount):
                 if user.id == 338135974158794752: #dashy
