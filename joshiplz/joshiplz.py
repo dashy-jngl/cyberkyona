@@ -63,7 +63,7 @@ class Joshiplz(BaseCog):
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx, amount : int = 3, user: discord.Member = None) -> None:
+    async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Member = None) -> None:
         """ - Throws a Joshi bomb!
 
         Defaults to 3, max is 12"""
@@ -76,7 +76,7 @@ class Joshiplz(BaseCog):
         path = choice(joshi_path)
         try:
             for x in range(0,amount):
-                if self.user.id == 338135974158794752: #dashy
+                if user.id == 338135974158794752: #dashy
                     path == dashy_path
                 else:
                     path = choice(joshi_path)
