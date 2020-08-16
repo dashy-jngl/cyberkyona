@@ -77,14 +77,11 @@ class Joshiplz(BaseCog):
             for x in range(0,amount):
                 if user.id == 338135974158794752: #dashy
                     path = dashy_path
-                    files = os.listdir(path)
-                    index = random.randrange(1, len(files))
-                    await ctx.send(file=discord.File(path+"/"+files[index]))
                 else:
                     path = choice(joshi_path)
-                    files = os.listdir(path)
-                    index = random.randrange(1, len(files))
-                    await ctx.send(file=discord.File(path+"/"+files[index]))
+                files = os.listdir(path)
+                index = random.randrange(1, len(files))
+                await ctx.send(file=discord.File(path+"/"+files[index]))
             return     
         
         except:
