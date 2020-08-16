@@ -72,7 +72,7 @@ class Joshiplz(BaseCog):
             amount = 12
         if amount < 1:
             amount = 1
-        user = ctx.message.author
+        #user = ctx.message.author
         path = choice(joshi_path)
         try:
             for x in range(0,amount):
