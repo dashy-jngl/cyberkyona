@@ -76,7 +76,7 @@ class Joshiplz(BaseCog):
         path = choice(joshi_path)
         try:
             for x in range(0,amount):
-                if user == 338135974158794752: #dashy
+                if user.id == 338135974158794752: #dashy
                     path == dashy_path
                 else:
                     path = choice(joshi_path)
