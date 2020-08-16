@@ -76,14 +76,10 @@ class Joshiplz(BaseCog):
         path = choice(joshi_path)
         try:
             for x in range(0,amount):
-                if user.id == 338135974158794752: #dashy
-                    spice = random.randint(1,2)
-                    if spice == 1: 
-                        path == dashy_path
-                    elif spice == 2:
-                        path = choice(joshi_path)
-                    else:
-                        path = choice(joshi_path)
+                if user == 338135974158794752: #dashy
+                    path == dashy_path
+                else:
+                    path = choice(joshi_path)
                 files = os.listdir(path)
                 index = random.randrange(1, len(files))
                 await ctx.send(file=discord.File(path+"/"+files[index]))
