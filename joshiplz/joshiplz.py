@@ -77,7 +77,7 @@ class Joshiplz(BaseCog):
             for x in range(0,amount):
                 if user.id == 338135974158794752: #dashy
                     path = dashy_path
-                    spice = random.randrange(1,2)
+                    spice = random.randrange(1,3)
                     if spice == 1:
                         path = dashy_path
                     elif spice == 2:
