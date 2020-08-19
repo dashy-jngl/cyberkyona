@@ -19,20 +19,20 @@ import aiohttp
 #import logging
 #from typing import Awaitable, Callable
 
-mayu_path = "/home/dash/data/.mayu"
-hardy_path = "/home/dash/data/.hardy"
-dashy_path = "/home/dash/data/.dashy"
-frog_path = "/home/dash/data/.frog"
-asuka_path = "/home/dash/data/.asuka"
-tiger_path = "/home/dash/data/.tiger"
-light_path = "/home/dash/data/.light"
+mayu_path = "/home/dashy9000/data/.mayu"
+hardy_path = "/home/dashy9000/data/.hardy"
+dashy_path = "/home/dashy9000/data/.dashy"
+frog_path = "/home/dashy9000/data/.frog"
+asuka_path = "/home/dashy9000/data/.asuka"
+tiger_path = "/home/dashy9000/data/.tiger"
+light_path = "/home/dashy9000/data/.light"
 
 joshi_path = [
     (
-        "/home/dash/data/.joshi"
+        "/home/dash/datay9000/.joshi"
     ),
     (
-        "/home/dash/data/.wwe"
+        "/home/dash/datay9000/.wwe"
     ),
 ]                
 
@@ -77,16 +77,14 @@ class Joshiplz(BaseCog):
             for x in range(0,amount):
                 if user.id == 338135974158794752: #dashy
                     path = dashy_path
-                    spice = random.randrange(1,3)
-                    if spice == 1:
-                        path = dashy_path
-                    elif spice == 2:
-                        path = choice(joshi_path)
+                    files = os.listdir(path)
+                    index = random.randrange(1, len(files))
+                    await ctx.send(file=discord.File(path+"/"+files[index]))
                 else:
                     path = choice(joshi_path)
-                files = os.listdir(path)
-                index = random.randrange(1, len(files))
-                await ctx.send(file=discord.File(path+"/"+files[index]))
+                    files = os.listdir(path)
+                    index = random.randrange(1, len(files))
+                    await ctx.send(file=discord.File(path+"/"+files[index]))
             return     
         
         except:
