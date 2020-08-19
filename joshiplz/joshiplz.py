@@ -29,10 +29,10 @@ light_path = "/home/dashy9000/data/.light"
 
 joshi_path = [
     (
-        "/home/dash/datay9000/.joshi"
+        "/home/dashy9000/data/.joshi"
     ),
     (
-        "/home/dash/datay9000/.wwe"
+        "/home/dashy9000/data/.wwe"
     ),
 ]                
 
