@@ -20,7 +20,7 @@ import aiohttp
 #from typing import Awaitable, Callable
 
 mayu_path = "/home/dashy9000/data/.mayu"
-hardy_path = "/home/dashy9000/data/.hardy"
+hardy_path = "/home/dashy9000/data/.hardy" #303430784771948544
 dashy_path = "/home/dashy9000/data/.dashy"
 frog_path = "/home/dashy9000/data/.frog"
 asuka_path = "/home/dashy9000/data/.asuka"
@@ -79,6 +79,18 @@ class Joshiplz(BaseCog):
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = dashy_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    else:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                if user.id == 303430784771948544: #hardy
+                    spice = random.randrange(0,100)
+                    if spice > 40: 
+                        path = hardy_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
