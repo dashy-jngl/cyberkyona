@@ -88,7 +88,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                if user.id == 303430784771948544: #hardy
+                elif user.id == 303430784771948544: #hardy
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = hardy_path
@@ -100,7 +100,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                if user.id == 302168981903769602: #frog
+                elif user.id == 302168981903769602: #frog
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = cryo_path
@@ -112,7 +112,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))    
-                if user.id == 404141277358325771: #ksup
+                elif user.id == 404141277358325771: #ksup
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = ksup_path
@@ -124,7 +124,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))    
-                if user.id == 574149508989190154: #tigr
+                elif user.id == 574149508989190154: #tigr
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = tiger_path
