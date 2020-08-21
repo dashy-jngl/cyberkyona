@@ -83,7 +83,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
+                    elif spice < 41:
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -95,7 +95,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
+                    elif spice < 41:
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -107,7 +107,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
+                    elif spice < 41:
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -119,7 +119,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
+                    elif spice < 41:
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
