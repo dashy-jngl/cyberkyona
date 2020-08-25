@@ -125,7 +125,7 @@ class Joshiplz(BaseCog):
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))    
                 elif user.id == 574149508989190154: #tigr
-                    spice = random.randrange(0,30)
+                    spice = random.randrange(50,60)
                     if spice > 40: 
                         path = tiger_path
                         files = os.listdir(path)
