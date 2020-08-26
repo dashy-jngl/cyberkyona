@@ -64,13 +64,13 @@ class Joshiplz(BaseCog):
             
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx: commands.Context, amount : int = 5, user: discord.Message.author = None):
+    async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
         """ - Throws a Joshi bomb!
 
-        Defaults to 5, max is 25"""
+        Defaults to 3, max is 500"""
         results = []
-        if amount > 25:
-            amount = 25
+        if amount > 500:
+            amount = 500
         if amount < 1:
             amount = 1
         user = ctx.message.author
@@ -95,7 +95,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                    elif spice < 41:
+                    else:
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
