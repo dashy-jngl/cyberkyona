@@ -12,6 +12,7 @@ import os
 import random
 #import urllib.request
 from random import choice
+import time
 
 import aiohttp
 #import asyncio
@@ -76,6 +77,7 @@ class Joshiplz(BaseCog):
         user = ctx.message.author
         try:
             for x in range(0,amount):
+                time.sleep(1)
                 if user.id == 338135974158794752: #dashy
                     spice = random.randrange(0,100)
                     if spice > 40: 
