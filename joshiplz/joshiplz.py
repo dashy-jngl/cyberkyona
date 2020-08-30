@@ -75,12 +75,13 @@ class Joshiplz(BaseCog):
         if amount < 1:
             amount = 1
         user = ctx.message.author
+        if user.id == 338135974158794752: #dashy
+            if amount > 5:
+                amount = 5
         try:
             for x in range(0,amount):
                 time.sleep(1)
                 if user.id == 338135974158794752: #dashy
-                    if x > 5:
-                        x=5
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = dashy_path
