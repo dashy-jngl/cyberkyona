@@ -75,7 +75,7 @@ class Joshiplz(BaseCog):
         if amount < 1:
             amount = 1
         user = ctx.message.author
-        if user.id == 338135974158794752: #dashy
+        if user.id == 404141277358325771: #ksup
             if amount > 5:
                 amount = 5
         try:
