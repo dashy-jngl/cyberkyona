@@ -28,6 +28,7 @@ asuka_path = "/home/dashy9000/data/.asuka"  #
 tiger_path = "/home/dashy9000/data/.tiger"  # 574149508989190154
 light_path = "/home/dashy9000/data/.light"  #
 ksup_path = "/home/dashy9000/data/.ksup"    # 404141277358325771
+mo_path = "/home/dashy9000/data/.mo"        # 132091505237032960
 
 joshi_path = [
     (
@@ -97,6 +98,18 @@ class Joshiplz(BaseCog):
                     spice = random.randrange(0,100)
                     if spice > 40: 
                         path = hardy_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    else:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 132091505237032960: #mo
+                    spice = random.randrange(0,100)
+                    if spice > 40: 
+                        path = mo_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
