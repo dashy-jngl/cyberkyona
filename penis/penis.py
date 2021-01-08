@@ -59,6 +59,11 @@ class Penis(commands.Cog):
         simprate = random.randint(75, 200)
         simpmood = random.randint(1, 100)
         simpmax = random.randint(2, 10)
+        if simpmood == 1:
+            simprate = simprate + 9000
+        if simpmood > 98:
+            simprate = simprate * simpmax
+        simp = str(simprate)
         if user:
             if user.id == self.bot.user.id:
                 user = ctx.message.author
@@ -69,25 +74,5 @@ class Penis(commands.Cog):
                     ("I only simp for Taya"),
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
-            elif simpmood == 1:
-                simprate = simprate + 9000 
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
-            elif simpmood > 98:
-                simprate = simprate * simpmax 
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
-            else:
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            if simpmood == 1:
-                simprate = simprate + 9000 
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
-            elif simpmood > 98:
-                simprate = simprate * simpmax 
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
-            else:
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
