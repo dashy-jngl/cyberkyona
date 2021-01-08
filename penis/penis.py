@@ -57,6 +57,8 @@ class Penis(commands.Cog):
         
         msg = " "
         simprate = random.randint(75, 125)
+        simpmood = random.randint(1, 100)
+        simpmax = random.randint(2, 10)
         simp = str(simprate)
         if user:
             if user.id == self.bot.user.id:
@@ -68,27 +70,20 @@ class Penis(commands.Cog):
                     ("I only simp for Taya"),
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
-            elif user.id == 338135974158794752: #dashy
-                #user = ctx.message.author
-                simprate = random.randint(100, 200)
-                simp = str(simprate)
+            elif simpmood == 1
+                simprate = simprate + 9000 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
-            elif user.id == 302168981903769602: #CryoXz
-                #user = ctx.message.author
-                simprate = random.randint(100, 200)
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**") 
-            elif user.id == 574149508989190154: #tiger
-                #user = ctx.message.author
-                simprate = random.randint(100, 200)
-                simp = str(simprate)
-                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
-            elif user.id == 404141277358325771: #Ksupreme
-                #user = ctx.message.author
-                simprate = random.randint(100, 200)
-                simp = str(simprate)
+            elif simpmood > 98
+                simprate = simprate * simpmax 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
             else:
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            await ctx.send("**" + ctx.message.author.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            if simpmood == 1
+                simprate = simprate + 9000 
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
+            elif simpmood > 98
+                simprate = simprate * simpmax 
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            else:
+                await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
