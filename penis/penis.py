@@ -56,7 +56,7 @@ class Penis(commands.Cog):
         """ - simpRate MotherFuckers!"""
         
         msg = " "
-        simprate = random.randint(75, 125)
+        simprate = random.randint(75, 200)
         simpmood = random.randint(1, 100)
         simpmax = random.randint(2, 10)
         simp = str(simprate)
@@ -70,19 +70,19 @@ class Penis(commands.Cog):
                     ("I only simp for Taya"),
                 ]
                 await ctx.send(f"{choice(bot_msg)}")
-            elif simpmood == 1
+            elif simpmood == 1:
                 simprate = simprate + 9000 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
-            elif simpmood > 98
+            elif simpmood > 98:
                 simprate = simprate * simpmax 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
             else:
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            if simpmood == 1
+            if simpmood == 1:
                 simprate = simprate + 9000 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")            
-            elif simpmood > 98
+            elif simpmood > 98:
                 simprate = simprate * simpmax 
                 await ctx.send("**" + user.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
             else:
