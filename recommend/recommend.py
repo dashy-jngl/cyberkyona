@@ -35,7 +35,7 @@ class Recommend(commands.Cog):
         msg = " "
         if promo:
 
-            if promo == stardom:
+            if promo == "stardom":
                 user = ctx.message.author
                 bot_msg = [
                     (
@@ -53,7 +53,7 @@ class Recommend(commands.Cog):
                 ]
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
             
-            elif promo == agz: #cyberKyona
+            elif promo == "agz": #cyberKyona
                 user = ctx.message.author
                 bot_msg = [
                     (
