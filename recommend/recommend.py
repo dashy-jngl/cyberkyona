@@ -25,7 +25,7 @@ class Recommend(commands.Cog):
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
     @commands.command(aliases=["takeitback"])
-    async def insult(self, ctx: commands.Context, promo) -> None:
+    async def recommend(self, ctx: commands.Context, promo) -> None:
         """
             - Insults motherfucker!
 
