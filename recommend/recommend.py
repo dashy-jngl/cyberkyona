@@ -6,7 +6,7 @@ from typing import List
 
 
 stardom: List[str] = [
-    _("Yo Mama so fat she sued Xbox 360 for guessing her weight."),
+    ("Yo Mama so fat she sued Xbox 360 for guessing her weight."),
     
 
 ]
@@ -38,16 +38,16 @@ class Recommend(commands.Cog):
             if promo == stardom:
                 user = ctx.message.author
                 bot_msg = [
-                    _(
+                    (
                         " Simp!"
                     ),
-                    _(
+                    (
                         " You love itoh!"
                     ),
-                    _(
+                    (
                         " Pay me motherfucker!"
                     ),
-                    _(
+                    (
                         " Itoh-chan #1"
                     ),
                 ]
@@ -56,16 +56,16 @@ class Recommend(commands.Cog):
             elif promo == agz: #cyberKyona
                 user = ctx.message.author
                 bot_msg = [
-                    _(
+                    (
                         " I simp so hard for her!"
                     ),
-                    _(
+                    (
                         " I love cyberKyona"
                     ),
-                    _(
+                    (
                         " Pay me motherfucker!"
                     ),
-                    _(
+                    (
                         " Kyona-chan #1"
                     ),
                 ]
