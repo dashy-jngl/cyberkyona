@@ -27,9 +27,9 @@ class Recommend(commands.Cog):
     @commands.command(aliases=["rc"])
     async def recommend(self, ctx: commands.Context, promo = None) -> None:
         """
-            - Insults motherfucker!
+            - Recommends matches from WWC user submissions!
 
-            `user` the user you would like to insult
+            `promo` the promotion you would like to see
         """
 
         msg = " "
