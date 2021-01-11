@@ -4,11 +4,18 @@ from random import choice
 from redbot.core.i18n import Translator, cog_i18n
 from typing import List
 
-
+bot_msg = [
+    (" Simp!"),
+]
+termlist = [
+    (stardom),
+    (agz),
+]
 stardom: List[str] = [
-    ("Yo Mama so fat she sued Xbox 360 for guessing her weight."),
-    
-
+    ("stardom matches go here"),
+]
+agz: List[str] = [
+    ("agz matches go here"),
 ]
 
 class Recommend(commands.Cog):
@@ -36,42 +43,14 @@ class Recommend(commands.Cog):
         if promo:
 
             if promo == "stardom":
-                user = ctx.message.author
-                bot_msg = [
-                    (
-                        " Simp!"
-                    ),
-                    (
-                        " You love itoh!"
-                    ),
-                    (
-                        " Pay me motherfucker!"
-                    ),
-                    (
-                        " Itoh-chan #1"
-                    ),
-                ]
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")
             
             elif promo == "agz": #cyberKyona
-                user = ctx.message.author
-                bot_msg = [
-                    (
-                        " I simp so hard for her!"
-                    ),
-                    (
-                        " I love cyberKyona"
-                    ),
-                    (
-                        " Pay me motherfucker!"
-                    ),
-                    (
-                        " Kyona-chan #1"
-                    ),
-                ]
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")    
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(agz)}")    
             
             else:
-                await ctx.send(ctx.author.mention + msg + choice(stardom))
+                list = choice(termlist)
+                await ctx.send(ctx.author.mention + msg + choice(list))
         else:
-            await ctx.send(ctx.message.author.mention + msg + choice(stardom))
+            list = choice(termlist)
+            await ctx.send(ctx.message.author.mention + msg + choice(list))
