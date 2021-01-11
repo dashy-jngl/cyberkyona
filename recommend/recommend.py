@@ -7,17 +7,17 @@ from typing import List
 bot_msg = [
     (" Simp!"),
 ]
-termlist = [
-    (stardom),
-    (agz),
-]
+
 stardom: List[str] = [
     ("stardom matches go here"),
 ]
 agz: List[str] = [
     ("agz matches go here"),
 ]
-
+termlist = [
+    (stardom),
+    (agz),
+]
 class Recommend(commands.Cog):
 
     __author__ = ["Airen", "JennJenn", "TrustyJAID", "dasha"]
