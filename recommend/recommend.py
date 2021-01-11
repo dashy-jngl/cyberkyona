@@ -24,7 +24,7 @@ class Recommend(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
-    @commands.command(aliases=["takeitback"])
+    @commands.command(aliases=["rc"])
     async def recommend(self, ctx: commands.Context, promo) -> None:
         """
             - Insults motherfucker!
