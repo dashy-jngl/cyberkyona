@@ -22,11 +22,13 @@ class Simp(commands.Cog):
         
         msg = " "
         simprate = random.randint(75, 200)
-        simpmood = random.randint(1, 100)
+        simpmood = random.randint(1, 300)
         simpmax = random.randint(2, 10)
         if simpmood == 1:
             simprate = simprate + 9000
-        if simpmood > 98:
+        if simpmood > 270:
+            simprate = simprate + 100
+        if simpmood == 233:
             simprate = simprate * simpmax
         simp = str(simprate)
         if user:
