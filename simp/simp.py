@@ -27,7 +27,7 @@ class Simp(commands.Cog):
         if simpmood == 1:
             simprate = simprate + 9000
         if simpmood > 270:
-            simprate = simprate + 100
+            simprate = random.randint(200, 300)
         if simpmood == 233:
             simprate = simprate * simpmax
         simp = str(simprate)
