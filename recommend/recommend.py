@@ -72,6 +72,6 @@ class Recommend(commands.Cog):
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")    
             
             else:
-                await ctx.send(user.mention + msg + choice(stardom))
+                await ctx.send(ctx.author.mention + msg + choice(stardom))
         else:
             await ctx.send(ctx.message.author.mention + msg + choice(stardom))
