@@ -10,7 +10,7 @@ bot_msg = [
 
 stardom: List[str] = [
     ("**Giulia vs. Syuri - 2020.12.20 Stardom Osaka Dream Cinderella** https://m.bilibili.com/video/BV1Bf4y1C7QP"),
-    ("**Momo vs. Utami - 2020.12.20 Stardom Osaka Dream Cinderella** https://m.bilibili.com/video/BV1By4y1U7h6"),
+    ("**Momo vs. Utami Hayashishita - 2020.12.20 Stardom Osaka Dream Cinderella** https://m.bilibili.com/video/BV1By4y1U7h6"),
     ("**Konami vs.Giulia - 2020.11.15 Stardom Sendai Cinderella** https://m.bilibili.com/video/BV19a4y1s7zU"),
     ("**Mayu Iwatani vs. Saki Kashima 2020.03.08 Stardom No People Gate** https://m.bilibili.com/video/BV17E411T7DX"),
     ("**Momo Watanabe vs. Mayu vs. Konami - 2020.07.12 Stardom New Summer Day 2** https://m.bilibili.com/video/BV1JC4y1b7Bu"),
@@ -22,25 +22,62 @@ stardom: List[str] = [
     ("**Kagetsu & Mayu Iwatani vs. Momo Watanabe & Jungle Kyona - 2020. Stardom ** https://m.bilibili.com/video/BV1Q7411n74E"),
     ("**Kairi Hojo vs. Jungle Kyona - 2017.02.23 Stardom** https://www.dailymotion.com/video/x7tcj5z"),    
     ("**Momo Watanabe vs. Jungle Kyona - 2019.03.03 Stardom World in Nagoya** https://m.bilibili.com/video/BV1ib411v7ws" ),    
-    (""),    
-    (""),    
-    (""),
+    ("**Kairi Hojo vs. Meiko Satomura - Stardom** https://m.bilibili.com/video/BV14W411j7Zw"),    
+    ("**Mayu Iwatani vs. Jungle Kyona - 2020.07.24 Stardom Cinderella Summer in Nagoya** https://m.bilibili.com/video/BV11K4y1e7fx"),
+    ("**Mayu Iwatani vs. Takumi Iroha - 2020.10.18 Stardom** https://m.bilibili.com/video/BV1J54y1r7Kh"),
+    ("**Natsuko vs. Giula 2020.03.24 Stardom Cinderella 2020** https://m.bilibili.com/video/BV1Ff4y1i7qZ"),
+    ("**Mayu Iwatani vs. Tam Nakano - 2020.09.19 Stardom** https://m.bilibili.com/video/BV1ta411c71E"),
+    ("**AZM vs. Starlight Kid - 2020.10.03** https://m.bilibili.com/video/BV1sy4y1q7Rd"),
+    ("**Momo Watanabe vs. Io Shirai - Stardom** https://m.bilibili.com/video/BV1WW41157wV"),
+    ("**Momo Watanabe vs. Arisa Hoshiki - 2019.05.16 Stardom** https://m.bilibili.com/video/BV1L441157G3"),
+    ("**Momo Watanabe vs. Toni Storm - 2019.05.04 -Stardom Golden Week Stars** https://m.bilibili.com/video/BV1F4411Y776"),
+    ("**Mayu Iwatani vs. Utami Hayashishita -2020.11.15 Stardom Sendai Cinderella** https://m.bilibili.com/video/BV1nz4y1y764"),
+    ("**Momo Watanabe & Utami Hayashishita vs. Jungle Kyona & Konami - 2019.07.15 Stardom World Big Summer In Nagoya** https://m.bilibili.com/video/BV1RE411D7r5"),
+    ("**** "),
+    
 ]
 sendai: List[str] = [
     ("**Dash Chisako vs. Sareee - 2019.07.07 Sendai Girls** https://m.bilibili.com/video/BV1Z4411C7Rs"),
+    ("**Meiko Satomura vs.Toni Storm - 2019.07.27 Sendai Girls, Sendai UK** https://m.bilibili.com/video/BV14J41117po"),
+    ("**Meiko Satomura vs.Sareee - 2019.04.16 Sendai Girls** https://m.bilibili.com/video/BV1Y4411A7iu"),
 ]
 agz: List[str] = [
     ("agz matches go here"),
 ]
 ice: List[str] = [
-    ("**Tsukasa FUjimoto vs. Maya Yukihi - 2019.08.03** https://m.bilibili.com/video/BV1x7411k73E"),
+    ("**Tsukasa Fujimoto vs. Maya Yukihi - 2019.08.03 Ice Ribbon New Ice Ribbon #974 ~ Osaka Ribbon 2019 III** https://m.bilibili.com/video/BV1x7411k73E"),
+    ("**Tsukasa Fujimoto vs.sareee - 2019.09.14 Ice-Ribbon #992** https://m.bilibili.com/video/BV1Nt4y1v7AA"),
 ]
 indy: List[str] = [
-    ("**Tsukasa FUjimoto vs. Maya Yukihi - 2019.08.03** https://m.bilibili.com/video/BV1x7411k73E"),
+    ("**Kagetsu vs. Meiko Satomura - 2020.02.24 Kagestsu Produce** https://m.bilibili.com/video/BV19E411u79u"),
 ]
+wwe: List[str] = [
+    ("**** "),
+]
+tjp: List[str] = [
+    ("**Yuka Sakazaki vs. Mizuki - 2020.11.07 TJPW Wrestle Princess** https://m.bilibili.com/video/BV1wy4y1z76y"),
+    ("**** "),
+]
+wave: List[str] = [
+    ("**** "),
+]
+marv: List[str] = [
+    ("**** "),
+]
+wwe: List[str] = [
+    ("**** "),
+]
+
 termlist = [
     (stardom),
     (agz),
+    (marv),
+    (wwe),
+    (sendai),
+    (indy),
+    (ice),
+    (tjp),
+    (wave),
 ]
 class Recommend(commands.Cog):
 
@@ -67,10 +104,19 @@ class Recommend(commands.Cog):
         if promo:
 
             if promo == "stardom":
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")
-            
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")            
             elif promo == "agz":
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(agz)}")    
+            elif promo == "sendai":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(sendai)}")    
+            elif promo == "wave":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(wave)}")    
+            elif promo == "ice":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(ice)}")    
+            elif promo == "indy":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(indy)}")    
+            elif promo == "marv":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(marv)}")    
             
             else:
                 list = choice(termlist)
