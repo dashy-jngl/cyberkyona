@@ -37,7 +37,7 @@ stardom: List[str] = [
     ("**Momo Watanabe vs. Toni Storm - 2019.05.04 -Stardom Golden Week Stars** https://m.bilibili.com/video/BV1F4411Y776"),
     ("**Mayu Iwatani vs. Utami Hayashishita -2020.11.15 Stardom Sendai Cinderella** https://m.bilibili.com/video/BV1nz4y1y764"),
     ("**Momo Watanabe & Utami Hayashishita vs. Jungle Kyona & Konami - 2019.07.15 Stardom World Big Summer In Nagoya** https://m.bilibili.com/video/BV1RE411D7r5"),
-    ("**** "),
+    #("**** "),
     
 ]
 sendai: List[str] = [
@@ -61,7 +61,7 @@ wwe: List[str] = [
 ]
 tjp: List[str] = [
     ("**Yuka Sakazaki vs. Mizuki - 2020.11.07 TJPW Wrestle Princess** https://m.bilibili.com/video/BV1wy4y1z76y"),
-    ("**** "),
+    #("**** "),
 ]
 wave: List[str] = [
     ("**** "),
@@ -86,7 +86,7 @@ termlist = [
     (ice),
     (tjp),
     #(wave),
-    #(sead),
+    (sead),
 ]
 class Recommend(commands.Cog):
 
