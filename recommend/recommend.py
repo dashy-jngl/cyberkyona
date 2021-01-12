@@ -5,7 +5,11 @@ from redbot.core.i18n import Translator, cog_i18n
 from typing import List
 
 bot_msg = [
-    ("I suggest: "),
+    (", I suggest: "),
+    (", What about?: "),
+    (", I recommend: "),
+    (", I think: "),
+    (", I like: "),
 ]
 
 stardom: List[str] = [
@@ -47,6 +51,7 @@ agz: List[str] = [
 ice: List[str] = [
     ("**Tsukasa Fujimoto vs. Maya Yukihi - 2019.08.03 Ice Ribbon New Ice Ribbon #974 ~ Osaka Ribbon 2019 III** https://m.bilibili.com/video/BV1x7411k73E"),
     ("**Tsukasa Fujimoto vs.sareee - 2019.09.14 Ice-Ribbon #992** https://m.bilibili.com/video/BV1Nt4y1v7AA"),
+    ("**Risa Sera vs. Rina Yamashita - 2020 Ice Ribbon Yokohama Bunka Gymnasium** https://www.dailymotion.com/video/x7wrnh4"),
 ]
 indy: List[str] = [
     ("**Kagetsu vs. Meiko Satomura - 2020.02.24 Kagestsu Produce** https://m.bilibili.com/video/BV19E411u79u"),
@@ -67,17 +72,21 @@ marv: List[str] = [
 wwe: List[str] = [
     ("**** "),
 ]
+sead: List[str] = [
+    ("**Arisa Nakajima (c) vs. Rina Yamashita, SEAdLINNNG New Leaf! (10.03.2020)** https://youtu.be/qjGE9NEMAIc"),
+]
 
 termlist = [
     (stardom),
-    (agz),
-    (marv),
-    (wwe),
+    #(agz),
+    #(marv),
+    #(wwe),
     (sendai),
     (indy),
     (ice),
     (tjp),
-    (wave),
+    #(wave),
+    #(sead),
 ]
 class Recommend(commands.Cog):
 
@@ -96,7 +105,6 @@ class Recommend(commands.Cog):
     async def recommend(self, ctx: commands.Context, promo = None) -> None:
         """
             - Recommends matches from WWC user submissions!
-
             `promo` the promotion you would like to see
         """
 
@@ -117,6 +125,8 @@ class Recommend(commands.Cog):
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(indy)}")    
             elif promo == "marv":
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(marv)}")    
+            elif promo == "sead":
+                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(sead)}")    
             
             else:
                 list = choice(termlist)
