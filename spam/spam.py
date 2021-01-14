@@ -62,8 +62,7 @@ class Spam(BaseCog):
         text: str,
         files: list,
     ):
-        if not amount:
-            amount = 3
+        amount = 3
         if not mentions:
             mentions = None
         if not channel:
