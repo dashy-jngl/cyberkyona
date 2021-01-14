@@ -5,6 +5,8 @@ import discord
 
 # Red
 from redbot.core import commands
+from redbot.core.utils.tunnel import Tunnel
+
 
 
 # Libs
