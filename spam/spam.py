@@ -116,7 +116,7 @@ class Spam(BaseCog):
     async def _spam(
         self, 
         ctx: commands.Context,        
-        amount : int = 3,
+        amount : int,
         channel: Optional[discord.TextChannel], 
         *, 
         text: str = ""
@@ -131,6 +131,8 @@ class Spam(BaseCog):
         - `!say #general hello there`
         - `!say owo I have a file` (a file is attached to the command message)
         """
+        if not amount:
+            amount = 3
         for  x in range(0,amount):
             files = await Tunnel.files_from_attatch(ctx.message)
             time.sleep(1)
