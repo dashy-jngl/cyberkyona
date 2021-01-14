@@ -62,23 +62,6 @@ class Spam(BaseCog):
         files: list,
         mentions: discord.AllowedMentions = None,
     ):
-    
-        if not channel:
-            channel = ctx.channel
-        if not text and not files:
-            await ctx.send_help()
-            return
-
-        # preparing context info in case of an error
-        if files != []:
-            error_message = (
-                "Has files: yes\n"
-                f"Number of files: {len(files)}\n"
-                f"Files URL: " + ", ".join([x.url for x in ctx.message.attachments])
-            )
-        else:
-            error_message = "Has files: no"
-
         # sending the message
         for x in range(0,amount):
             time.sleep(1)
