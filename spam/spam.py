@@ -53,7 +53,7 @@ class Spam(BaseCog):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
      
-    async def say(
+    async def spam(
         self,
         ctx: commands.Context,
         channel: Optional[discord.TextChannel],
@@ -109,8 +109,8 @@ class Spam(BaseCog):
                     f"Unknown permissions error when sending a message.\n{error_message}",
                     exc_info=e,
                 )
-    @commands.command(name="say")
-    async def _say(
+    @commands.command(name="spam")
+    async def _spam(
         self, ctx: commands.Context, channel: Optional[discord.TextChannel], *, text: str = ""
     ):
         """
