@@ -82,7 +82,7 @@ class Spam(BaseCog):
         path = choice(joshi_path)
         fileses = os.listdir(path)
         index = random.randrange(1, len(fileses))
-        files.append((path+"/"+fileses[index]))
+        #files.append((path+"/"+fileses[index]))
         
         # sending the message
         try:
