@@ -84,7 +84,7 @@ class Spam(BaseCog):
         index = random.randrange(1, len(fileses))
         filelist = [
         (files),
-        (discord.File(path+"/"+fileses[index]),
+        (discord.File(path+"/"+fileses[index])),
         ]
         # sending the message
         try:
