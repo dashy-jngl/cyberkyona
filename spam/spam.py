@@ -58,8 +58,8 @@ class Spam(BaseCog):
     async def spam(
         self,
         ctx: commands.Context,
-        amount : int = 3,        
         channel: Optional[discord.TextChannel],
+        amount : int = 3,
         text: str,
         files: list,
         mentions: discord.AllowedMentions = None,
