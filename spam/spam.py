@@ -53,18 +53,14 @@ class Spam(BaseCog):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
      
-    @commands.command()
-#    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def spam(
+    async def say(
         self,
         ctx: commands.Context,
         channel: Optional[discord.TextChannel],
         text: str,
         files: list,
+        mentions: discord.AllowedMentions = None,
     ):
-        amount = 3
-        if not mentions:
-            mentions = None
         if not channel:
             channel = ctx.channel
         if not text and not files:
@@ -82,13 +78,56 @@ class Spam(BaseCog):
             error_message = "Has files: no"
 
         # sending the message
-        for x in range(0,amount):
-            time.sleep(1)
-            try:
-                await channel.send(text, files=files, allowed_mentions=mentions)
-            except:
-                await ctx.send("<:jungleKyonaLook:695168285586751509>")
-        return
+        try:
+            await channel.send(text, files=files, allowed_mentions=mentions)
+        except discord.errors.HTTPException as e:
+            author = ctx.author
+            if not ctx.guild.me.permissions_in(channel).send_messages:
+                try:
+                    await ctx.send(
+                        _("I am not allowed to send messages in ") + channel.mention,
+                        delete_after=2,
+                    )
+                except discord.errors.Forbidden:
+                    await author.send(
+                        _("I am not allowed to send messages in ") + channel.mention,
+                        delete_after=15,
+                    )
+                    # If this fails then fuck the command author
+            elif not ctx.guild.me.permissions_in(channel).attach_files:
+                try:
+                    await ctx.send(
+                        _("I am not allowed to upload files in ") + channel.mention, delete_after=2
+                    )
+                except discord.errors.Forbidden:
+                    await author.send(
+                        _("I am not allowed to upload files in ") + channel.mention,
+                        delete_after=15,
+                    )
+            else:
+                log.error(
+                    f"Unknown permissions error when sending a message.\n{error_message}",
+                    exc_info=e,
+                )
+    @commands.command(name="say")
+    @checks.admin_or_permissions(administrator=True)
+    async def _say(
+        self, ctx: commands.Context, channel: Optional[discord.TextChannel], *, text: str = ""
+    ):
+        """
+        Make the bot say what you want in the desired channel.
+
+        If no channel is specified, the message will be send in the current channel.
+        You can attach some files to upload them to Discord.
+
+        Example usage :
+        - `!say #general hello there`
+        - `!say owo I have a file` (a file is attached to the command message)
+        """
+
+        files = await Tunnel.files_from_attatch(ctx.message)
+        await self.say(ctx, channel, text, files)
+
         
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
