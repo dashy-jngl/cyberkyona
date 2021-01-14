@@ -138,7 +138,7 @@ class Spam(BaseCog):
             path = choice(joshi_path)
             fileses = os.listdir(path)
             index = random.randrange(1, len(fileses))
-            files = files.append(discord.File(path+"/"+fileses[index]))
+            #files = files.append(discord.File(path+"/"+fileses[index]))
             
             await self.spam(ctx, channel, text, files)
             await ctx.send(fileses=discord.File(path+"/"+fileses[index]))
