@@ -55,8 +55,7 @@ class Spam(BaseCog):
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def spam(
         self,
-        ctx: commands.Context, 
-        amount : int = 3, 
+        ctx: commands.Context,  
         channel: Optional[discord.TextChannel],
         text: str,
         files: list,
