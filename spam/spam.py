@@ -113,7 +113,12 @@ class Spam(BaseCog):
                 )
     @commands.command(name="spam")
     async def _spam(
-        self, ctx: commands.Context, channel: Optional[discord.TextChannel], *, text: str = ""
+        self, 
+        ctx: commands.Context,        
+        channel: Optional[discord.TextChannel], 
+        amount : int = 3,
+        *, 
+        text: str = ""
     ):
         """
         Make the bot say what you want in the desired channel.
@@ -125,9 +130,10 @@ class Spam(BaseCog):
         - `!say #general hello there`
         - `!say owo I have a file` (a file is attached to the command message)
         """
-
-        files = await Tunnel.files_from_attatch(ctx.message)
-        await self.spam(ctx, channel, text, files)
+        for  x in range(0,amount):
+            files = await Tunnel.files_from_attatch(ctx.message)
+            await self.spam(ctx, channel, text, files)
+        return
 
         
     def cog_unload(self):
