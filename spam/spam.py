@@ -77,8 +77,8 @@ class Spam(BaseCog):
                 f"Files URL: " + ", ".join([x.url for x in ctx.message.attachments])
             )
         else:
-            error_message = "Has files: no"
-
+            error_message = "Has files: no"   
+            
         # sending the message
         try:
             await channel.send(text, files=files, allowed_mentions=mentions)
@@ -134,10 +134,10 @@ class Spam(BaseCog):
             time.sleep(1)
             path = choice(joshi_path)
             fileses = os.listdir(path)
-            index = random.randrange(1, len(files))        
+            index = random.randrange(1, len(files))  
             files = await Tunnel.files_from_attatch(ctx.message)
             await self.spam(ctx, channel, text, files)
-            await ctx.send(file=discord.File(path+"/"+fileses[index]))
+            await ctx.send(fileses=discord.File(path+"/"+fileses[index]))
         return
 
         
