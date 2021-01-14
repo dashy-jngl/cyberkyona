@@ -116,7 +116,7 @@ class Spam(BaseCog):
     async def _spam(
         self, 
         ctx: commands.Context,        
-        amount : int,
+        amount : Optional[int],
         channel: Optional[discord.TextChannel], 
         *, 
         text: str = ""
