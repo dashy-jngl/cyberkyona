@@ -79,7 +79,6 @@ class Spam(BaseCog):
         else:
             error_message = "Has files: no"   
             
-        #files.append((path+"/"+fileses[index]))
         
         # sending the message
         try:
@@ -138,7 +137,7 @@ class Spam(BaseCog):
             path = choice(joshi_path)
             fileses = os.listdir(path)
             index = random.randrange(1, len(fileses))
-            files = files.append(discord.File(path+"/"+fileses[index]))
+            await files.append(discord.File(path+"/"+fileses[index]))
             
             await self.spam(ctx, channel, text, files)
         return
