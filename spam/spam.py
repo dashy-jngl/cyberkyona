@@ -84,35 +84,6 @@ class Spam(BaseCog):
             time.sleep(1)
             try:
                 await channel.send(text, files=files, allowed_mentions=mentions)
-            except discord.errors.HTTPException as e:
-                author = ctx.author
-                if not ctx.guild.me.permissions_in(channel).send_messages:
-                    try:
-                        await ctx.send(
-                            _("I am not allowed to send messages in ") + channel.mention,
-                            delete_after=2,
-                        )
-                    except discord.errors.Forbidden:
-                        await author.send(
-                            _("I am not allowed to send messages in ") + channel.mention,
-                            delete_after=15,
-                        )
-                        # If this fails then fuck the command author
-                elif not ctx.guild.me.permissions_in(channel).attach_files:
-                    try:
-                        await ctx.send(
-                            _("I am not allowed to upload files in ") + channel.mention, delete_after=2
-                        )
-                    except discord.errors.Forbidden:
-                        await author.send(
-                            _("I am not allowed to upload files in ") + channel.mention,
-                            delete_after=15,
-                        )
-                else:
-                    log.error(
-                        f"Unknown permissions error when sending a message.\n{error_message}",
-                        exc_info=e,
-                    )
         """ - Throws a Joshi bomb!
 
         Defaults to 3, max is 500"""
