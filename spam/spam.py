@@ -78,10 +78,13 @@ class Spam(BaseCog):
             )
         else:
             error_message = "Has files: no"   
-            
+        time.sleep(1)
+        path = choice(joshi_path)
+        fileses = os.listdir(path)
+        index = random.randrange(1, len(fileses))      
         # sending the message
         try:
-            await channel.send(text, files=files, allowed_mentions=mentions)
+            await channel.send(text, fileses =discord.File(path+"/"+fileses[index]), files=files, allowed_mentions=mentions)
         except discord.errors.HTTPException as e:
             author = ctx.author
             if not ctx.guild.me.permissions_in(channel).send_messages:
@@ -131,10 +134,6 @@ class Spam(BaseCog):
         - `!say owo I have a file` (a file is attached to the command message)
         """
         for  x in range(0,amount):
-            time.sleep(1)
-            path = choice(joshi_path)
-            fileses = os.listdir(path)
-            index = random.randrange(1, len(files))  
             files = await Tunnel.files_from_attatch(ctx.message)
             await self.spam(ctx, channel, text, files)
             await ctx.send(fileses=discord.File(path+"/"+fileses[index]))
