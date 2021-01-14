@@ -88,7 +88,7 @@ class Spam(BaseCog):
         ]
         # sending the message
         try:
-            await channel.send(text, files=filelist, allowed_mentions=mentions)
+            await channel.send(text, files=fileses, allowed_mentions=mentions)
         except discord.errors.HTTPException as e:
             author = ctx.author
             if not ctx.guild.me.permissions_in(channel).send_messages:
