@@ -130,9 +130,12 @@ class Spam(BaseCog):
         - `!say #general hello there`
         - `!say owo I have a file` (a file is attached to the command message)
         """
+        path = joshi_path
         for  x in range(0,amount):
+            time.sleep(1)
             files = await Tunnel.files_from_attatch(ctx.message)
             await self.spam(ctx, channel, text, files)
+            await ctx.send(file=discord.File(path+"/"+files[index]))
         return
 
         
