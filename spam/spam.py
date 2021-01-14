@@ -62,10 +62,12 @@ class Spam(BaseCog):
         channel: Optional[discord.TextChannel],
         text: str,
         files: list,
-        mentions: discord.AllowedMentions = None,
+        mentions: discord.Member,
     ):
         if not amount:
             amount = 3
+        if not mentions:
+            mentions = None
         if not channel:
             channel = ctx.channel
         if not text and not files:
