@@ -14,6 +14,8 @@ import random
 from random import choice
 import time
 
+from typing import Optional
+
 import aiohttp
 #import asyncio
 #import io
