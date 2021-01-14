@@ -67,45 +67,7 @@ class Spam(BaseCog):
             time.sleep(1)
             try:
                 await channel.send(text, files=files, allowed_mentions=mentions)
-        """ - Throws a Joshi bomb!
 
-        Defaults to 3, max is 500"""
-        """
-        results = []
-        if amount > 500:
-            amount = 500
-        if amount < 1:
-            amount = 1
-        user = ctx.message.author
-        if user.id == 404141277358325771: #ksup
-            if amount > 5:
-                amount = 5
-        try:
-            for x in range(0,amount):
-                time.sleep(1)
-                if user.id == 338135974158794752: #dashy
-                    spice = random.randrange(0,100)
-                    if spice > 40: 
-                        path = dashy_path
-                        files = os.listdir(path)
-                        index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
-                        path = choice(joshi_path)
-                        files = os.listdir(path)
-                        index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))
-   
-                else:
-                    path = choice(joshi_path)
-                    files = os.listdir(path)
-                    index = random.randrange(1, len(files))
-                    await ctx.send(file=discord.File(path+"/"+files[index]))
-            return     
-        
-        except:
-            await ctx.send("<:jungleKyonaLook:695168285586751509>")
-        """
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
 
