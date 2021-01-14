@@ -127,7 +127,7 @@ class Spam(BaseCog):
         """
 
         files = await Tunnel.files_from_attatch(ctx.message)
-        await self.say(ctx, channel, text, files)
+        await self.spam(ctx, channel, text, files)
 
         
     def cog_unload(self):
