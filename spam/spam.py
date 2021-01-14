@@ -67,7 +67,7 @@ class Spam(BaseCog):
             time.sleep(1)
             try:
                 await channel.send(text, files=files, allowed_mentions=mentions)
-
+        return
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
 
