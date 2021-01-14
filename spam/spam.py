@@ -67,7 +67,10 @@ class Spam(BaseCog):
             time.sleep(1)
             try:
                 await channel.send(text, files=files, allowed_mentions=mentions)
+            except:
+                await ctx.send("<:jungleKyonaLook:695168285586751509>")
         return
+        
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
 
