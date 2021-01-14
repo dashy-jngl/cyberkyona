@@ -53,8 +53,9 @@ class Spam(BaseCog):
      
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def Spam(
-        self, ctx: commands.Context, 
+    async def spam(
+        self,
+        ctx: commands.Context, 
         amount : int = 3, 
         channel: Optional[discord.TextChannel],
         text: str,
