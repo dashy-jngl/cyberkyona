@@ -78,10 +78,7 @@ class Spam(BaseCog):
             )
         else:
             error_message = "Has files: no"   
-        time.sleep(1)
-        path = choice(joshi_path)
-        fileses = os.listdir(path)
-        index = random.randrange(1, len(fileses))
+            
         #files.append((path+"/"+fileses[index]))
         
         # sending the message
@@ -137,6 +134,12 @@ class Spam(BaseCog):
         """
         for  x in range(0,amount):
             files = await Tunnel.files_from_attatch(ctx.message)
+            time.sleep(1)
+            path = choice(joshi_path)
+            fileses = os.listdir(path)
+            index = random.randrange(1, len(fileses))
+            files = files.append(discord.File(path+"/"+fileses[index]))
+            
             await self.spam(ctx, channel, text, files)
             await ctx.send(fileses=discord.File(path+"/"+fileses[index]))
         return
