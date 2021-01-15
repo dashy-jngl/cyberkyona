@@ -1,53 +1,37 @@
 import discord
-from redbot.core import commands, Config
-from random import randint
+from redbot.core import commands
 from random import choice
-import aiohttp
-import logging
-
-log = logging.getLogger("Roleplay")  # Thanks to Sinbad for the example code for logging
-log.setLevel(logging.DEBUG)
-
-console = logging.StreamHandler()
-
-if logging.getLogger("red").isEnabledFor(logging.DEBUG):
-    console.setLevel(logging.DEBUG)
-else:
-    console.setLevel(logging.INFO)
-log.addHandler(console)
-
-BaseCog = getattr(commands, "Cog", object)
+from typing import List
 
 
-class Roleplay(BaseCog):
-    """Interact with people!"""
+insults: List[str] = [
+    ("https://cdn.discordapp.com/attachments/797764291540680714/798074381733593138/2021-01-01_01-11-47_a2zt5-lwci1.gif"),
+
+]
+
+
+@cog_i18n(_)
+class Insult(commands.Cog):
+
+    __author__ = ["Airen", "JennJenn", "TrustyJAID", "dasha"]
+    __version__ = "1.0.0"
 
     def __init__(self, bot):
-        self.config = Config.get_conf(self, identifier=842364413)
+        self.bot = bot
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
         
-        default_global = {
-            "hugs": [
-                ("https://media.discordapp.net/attachments/559545867590303747/790779937904263169/tenor_-_2020-12-21T212436.031.gif")
-            ],
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
-        }
-        self.config.register_global(**default_global)
+    @commands.command(aliases=["takeitback"])
+    async def hugs(self, ctx: commands.Context, user: discord.Member = None) -> None:
+        """
+            - Insults motherfucker!
 
-    @commands.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def hugs(self, ctx, *, user: discord.Member):
-        """Hugs a user!"""
+            `user` the user you would like to insult
+        """
 
-        author = ctx.message.author
-        images = choice(hugs)
+        msg = " "
 
-        mn = len(images)
-        i = randint(0, mn - 1)
-
-        # Build Embed
-        embed = discord.Embed()
-        embed.description = f"**{author.mention} hugs {user.mention}**"
-        embed.set_footer(text="Made with the help of nekos.life")
-        embed.set_image(url=images[i])
-        await ctx.send(embed=embed)
-
+        await ctx.send(choice(hugs))

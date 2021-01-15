@@ -1,9 +1,29 @@
 {
-  "author" : ["Jintaku", "dasha"],
-  "bot_version": [3,0,0],
-  "install_msg" : "Interact with people using the best GIFs!",
-  "short" : "Interact with users",
-  "description" : "Interact with users using anime GIFs",
-  "tags" : ["interaction", "roleplay", "GIF"],
-  "hidden" : false
+    "author" : [
+        "Airen",
+        "JennJenn",
+        "TrustyJAID",
+		"dasha"
+    ],
+    "description" : "RolePlay with Various actions, hug, slap",
+    "disabled" : false,
+    "hidden" : false,
+    "install_msg" : "Usage: `[p][option] <user>`",
+    "max_bot_version" : "0.0.0",
+    "min_bot_version" : "3.1.8",
+    "min_python_version" : [
+        3,
+        7,
+        2
+    ],
+    "name" : "Roleplay",
+    "permissions" : [],
+    "required_cogs" : {},
+    "requirements" : [],
+    "short" : "RP stuff",
+    "tags" : [
+        "fun",
+        "RP"
+    ],
+    "type" : "COG"
 }
