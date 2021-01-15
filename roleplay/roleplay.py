@@ -23,7 +23,7 @@ class Roleplay(BaseCog):
     """Interact with people!"""
 
     def __init__(self, bot):
-        self.bot = bot
+        self.config = Config.get_conf(self, identifier=842364413)
         
         default_global = {
             "hugs": [
