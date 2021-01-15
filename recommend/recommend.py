@@ -37,6 +37,19 @@ stardom: List[str] = [
     ("**Momo Watanabe vs. Toni Storm - 2019.05.04 -Stardom Golden Week Stars** https://m.bilibili.com/video/BV1F4411Y776"),
     ("**Mayu Iwatani vs. Utami Hayashishita -2020.11.15 Stardom Sendai Cinderella** https://m.bilibili.com/video/BV1nz4y1y764"),
     ("**Momo Watanabe & Utami Hayashishita vs. Jungle Kyona & Konami - 2019.07.15 Stardom World Big Summer In Nagoya** https://m.bilibili.com/video/BV1RE411D7r5"),
+    ("**Giula vs. Kagestsu - Stardom New Years Stars 2020.01.11** https://m.bilibili.com/video/BV11T4y1g7uM"),
+    ("**Arisa Hoshiki vs. Konami - Stardom Cinderella 2019 2019.04.29** https://m.bilibili.com/video/BV1r4411i7zu"),
+    ("**Toni Storm vs. Konami - Stardom 2019.05.06 Golden Week Stars 2019 Day** https://m.bilibili.com/video/BV1F4411j79T"),
+    ("**Momo Watanabe vs. Io Shirai - 23.05.2018 Stardom Gold Star** https://m.bilibili.com/video/BV11W411w75L"),
+    ("**Io Shirai vs. Mayu Iwatani - Stardom 2016 Gold May** https://m.bilibili.com/video/BV1NW411M71q"),
+    ("**Toni Storm vs Io Shirai - Stardom** https://m.bilibili.com/video/BV15x411E7S2"),
+    ("**大江户队(Hazuki & Kagetsu) vs. Queen's Quest (Io Shirai & Momo Watanabe) - stardom 2018** https://m.bilibili.com/video/BV1Ss411P7K3"),
+    ("**Io Shirai vs. Kairi Hojo - Stardom The Highest 2017.03.20** https://m.bilibili.com/video/BV13x411B77G"),
+    ("**Exploding Bat Death Match: Io Shirai and Tam Nakano vs. Kagestsu and Natsu Sumire - Stardom 2018.04.01** https://m.bilibili.com/video/BV1VW411M7ys"),
+    ("**Kairi Hojo vs. Act Yasukawa - Stardom** https://m.bilibili.com/video/BV14W411j7Q4"),
+    ("**Kairi Hojo vs Santana Garrett - Stardom 2016.05.15** https://m.bilibili.com/video/BV17x411G7tX"),
+    ("**Kairi Hojo vs. Meiko Satomura - Stardom** https://m.bilibili.com/video/BV14W411j7Zw"),
+    ("**Kairi Hojo vs. Toni Storm - Stardom ** https://m.bilibili.com/video/BV1mW411E71q"),
     #("**** "),
     
 ]
@@ -44,41 +57,56 @@ sendai: List[str] = [
     ("**Dash Chisako vs. Sareee - 2019.07.07 Sendai Girls** https://m.bilibili.com/video/BV1Z4411C7Rs"),
     ("**Meiko Satomura vs.Toni Storm - 2019.07.27 Sendai Girls, Sendai UK** https://m.bilibili.com/video/BV14J41117po"),
     ("**Meiko Satomura vs.Sareee - 2019.04.16 Sendai Girls** https://m.bilibili.com/video/BV1Y4411A7iu"),
+    ("**Tag: DASH Chisako and Meiko Satomura and Syuri vs. Sakura Hirota and Chihiro Hashimoto and Yuu** https://www.youtube.com/watch?v=EdxRCoIv5EE")
 ]
 agz: List[str] = [
-    ("agz matches go here"),
+    ("**Miyuki Takase vs Himeka Arita - AGZ 2019.11.06** https://m.bilibili.com/video/BV1s54y1s72x"),
+    ("**Miyuki Takase vs Tae Honma - AGZ 2019.11.03** https://www.bilibili.com/video/BV1Wy4y1m74B"),
+    ("**Miyuki Takase vs Nagisa Nozaki - AGZ 2020.03.05**  https://www.bilibili.com/video/BV1Tv41147Ni"),
+    ("**Giulia vs Saori Anou - AGZ 2019.7.21** https://www.bilibili.com/video/BV1th411y7SG "),
+    ("**Saori Anou vs Reika Saiki AGZ 2019.8.14 ** https://www.bilibili.com/video/BV1Zf4y1r7qQ"),
 ]
 ice: List[str] = [
     ("**Tsukasa Fujimoto vs. Maya Yukihi - 2019.08.03 Ice Ribbon New Ice Ribbon #974 ~ Osaka Ribbon 2019 III** https://m.bilibili.com/video/BV1x7411k73E"),
     ("**Tsukasa Fujimoto vs.sareee - 2019.09.14 Ice-Ribbon #992** https://m.bilibili.com/video/BV1Nt4y1v7AA"),
     ("**Risa Sera vs. Rina Yamashita - 2020 Ice Ribbon Yokohama Bunka Gymnasium** https://www.dailymotion.com/video/x7wrnh4"),
+    ("**Giula vs. Maya Yukihi - 2019.05.25 Ice Ribbon Osaka Ribbon 2019** https://m.bilibili.com/video/BV1qt411E7Aj"),
+    ("**Tsukasa Fujimoto vs. Maya Yuhiki - 2018.12.31 Ice Ribbon RibbonMania ** https://m.bilibili.com/video/BV1V54y1m7zQ"),
+    ("**Suzu Suzuki vs. Maya Yukihi - 2020.08.09 Ice Ribbon New Ice Ribbon #1057 ~ Ice Ribbon Yokohama Bunka Gymnasium Final** https://m.bilibili.com/video/BV1rh411976b"),
 ]
 indy: List[str] = [
     ("**Kagetsu vs. Meiko Satomura - 2020.02.24 Kagestsu Produce** https://m.bilibili.com/video/BV19E411u79u"),
 ]
 wwe: List[str] = [
-    ("**** "),
+    ("**Charlotte Flair Vs IO Shirai Vs Rhea Ripley - NXT** https://www.dailymotion.com/video/x7ucx0n"),
+    ("**Io Shirai vs. Candice Lerae - NXT** https://www.dailymotion.com/video/x7wmzax"),
+    ("**Last Woman Standing: Rhea Ripley vs. Raquel Gonzales - NXT** https://www.dailymotion.com/video/x7yizta"),
+    ("**Rhea Ripley vs. Shayna Bazsler - NXT** https://www.dailymotion.com/video/x7y67pi"),
+    ("**Steel Cage: Rhea Ripley vs. Mercedes Martines - NXT** https://www.dailymotion.com/video/x7w20gy"),
+    ("**Asuka vs. Bayley - NXT** https://www.dailymotion.com/video/x656jeb"),
+    ("**Ember Moon vs. Asuka - NXT** https://www.dailymotion.com/video/x5xiing"),
 ]
 tjp: List[str] = [
     ("**Yuka Sakazaki vs. Mizuki - 2020.11.07 TJPW Wrestle Princess** https://m.bilibili.com/video/BV1wy4y1z76y"),
     #("**** "),
 ]
 wave: List[str] = [
-    ("**** "),
+    ("**Kana vs Kana (Sakura Hirota) - Wave 2015** https://www.youtube.com/watch?v=oBc04ILjeCM"),
 ]
 marv: List[str] = [
-    ("**** "),
-]
-wwe: List[str] = [
     ("**** "),
 ]
 sead: List[str] = [
     ("**Arisa Nakajima (c) vs. Rina Yamashita, SEAdLINNNG New Leaf! (10.03.2020)** https://youtu.be/qjGE9NEMAIc"),
 ]
+oz: List[str] = [
+    ("**Hiroyo Matsumoto vs. Hikari Shida - OZ Academy Plum Hanasaku 2017.08.20** https://m.bilibili.com/video/BV1f441177F8"),
+    ("**Mayumi Ozaki and Maya Yuhiki vs Rina Yamashita and Yoshiko - OZ Academy Flower Bloom In Yokohama 2018** https://m.bilibili.com/video/BV1Nt411Z7HB"),
+]
 
 termlist = [
     (stardom),
-    #(agz),
+    (agz),
     #(marv),
     #(wwe),
     (sendai),
@@ -87,6 +115,7 @@ termlist = [
     (tjp),
     #(wave),
     (sead),
+    (oz),
 ]
 class Recommend(commands.Cog):
 
@@ -114,23 +143,25 @@ class Recommend(commands.Cog):
             if promo == "stardom":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")            
             elif promo == "agz":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(agz)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")    
             elif promo == "sendai":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(sendai)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sendai)}")    
             elif promo == "wave":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(wave)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(wave)}")    
             elif promo == "ice":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(ice)}")
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(ice)}")
             elif promo == "Ice":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(ice)}")                
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(ice)}")                
             elif promo == "indy":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(indy)}")    
-            elif promo == "marv":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(marv)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(indy)}")    
+            #elif promo == "marv":
+                #await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(marv)}")    
             elif promo == "sead":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(sead)}")
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sead)}")
             elif promo == "tjp":
-                await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}{choice(tjp)}")                 
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(tjp)}")
+            elif promo == "oz":
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(oz)}")                
             
             else:
                 list = choice(termlist)
