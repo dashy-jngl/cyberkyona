@@ -22,8 +22,9 @@ BaseCog = getattr(commands, "Cog", object)
 class Roleplay(BaseCog):
     """Interact with people!"""
 
-    def __init__(self):
-        self.config = Config.get_conf(self, identifier=842364413)
+    def __init__(self, bot):
+        self.bot = bot
+        
         default_global = {
             "hugs": [
                 ("https://media.discordapp.net/attachments/559545867590303747/790779937904263169/tenor_-_2020-12-21T212436.031.gif")
