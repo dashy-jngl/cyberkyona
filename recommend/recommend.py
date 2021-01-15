@@ -65,6 +65,11 @@ agz: List[str] = [
     ("**Miyuki Takase vs Nagisa Nozaki - AGZ 2020.03.05**  https://www.bilibili.com/video/BV1Tv41147Ni"),
     ("**Giulia vs Saori Anou - AGZ 2019.7.21** https://www.bilibili.com/video/BV1th411y7SG "),
     ("**Saori Anou vs Reika Saiki AGZ 2019.8.14 ** https://www.bilibili.com/video/BV1Zf4y1r7qQ"),
+    ("**SAKI & Yuna Mizumori vs Kakeru Sekiguchi & Momo Kohgo - AGZ 2020.02.11** https://www.bilibili.com/video/BV1cv41147Yu/"),
+    ("**Noa Igarashi & Yuko Sakurai vs Ayano Irie & Ranmaru - AGZ 2019.07.21 ** https://www.bilibili.com/video/BV1Xt4y1z78p/"),
+    ("**Tequila Saya vs Hikari Shimizu - AGZ 2019.05.25** https://www.bilibili.com/video/BV19r4y1T7Kt/"),
+    ("**Kakeru Sekiguchi & Miku Aono vs Mii & Rina Amikura - AGZ 2020.11.24** https://www.bilibili.com/video/BV16y4y1m75B/"),
+    ("**Miyuki Takase & Himeka Arita vs Mari & SAKI - AGZ 2019.05.25** https://www.bilibili.com/video/BV1tU4y147qc/"),
 ]
 ice: List[str] = [
     ("**Tsukasa Fujimoto vs. Maya Yukihi - 2019.08.03 Ice Ribbon New Ice Ribbon #974 ~ Osaka Ribbon 2019 III** https://m.bilibili.com/video/BV1x7411k73E"),
@@ -108,12 +113,12 @@ termlist = [
     (stardom),
     (agz),
     #(marv),
-    #(wwe),
+    (wwe),
     (sendai),
     (indy),
     (ice),
     (tjp),
-    #(wave),
+    (wave),
     (sead),
     (oz),
 ]
@@ -161,7 +166,9 @@ class Recommend(commands.Cog):
             elif promo == "tjp":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(tjp)}")
             elif promo == "oz":
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(oz)}")                
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(oz)}")
+            elif promo == "wwe":
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(wwe)}")                
             
             else:
                 list = choice(termlist)
