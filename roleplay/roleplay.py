@@ -112,6 +112,8 @@ test: List[str] = [
     ("https://gfycat.com/raggedbaredog"),
 ]
 
+#embed vars
+footer = "❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"
  
 BaseCog = getattr(commands, "Cog", object)
 class Roleplay(commands.Cog):
@@ -126,9 +128,6 @@ class Roleplay(commands.Cog):
         
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
-    
-    #embed vars
-    footer = "❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"
     
     #send embed
     async def sendEmbed(self, ctx: commands.Context, user, user2, imgurl):
