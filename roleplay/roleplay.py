@@ -129,14 +129,26 @@ class Roleplay(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
     
-    #send embed
-    async def sendEmbed(self, ctx: commands.Context, user, user2, imgurl):
+    #send embed mention
+    async def sendEmbedMention(self, ctx: commands.Context, imgurl, msg, user, user2: Optional[discord.Member],):
+
         # Build Embed
         embed = discord.Embed()
-        embed.description = f"**{user.mention} hugs {user2.mention}**"
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
+        
+        embed.description = f"**{user.mention} hugs {user2.mention}**"
         await ctx.send(embed=embed)
+
+        #check member
+        if not user2:
+            embed.description = f"**{user.mention} {msg}**"
+            await ctx.send(embed=embed)
+        #set message author
+        else:
+            embed.description = f"**{user.mention} {msg} {user2.mention}**"
+            await ctx.send(embed=embed)
+            
 
     @commands.command(aliases=["takeitback"])
     async def hugs(self, ctx: commands.Context, user: Optional[discord.Member]):
@@ -153,13 +165,8 @@ class Roleplay(commands.Cog):
         #set image
         images = choice(hugs)
 
-        msg = " "
-        # Build Embed
-        embed = discord.Embed()
-        embed.description = f"**{author.mention} hugs {user.mention}**"
-        embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
-        embed.set_image(url=images)
-        await ctx.send(embed=embed)
+        await self.sendEmbed(ctx, author, user, images)
+
     @commands.command()
     async def slap(self, ctx: commands.Context, user: Optional[discord.Member]):
         """
@@ -175,33 +182,25 @@ class Roleplay(commands.Cog):
         #set image
         images = choice(slap)
 
-        msg = " "
-        # Build Embed
-        embed = discord.Embed()
-        embed.description = f"**{author.mention} hugs {user.mention}**"
-        embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
-        embed.set_image(url=images)
-        await ctx.send(embed=embed)        
+        await self.sendEmbed(ctx, images, author, user)
+
     @commands.command()
     async def test(self, ctx: commands.Context, user: Optional[discord.Member]):
         """
             test the dasha
         """
+
+        #set image
+        images = choice(test)
+
         #check member
         if not user:
             author = self.bot.user
             user = ctx.message.author
+            msg = " Tests the System"
+            await self.sendEmbed(ctx, images, msg, author)
         #set message author
         else:
             author = ctx.message.author
-        #set image
-        images = choice(test)
-
-        msg = " "
-        await self.sendEmbed(ctx, author, user, images)
-        # Build Embed
-        #embed = discord.Embed()
-        #embed.description = f"**{author.mention} tests {user.mention}**"
-        #embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
-        #embed.set_image(url=images)
-        #await ctx.send(embed=embed)        
+            msg = " Tests "
+            await self.sendEmbed(ctx, images, msg, author, user)
