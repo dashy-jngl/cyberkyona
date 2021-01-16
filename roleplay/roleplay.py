@@ -2,6 +2,8 @@ import discord
 from redbot.core import commands
 from random import choice
 from typing import List
+from typing import Optional
+
 
 
 hugs: List[str] = [
