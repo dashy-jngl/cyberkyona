@@ -30,6 +30,8 @@ class Roleplay(commands.Cog):
             hugs!!!!!!!
         """
         
+        #set message author
+        author = ctx.message.author
         #set image
         images = choice(hugs)
 
