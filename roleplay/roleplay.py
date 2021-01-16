@@ -12,7 +12,7 @@ dance:List[str] = [
     ("https://tenor.com/view/alfie-fisher-stardom-saya-kamitani-dance-gif-19427727"),
     ("https://tenor.com/view/session-moth-martina-goth-ott-over-the-top-wrestling-aaw-gif-14328463"),
     ("https://thumbs.gfycat.com/ClosedGloomyHectorsdolphin.webp"),
-    ("https://tenor.com/view/sayakamitani-stardom-queenquest-gif-19358825"),
+    ("https://cdn.discordapp.com/attachments/797764263640563732/799909574206554142/sayadance.gif"),
     ("https://media1.tenor.com/images/0c6fd21d5bc52340ad5d22453932ccb9/tenor.gif?itemid=16765682"),
     ("https://media.discordapp.net/attachments/763850139215069225/797947714369355816/himedance2.gif"),
     ("https://imgur.com/ORcqiyg"),
@@ -108,6 +108,9 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824253368926259/2020-03-15_06-23-19_Tam_sleeps.jpg"),
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
+test: List[str] = [
+    ("https://thumbs.gfycat.com/ClosedGloomyHectorsdolphin.webp"),
+]
 
  
 BaseCog = getattr(commands, "Cog", object)
@@ -165,6 +168,28 @@ class Roleplay(commands.Cog):
         # Build Embed
         embed = discord.Embed()
         embed.description = f"**{author.mention} hugs {user.mention}**"
+        embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
+        embed.set_image(url=images)
+        await ctx.send(embed=embed)        
+    @commands.command()
+    async def test(self, ctx: commands.Context, user: Optional[discord.Member]):
+        """
+            hugs!!!!!!!
+        """
+        #check member
+        if not user:
+            author = self.bot.user
+            user = ctx.message.author
+        #set message author
+        else:
+            author = ctx.message.author
+        #set image
+        images = choice(test)
+
+        msg = " "
+        # Build Embed
+        embed = discord.Embed()
+        embed.description = f"**{author.mention} tests {user.mention}**"
         embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
         embed.set_image(url=images)
         await ctx.send(embed=embed)        
