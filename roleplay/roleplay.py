@@ -130,7 +130,7 @@ class Roleplay(commands.Cog):
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
     
     #send embed mention
-    async def sendEmbedMention(self, ctx: commands.Context, imgurl, msg, user, user2: Optional[discord.Member],):
+    async def sendEmbed(self, ctx: commands.Context, imgurl, msg, user, user2: Optional[discord.Member],):
 
         # Build Embed
         embed = discord.Embed()
