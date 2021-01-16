@@ -109,7 +109,7 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
 test: List[str] = [
-    ("https://imgur.com/r/WrestleWithThePlot/exQw1PI"),
+    ("https://media.discordapp.net/attachments/763850139215069225/797947714369355816/himedance2.gif"),
 ]
 
 #embed vars
@@ -192,15 +192,14 @@ class Roleplay(commands.Cog):
 
         #set image
         images = choice(test)
+        author = ctx.message.author
 
         #check member
         if not user:
-            author = self.bot.user
-            user = ctx.message.author
+            user = self.bot.user
             msg = " Tests the System"
             await self.sendEmbedNoMention(ctx, images, msg, author)
         #set message author
         else:
-            author = ctx.message.author
             msg = " Tests "
             await self.sendEmbedMention(ctx, images, msg, author, user)
