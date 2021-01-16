@@ -131,7 +131,7 @@ class Roleplay(commands.Cog):
     footer = "❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"
     
     #send embed
-    async def sendEmbed(self, ctx: commands.Context, user, user2, imgurl,)
+    async def sendEmbed(self, ctx: commands.Context, user, user2, imgurl):
         # Build Embed
         embed = discord.Embed()
         embed.description = f"**{user.mention} hugs {user2.mention}**"
