@@ -25,11 +25,13 @@ class Roleplay(commands.Cog):
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
     @commands.command(aliases=["takeitback"])
-    async def hugs(self, ctx: commands.Context, user: discord.Member = None) -> None:
+    async def hugs(self, ctx: commands.Context, user: Optional[discord.Member]):
         """
             hugs!!!!!!!
         """
-        
+        #check member
+        if not user:
+            user = self.bot
         #set message author
         author = ctx.message.author
         #set image
