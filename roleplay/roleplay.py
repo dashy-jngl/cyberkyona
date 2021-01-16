@@ -109,7 +109,7 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
 test: List[str] = [
-    ("https://thumbs.gfycat.com/ClosedGloomyHectorsdolphin.webp"),
+    ("https://gfycat.com/raggedbaredog"),
 ]
 
  
