@@ -126,6 +126,18 @@ class Roleplay(commands.Cog):
         
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
+    
+    #embed vars
+    footer = "❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"
+    
+    #send embed
+    async def sendEmbed(self, ctx: commands.Context, user, user2, imgurl,)
+        # Build Embed
+        embed = discord.Embed()
+        embed.description = f"**{user.mention} hugs {user2.mention}**"
+        embed.set_footer(text=footer)
+        embed.set_image(url=imgurl)
+        await ctx.send(embed=embed)
 
     @commands.command(aliases=["takeitback"])
     async def hugs(self, ctx: commands.Context, user: Optional[discord.Member]):
@@ -174,7 +186,7 @@ class Roleplay(commands.Cog):
     @commands.command()
     async def test(self, ctx: commands.Context, user: Optional[discord.Member]):
         """
-            hugs!!!!!!!
+            test the dasha
         """
         #check member
         if not user:
@@ -187,9 +199,10 @@ class Roleplay(commands.Cog):
         images = choice(test)
 
         msg = " "
+        await self.sendEmbed(ctx, author, user, images)
         # Build Embed
-        embed = discord.Embed()
-        embed.description = f"**{author.mention} tests {user.mention}**"
-        embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
-        embed.set_image(url=images)
-        await ctx.send(embed=embed)        
+        #embed = discord.Embed()
+        #embed.description = f"**{author.mention} tests {user.mention}**"
+        #embed.set_footer(text="❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️")
+        #embed.set_image(url=images)
+        #await ctx.send(embed=embed)        
