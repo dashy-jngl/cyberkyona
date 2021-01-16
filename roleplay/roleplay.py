@@ -109,7 +109,7 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
 test: List[str] = [
-    ("https://media1.tenor.com/images/0c6fd21d5bc52340ad5d22453932ccb9/tenor.gif?itemid=16765682"),
+    ("https://cdn.discordapp.com/attachments/797764263640563732/800133586774655006/2021-01-11_06-24-54_himedance2.gif"),
 ]
 
 #embed vars
