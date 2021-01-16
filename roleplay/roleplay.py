@@ -109,7 +109,7 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
 test: List[str] = [
-    ("https://gfycat.com/raggedbaredog"),
+    ("https://imgur.com/r/WrestleWithThePlot/exQw1PI"),
 ]
 
 #embed vars
@@ -137,8 +137,8 @@ class Roleplay(commands.Cog):
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
         
-        embed.description = f"**{user.mention} hugs {user2.mention}**"
-        await ctx.send(embed=embed)
+        #embed.description = f"**{user.mention} hugs {user2.mention}**"
+        #await ctx.send(embed=embed)
 
         #check member
         if not user2:
