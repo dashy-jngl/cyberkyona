@@ -11,7 +11,7 @@ hugs: List[str] = [
 
 
 BaseCog = getattr(commands, "Cog", object)
-class Insult(commands.Cog):
+class Roleplay(commands.Cog):
 
     __author__ = ["Airen", "JennJenn", "TrustyJAID", "dasha"]
     __version__ = "1.0.0"
