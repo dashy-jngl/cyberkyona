@@ -4,13 +4,13 @@ from random import choice
 from typing import List
 
 
-insults: List[str] = [
+hugs: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764291540680714/798074381733593138/2021-01-01_01-11-47_a2zt5-lwci1.gif"),
 
 ]
 
 
-@cog_i18n(_)
+BaseCog = getattr(commands, "Cog", object)
 class Insult(commands.Cog):
 
     __author__ = ["Airen", "JennJenn", "TrustyJAID", "dasha"]
