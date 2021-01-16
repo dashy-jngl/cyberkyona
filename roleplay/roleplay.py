@@ -27,11 +27,17 @@ class Roleplay(commands.Cog):
     @commands.command(aliases=["takeitback"])
     async def hugs(self, ctx: commands.Context, user: discord.Member = None) -> None:
         """
-            - Insults motherfucker!
-
-            `user` the user you would like to insult
+            hugs!!!!!!!
         """
+        
+        #set image
+        images = choice(hugs)
 
         msg = " "
-
-        await ctx.send(choice(hugs))
+        # Build Embed
+        embed = discord.Embed()
+        embed.description = f"**{author.mention} hugs {user.mention}**"
+        #embed.set_footer(text="Made with love!")
+        embed.set_image(url=images)
+        await ctx.send(embed=embed)
+        
