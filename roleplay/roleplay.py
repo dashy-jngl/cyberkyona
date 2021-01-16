@@ -33,9 +33,11 @@ class Roleplay(commands.Cog):
         """
         #check member
         if not user:
-            user = self.bot.user
+            author = self.bot.user
+            user = ctx.message.author
         #set message author
-        author = ctx.message.author
+        else:
+            author = ctx.message.author
         #set image
         images = choice(hugs)
 
