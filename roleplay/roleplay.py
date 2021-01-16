@@ -66,7 +66,7 @@ hugs: List[str] = [
     ("https://media.discordapp.net/attachments/559545867590303747/790779937904263169/tenor_-_2020-12-21T212436.031.gif"),
     ("https://cdn.discordapp.com/attachments/727060162145157191/798076794527416370/20201105_034326.gif"),
     ("https://cdn.discordapp.com/attachments/797764291540680714/798640432418390086/2020-05-25_09-19-49_me-yaaGqaamhY-V37g6nBpWuM4sSoriginal_319289752.jpg"),
-    ("https://tenor.com/view/alfie-fisher-stardom-osaka-cinderella-giulia-syuri-gif-19789405.gif"),
+    #("https://tenor.com/view/alfie-fisher-stardom-osaka-cinderella-giulia-syuri-gif-19789405"),
     #(""),
     ("https://cdn.discordapp.com/attachments/797764291540680714/799824636086583326/2020-10-28_05-37-30_Io_hugs_asuka.jpg"),
     ("https://cdn.discordapp.com/attachments/797764291540680714/799824647645822996/2020-10-09_12-30-03_dash_hug.jpg"),
