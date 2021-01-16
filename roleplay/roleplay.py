@@ -130,24 +130,24 @@ class Roleplay(commands.Cog):
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
     
     #send embed mention
-    async def sendEmbed(self, ctx: commands.Context, imgurl, msg, user, user2: Optional[discord.Member],):
+    async def sendEmbedMention(self, ctx: commands.Context, imgurl, msg, user, user2,):
 
         # Build Embed
         embed = discord.Embed()
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
-        
-        #embed.description = f"**{user.mention} hugs {user2.mention}**"
-        #await ctx.send(embed=embed)
+        embed.description = f"**{user.mention} {msg} {user2.mention}**"
+        await ctx.send(embed=embed)
 
-        #check member
-        if not user2:
-            embed.description = f"**{user.mention} {msg}**"
-            await ctx.send(embed=embed)
-        #set message author
-        else:
-            embed.description = f"**{user.mention} {msg} {user2.mention}**"
-            await ctx.send(embed=embed)
+    #send embed mention
+    async def sendEmbedNoMention(self, ctx: commands.Context, imgurl, msg, user,):
+
+        # Build Embed
+        embed = discord.Embed()
+        embed.set_footer(text=footer)
+        embed.set_image(url=imgurl)
+        embed.description = f"**{user.mention} {msg}**"
+        await ctx.send(embed=embed)
             
 
     @commands.command(aliases=["takeitback"])
@@ -198,9 +198,9 @@ class Roleplay(commands.Cog):
             author = self.bot.user
             user = ctx.message.author
             msg = " Tests the System"
-            await self.sendEmbed(ctx, images, msg, author)
+            await self.sendEmbedNoMention(ctx, images, msg, author)
         #set message author
         else:
             author = ctx.message.author
             msg = " Tests "
-            await self.sendEmbed(ctx, images, msg, author, user)
+            await self.sendEmbedMention(ctx, images, msg, author, user)
