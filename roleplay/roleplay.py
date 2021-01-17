@@ -150,7 +150,7 @@ class Roleplay(commands.Cog):
     async def sendEmbedNoMention(self, ctx: commands.Context, imgurl, msg, footer, user,):
 
         # Build Embed
-        embed = discord.Embed(color=discord.Color(value=255020147))
+        embed = discord.Embed(color=discord.Color(value=16580705))
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
         embed.description = f"**{user.mention} {msg}**"
