@@ -224,4 +224,4 @@ class Roleplay(commands.Cog):
         """
         data_path = file_path + "test/"
         files = choice(os.listdir(data_path))
-        await ctx.send(file=discord.File(path + "test/" + files))
+        await ctx.send(file=discord.File(file_path + "test/" + files))
