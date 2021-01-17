@@ -202,6 +202,8 @@ class Roleplay(commands.Cog):
         author = ctx.message.author
         data_path = file_path + "test/"
         files = choice(os.listdir(data_path))
+        if not files:
+            files = choice(os.listdir(data_path))
         images = path + "test/" + files
 
 
