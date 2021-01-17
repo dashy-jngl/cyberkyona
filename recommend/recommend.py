@@ -97,10 +97,11 @@ tjp: List[str] = [
 ]
 wave: List[str] = [
     ("**Kana vs Kana (Sakura Hirota) - Wave 2015** https://www.youtube.com/watch?v=oBc04ILjeCM"),
+    ("**WAVE tournament final: Takumi vs Nagisa Nozaki vs Ryo Mizunami - Wave CTW 2019-07-15** https://youtu.be/R41Q6glbd8w"),
 ]
 marv: List[str] = [
     ("**Syuri & Takumi vs Nyla Rose and ASUKA - Marvelous 2019.12.08** https://youtu.be/KF2eKFT6NjE"),
-    #("**** "),
+    ("**Mio vs Takumi- Marvelous 2019.11.03** https://youtu.be/ovQxvCKJeao"),
     #("**** "),
     #("**** "),
     #("**** "),
