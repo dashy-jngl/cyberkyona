@@ -4,8 +4,8 @@ from random import choice
 from typing import List
 from typing import Optional
 
-file_path = "/home/dashy9000/archive/roleplayData/test"
-path = "www.onlytams.com/roleplayData/"
+file_path str = "/home/dashy9000/archive/roleplayData/"
+path str = "www.onlytams.com/roleplayData/"
 
 dance:List[str] = [
     ("https://tenor.com/view/utamihayashishita-utami-gif-19094685"),
