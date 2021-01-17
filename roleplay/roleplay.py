@@ -137,7 +137,7 @@ class Roleplay(commands.Cog):
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
     
     #send embed mention
-    async def sendEmbedMention(self, ctx: commands.Context, imgurl, msg, user, user2,):
+    async def sendEmbedMention(self, ctx: commands.Context, imgurl, msg, footer, user, user2,):
 
         # Build Embed
         embed = discord.Embed()
@@ -147,7 +147,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
     #send embed mention
-    async def sendEmbedNoMention(self, ctx: commands.Context, imgurl, msg, user,):
+    async def sendEmbedNoMention(self, ctx: commands.Context, imgurl, msg, footer, user,):
 
         # Build Embed
         embed = discord.Embed()
@@ -212,11 +212,11 @@ class Roleplay(commands.Cog):
         if not user:
             user = self.bot.user
             msg = " Tests the System"
-            await self.sendEmbedNoMention(ctx, images, msg, author)
+            await self.sendEmbedNoMention(ctx, images, msg, footer, author)
         #set message author
         else:
             msg = " Tests "
-            await self.sendEmbedMention(ctx, images, msg, author, user)
+            await self.sendEmbedMention(ctx, images, msg, footer, author, user)
     @commands.command()
     async def testfile(self, ctx: commands.Context):
         """
