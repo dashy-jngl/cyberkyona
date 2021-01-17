@@ -4,6 +4,7 @@ from random import choice
 from typing import List
 from typing import Optional
 
+#test_path = "/home/dashy9000/archive/roleplayData/test"
 
 dance:List[str] = [
     ("https://tenor.com/view/utamihayashishita-utami-gif-19094685"),
@@ -109,7 +110,7 @@ sleep: List[str] = [
     ("https://cdn.discordapp.com/attachments/797764479886426122/799824278845259796/2020-10-22_00-12-28_sleepy_maika.jpg"),
 ]
 test: List[str] = [
-    ("https://cdn.discordapp.com/attachments/797764263640563732/800133586774655006/2021-01-11_06-24-54_himedance2.gif"),
+    ("http://srv562.walkerservers.com/images/bg.jpg"),
 ]
 
 #embed vars
@@ -150,7 +151,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
             
 
-    @commands.command(aliases=["takeitback"])
+    @commands.command()
     async def hugs(self, ctx: commands.Context, user: Optional[discord.Member]):
         """
             hugs!!!!!!!
