@@ -4,7 +4,8 @@ from random import choice
 from typing import List
 from typing import Optional
 
-#test_path = "/home/dashy9000/archive/roleplayData/test"
+file_path = "/home/dashy9000/archive/roleplayData/test"
+path = "www.onlytams.com/roleplayData/"
 
 dance:List[str] = [
     ("https://tenor.com/view/utamihayashishita-utami-gif-19094685"),
@@ -112,9 +113,13 @@ sleep: List[str] = [
 test: List[str] = [
     ("http://srv562.walkerservers.com/roleplayData/test/2021-01-11_06-24-54_himedance2.gif"),
 ]
-
+footers: List[str] = [
+    ("❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"),
+    ("❤️🤼‍♀️ Made with help from joshistans everywhere 🤼‍♀️❤️"),
+    ("❤️🤼‍♀️ Made with love 🤼‍♀️❤️"),
+]
 #embed vars
-footer = "❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"
+footer = choice(footers)
  
 BaseCog = getattr(commands, "Cog", object)
 class Roleplay(commands.Cog):
@@ -192,8 +197,12 @@ class Roleplay(commands.Cog):
         """
 
         #set image
-        images = choice(test)
+        #images = choice(test)
         author = ctx.message.author
+        file_path = file_path + "test/"
+        files = choice(os.listdir(file_path))
+        images = path + "test/" + files
+
 
         #check member
         if not user:
