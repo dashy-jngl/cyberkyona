@@ -1,11 +1,12 @@
 import discord
+import os
 from redbot.core import commands
 from random import choice
 from typing import List
 from typing import Optional
 
-file_path str = "/home/dashy9000/archive/roleplayData/"
-path str = "www.onlytams.com/roleplayData/"
+file_path = "/home/dashy9000/archive/roleplayData/"
+path = "www.onlytams.com/roleplayData/"
 
 dance:List[str] = [
     ("https://tenor.com/view/utamihayashishita-utami-gif-19094685"),
@@ -199,8 +200,8 @@ class Roleplay(commands.Cog):
         #set image
         #images = choice(test)
         author = ctx.message.author
-        file_path = file_path + "test/"
-        files = choice(os.listdir(file_path))
+        data_path = file_path + "test/"
+        files = choice(os.listdir(data_path))
         images = path + "test/" + files
 
 
