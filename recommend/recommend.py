@@ -99,6 +99,11 @@ wave: List[str] = [
     ("**Kana vs Kana (Sakura Hirota) - Wave 2015** https://www.youtube.com/watch?v=oBc04ILjeCM"),
 ]
 marv: List[str] = [
+    ("**Syuri & Takumi vs Nyla Rose and ASUKA - Marvelous 2019.12.08** https://youtu.be/KF2eKFT6NjE"),
+    ("**** "),
+    ("**** "),
+    ("**** "),
+    ("**** "),
     ("**** "),
 ]
 sead: List[str] = [
