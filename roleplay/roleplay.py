@@ -211,7 +211,7 @@ class Roleplay(commands.Cog):
         #check member
         if not user:
             user = self.bot.user
-            msg = " Tests the System"
+            msg = images
             await self.sendEmbedNoMention(ctx, images, msg, footer, author)
         #set message author
         else:
