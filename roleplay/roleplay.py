@@ -199,9 +199,6 @@ class Roleplay(commands.Cog):
 
         #set directory
         directory = "test/"
-        #set messages
-        msg = images
-        msg2 =  " Tests "
         #set footer
         footer = choice(footers)
         #set author
@@ -210,6 +207,9 @@ class Roleplay(commands.Cog):
         data_path = file_path + directory
         files = choice(os.listdir(data_path))
         images = path + directory + files
+        #set messages
+        msg = images
+        msg2 =  " Tests "
 
         #check mention
         if not user:
