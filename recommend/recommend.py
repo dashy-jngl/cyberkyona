@@ -165,7 +165,7 @@ class Recommend(commands.Cog):
             elif promo == "indy":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(indy)}")    
             elif promo == "marv":
-                #await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(marv)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(marv)}")    
             elif promo == "sead":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sead)}")
             elif promo == "tjp":
