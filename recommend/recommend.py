@@ -100,11 +100,11 @@ wave: List[str] = [
 ]
 marv: List[str] = [
     ("**Syuri & Takumi vs Nyla Rose and ASUKA - Marvelous 2019.12.08** https://youtu.be/KF2eKFT6NjE"),
-    ("**** "),
-    ("**** "),
-    ("**** "),
-    ("**** "),
-    ("**** "),
+    #("**** "),
+    #("**** "),
+    #("**** "),
+    #("**** "),
+    #("**** "),
 ]
 sead: List[str] = [
     ("**Arisa Nakajima (c) vs. Rina Yamashita, SEAdLINNNG New Leaf! (10.03.2020)** https://youtu.be/qjGE9NEMAIc"),
