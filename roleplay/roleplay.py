@@ -104,14 +104,14 @@ class Roleplay(commands.Cog):
         #set messages
         msg = images
         msg2 = " Tests "
-        await ctx.send(f"{msg}")
+        #await ctx.send(f"{msg}")
 
         #check mention
-        #if not user:
-            #user = self.bot.user
-            #await self.sendEmbedNoMention(ctx, images, msg, footer, author)
-        #else:
-            #await self.sendEmbedMention(ctx, images, msg2, footer, author, user)
+        if not user:
+            user = self.bot.user
+            await self.sendEmbedNoMention(ctx, images, msg, footer, author)
+        else:
+            await self.sendEmbedMention(ctx, images, msg2, footer, author, user)
 
     @commands.command()
     async def testfile(self, ctx: commands.Context):
