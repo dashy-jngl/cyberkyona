@@ -118,10 +118,9 @@ footers: List[str] = [
     ("❤️🤼‍♀️ Be happy with Pro-Wrestling 🤼‍♀️❤️"),
     ("❤️🤼‍♀️ Made with help from joshistans everywhere 🤼‍♀️❤️"),
     ("❤️🤼‍♀️ Made with love 🤼‍♀️❤️"),
+    ("❤️🤼‍♀️ Everyone is differnt... 🤼‍♀️❤️"),
 ]
-#embed vars
 
- 
 BaseCog = getattr(commands, "Cog", object)
 class Roleplay(commands.Cog):
 
@@ -143,14 +142,15 @@ class Roleplay(commands.Cog):
         embed = discord.Embed()
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
+        
         embed.description = f"**{user.mention} {msg} {user2.mention}**"
         await ctx.send(embed=embed)
 
-    #send embed mention
+    #send embed No mention
     async def sendEmbedNoMention(self, ctx: commands.Context, imgurl, msg, footer, user,):
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=magenta)
         embed.set_footer(text=footer)
         embed.set_image(url=imgurl)
         embed.description = f"**{user.mention} {msg}**"
@@ -197,25 +197,27 @@ class Roleplay(commands.Cog):
             test the dasha
         """
 
+        #set directory
+        directory = "test/"
+        #set messages
+        msg = images
+        msg2 =  " Tests "
+        #set footer
         footer = choice(footers)
-        #set image
-        #images = choice(test)
+        #set author
         author = ctx.message.author
-        data_path = file_path + "test/"
+        #set image
+        data_path = file_path + directory
         files = choice(os.listdir(data_path))
-        images = path + "test/" + files
+        images = path + directory + files
 
-
-        #check member
+        #check mention
         if not user:
             user = self.bot.user
-            #msg = "Tests the system.."
-            msg = images
             await self.sendEmbedNoMention(ctx, images, msg, footer, author)
-        #set message author
         else:
-            msg = " Tests "
-            await self.sendEmbedMention(ctx, images, msg, footer, author, user)
+            await self.sendEmbedMention(ctx, images, msg2, footer, author, user)
+
     @commands.command()
     async def testfile(self, ctx: commands.Context):
         """
