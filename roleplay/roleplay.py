@@ -120,7 +120,7 @@ footers: List[str] = [
     ("❤️🤼‍♀️ Made with love 🤼‍♀️❤️"),
 ]
 #embed vars
-footer = choice(footers)
+
  
 BaseCog = getattr(commands, "Cog", object)
 class Roleplay(commands.Cog):
@@ -197,6 +197,7 @@ class Roleplay(commands.Cog):
             test the dasha
         """
 
+        footer = choice(footers)
         #set image
         #images = choice(test)
         author = ctx.message.author
@@ -216,3 +217,11 @@ class Roleplay(commands.Cog):
         else:
             msg = " Tests "
             await self.sendEmbedMention(ctx, images, msg, author, user)
+    @commands.command()
+    async def testfile(self, ctx: commands.Context):
+        """
+            test the dasha
+        """
+        data_path = file_path + "test/"
+        files = choice(os.listdir(data_path))
+        await ctx.send(file=discord.File(path + "test/" + files))
