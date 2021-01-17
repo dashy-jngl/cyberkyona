@@ -6,7 +6,7 @@ from typing import List
 from typing import Optional
 
 file_path = "/home/dashy9000/archive/roleplayData/"
-path = "www.onlytams.com/roleplayData/"
+path = "http://www.onlytams.com/roleplayData/"
 
 dance:List[str] = [
     ("https://tenor.com/view/utamihayashishita-utami-gif-19094685"),
