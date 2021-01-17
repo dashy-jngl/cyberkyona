@@ -117,7 +117,7 @@ oz: List[str] = [
 termlist = [
     (stardom),
     (agz),
-    #(marv),
+    (marv),
     (wwe),
     (sendai),
     (indy),
@@ -164,7 +164,7 @@ class Recommend(commands.Cog):
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(ice)}")                
             elif promo == "indy":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(indy)}")    
-            #elif promo == "marv":
+            elif promo == "marv":
                 #await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(marv)}")    
             elif promo == "sead":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sead)}")
