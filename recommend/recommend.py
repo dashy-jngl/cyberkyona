@@ -191,6 +191,19 @@ class Recommend(commands.Cog):
         """
             - Recommends matches from WWC user submissions!
             `promo` the promotion you would like to see
+            current promotions include:
+            agz
+            ice ribbon
+            indy
+            marvelous
+            oz academy
+            retro
+            seadlinnng
+            sendai girls
+            stardom
+            tjp
+            wave
+            wwe
         """
 
         msg = " "
