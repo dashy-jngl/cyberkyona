@@ -158,7 +158,7 @@ retro: List[str] = [
     ("**Kana vs. Meiko Satomura (4/19/2010)** https://www.youtube.com/watch?v=Hhv86X56XGM&ab_channel=vrnamnchnm"),    
     #("**** "),
 ]
-gatoh: List:[str] = [
+gatoh: List[str] = [
     ("**Antonio Honda vs An Chamu - Gatoh Move** https://www.youtube.com/watch?v=6x0xPriwE98"),
     ("**Mei Suruga vs An Chamu - Gatoh Move** https://www.youtube.com/watch?v=uTxzHBVUO8s"),
     ("**Chris Brookes & Yuna Mizumori vs Emi Sakura & Lulu Pencil - Gatoh Move** https://youtu.be/6dVBJmHRJPE?t=1503"),
