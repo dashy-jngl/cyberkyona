@@ -204,19 +204,19 @@ class Recommend(commands.Cog):
         """
             - Recommends matches from WWC user submissions!
             `promo` - the desired promotion
-            current promotions:
-            agz -AGZ
+            promo's:
+            agz
             gm -Gatoh move
             ice -Ice Ribbon
-            indy -Misc
+            indy
             marv -Marvelous
             oz -Oz Academy
             retro
-            sead -Seadlinnng
+            sead -Seadling
             sendai -Sendai Girls
             stardom -Stardom
             tjp -Tokyo Joshi Pro
-            wave -Wave Pro
+            wave -WavePro
             wwe -<:asukaDerp:643500197183356958>
         """
 
