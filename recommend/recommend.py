@@ -155,9 +155,21 @@ retro: List[str] = [
     ("**Manami Toyota vs. Aja Kong - March 26, 1995** https://youtu.be/OrE-o-L3RZ4"),
     ("**Combat Toyoda vs. Megumi Kudo (No-Rope Electrified Barbwire Deathmatch)** https://www.youtube.com/watch?v=BSdMiVV_fnQ"),
     ("**Dynamite Kansai, AKINO & GAMI vs Amazing Kong, Mayumi Ozaki & Ayako Hamada - Gaia** https://youtu.be/t4b57zLQpPU"),
-    ("**Kana vs. Meiko Satomura (4/19/2010)** https://www.youtube.com/watch?v=Hhv86X56XGM&ab_channel=vrnamnchnm"),
+    ("**Kana vs. Meiko Satomura (4/19/2010)** https://www.youtube.com/watch?v=Hhv86X56XGM&ab_channel=vrnamnchnm"),    
     #("**** "),
-    #("**** "),
+]
+gatoh: List:[str] = [
+    ("**Antonio Honda vs An Chamu - Gatoh Move** https://www.youtube.com/watch?v=6x0xPriwE98"),
+    ("**Mei Suruga vs An Chamu - Gatoh Move** https://www.youtube.com/watch?v=uTxzHBVUO8s"),
+    ("**Chris Brookes & Yuna Mizumori vs Emi Sakura & Lulu Pencil - Gatoh Move** https://youtu.be/6dVBJmHRJPE?t=1503"),
+    ("**Mei Suruga vs Ryo Mizunami - Gatoh Move** https://youtu.be/jbiWEMPet94?t=1133"),
+    ("**Kirihara Tokiko VS Cherry - Gatoh Move** https://youtu.be/WPyW2_C1RWE?t=960"),
+    ("**Emi Sakura vs Yuna Mizumori - Gatoh Move** https://youtu.be/ihR2AqPJ73Q?t=1129"),
+    ("**Chie Koshikawa & Mei Suruga vs Kirihara Tokiko & Antonio Honda - Gatoh Move** https://youtu.be/QtZeqoeWC7w?t=1440"),
+    ("**Hiroyo Matsumoto & Chon Shiryu vs Antonio Honda & Jaki Numazawa - Gatoh Move** https://www.youtube.com/watch?v=88MlL2SeKZ0"),
+    ("**Mitsuru Konno & Mei Suruga vs Sayaka Obihiro & Yuna Mizumori - Gatoh Move** https://www.youtube.com/watch?v=NptxvmTou1I"),
+    ("**Antonio Honda vs Obihiro Sayaka - Gatoh Move** https://youtu.be/u8DqNHclepQ?t=2640"),
+    ("**Emi Sakura & Mei Suruga vs Mitsuru Konno & Tokiko Kirihara - Gatoh Move** "),
 ]
 termlist = [
     (stardom),
@@ -172,6 +184,7 @@ termlist = [
     (sead),
     (oz),
     (retro),
+    (gatoh),
 ]
 class Recommend(commands.Cog):
 
@@ -190,9 +203,10 @@ class Recommend(commands.Cog):
     async def recommend(self, ctx: commands.Context, promo = None) -> None:
         """
             - Recommends matches from WWC user submissions!
-            `promo` the promotion you would like to see
+            `promo` - the promotion you would like to see
             current promotions include:
             agz
+            gatoh-move
             ice ribbon
             indy
             marvelous
@@ -212,7 +226,9 @@ class Recommend(commands.Cog):
             if promo == "stardom":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")            
             elif promo == "agz":
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")    
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")
+            elif promo == "gatoh":
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(gatoh)}")    
             elif promo == "sendai":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sendai)}")    
             elif promo == "wave":
