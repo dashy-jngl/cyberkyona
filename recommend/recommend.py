@@ -203,21 +203,21 @@ class Recommend(commands.Cog):
     async def recommend(self, ctx: commands.Context, promo = None) -> None:
         """
             - Recommends matches from WWC user submissions!
-            `promo` - the promotion you would like to see
-            current promotions include:
-            agz - Actwres Girl Z
-            gm - Gatoh move
-            ice - Ice Ribbon
-            indy - Various indy and smaller brands
-            marv - Marvelous
-            oz - Oz Academy
+            `promo` - the promotion you, random if none selected
+            current promotions:
+            agz -AGZ
+            gm -Gatoh move
+            ice -Ice Ribbon
+            indy -Misc
+            marv -Marvelous
+            oz -Oz Academy
             retro
-            sead - Seadlinnng
-            sendai - Sendai Girls
-            stardom - Stardom
-            tjp - Tokyo Joshi Pro Wrestling
-            wave - Wave Pro Wrestling
-            wwe - <:asukaDerp:643500197183356958>
+            sead -Seadlinnng
+            sendai -Sendai Girls
+            stardom -Stardom
+            tjp -Tokyo Joshi Pro Wrestling
+            wave -Wave Pro Wrestling
+            wwe -<:asukaDerp:643500197183356958>
         """
 
         msg = " "
