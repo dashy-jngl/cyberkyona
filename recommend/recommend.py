@@ -205,19 +205,19 @@ class Recommend(commands.Cog):
             - Recommends matches from WWC user submissions!
             `promo` - the promotion you would like to see
             current promotions include:
-            agz
-            gatoh-move
-            ice ribbon
-            indy
-            marvelous
-            oz academy
-            retro
-            seadlinnng
-            sendai girls
-            stardom
-            tjp
-            wave
-            wwe
+            agz - Actwres Girl Z
+            gm - Gatoh move
+            ice - Ice Ribbon
+            indy - Various indy and smaller brands
+            marv - Marvelous
+            oz - Oz Academy
+            retro - 
+            sead - Seadlinnng
+            sendai - Sendai Girls
+            stardom - Stardom
+            tjp - Tokyo Joshi Pro Wrestling
+            wave - Wave Pro Wrestling
+            wwe - <:asukaDerp:643500197183356958>
         """
 
         msg = " "
@@ -227,7 +227,7 @@ class Recommend(commands.Cog):
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")            
             elif promo == "agz":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")
-            elif promo == "gatoh":
+            elif promo == "gm":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(gatoh)}")    
             elif promo == "sendai":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(sendai)}")    
@@ -235,8 +235,6 @@ class Recommend(commands.Cog):
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(wave)}")    
             elif promo == "ice":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(ice)}")
-            elif promo == "Ice":
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(ice)}")                
             elif promo == "indy":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(indy)}")    
             elif promo == "marv":
