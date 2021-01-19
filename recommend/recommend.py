@@ -202,22 +202,22 @@ class Recommend(commands.Cog):
     @commands.command(aliases=["rc"])
     async def recommend(self, ctx: commands.Context, promo = None) -> None:
         """
-            - Recommends matches from WWC user submissions!
-            `promo` - the desired promotion
-            promo's:
+            Recommends matches from WWC user submissions!
+            `promo` = desired promotion
+            promotions:
             agz
-            gm -Gatoh move
-            ice -Ice Ribbon
+            gatoh move
+            ice ribbon
             indy
-            marv -Marvelous
-            oz -Oz Academy
+            marvelous
+            oz academy
             retro
-            sead -Seadling
-            sendai -Sendai Girls
-            stardom -Stardom
+            seadlinnng
+            sendai girls
+            stardom
             tjp -Tokyo Joshi Pro
-            wave -WavePro
-            wwe -<:asukaDerp:643500197183356958>
+            wave
+            wwe
         """
 
         msg = " "
