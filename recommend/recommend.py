@@ -211,7 +211,7 @@ class Recommend(commands.Cog):
             indy - Various indy and smaller brands
             marv - Marvelous
             oz - Oz Academy
-            retro - 
+            retro
             sead - Seadlinnng
             sendai - Sendai Girls
             stardom - Stardom
