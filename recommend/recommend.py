@@ -65,16 +65,16 @@ sendai: List[str] = [
     #("**** "),
 ]
 agz: List[str] = [
-    ("**Miyuki Takase vs Himeka Arita - AGZ 2019.11.06** https://m.bilibili.com/video/BV1s54y1s72x"),
-    ("**Miyuki Takase vs Tae Honma - AGZ 2019.11.03** https://www.bilibili.com/video/BV1Wy4y1m74B"),
-    ("**Miyuki Takase vs Nagisa Nozaki - AGZ 2020.03.05**  https://www.bilibili.com/video/BV1Tv41147Ni"),
-    ("**Giulia vs Saori Anou - AGZ 2019.7.21** https://www.bilibili.com/video/BV1th411y7SG "),
-    ("**Saori Anou vs Reika Saiki AGZ 2019.8.14 ** https://www.bilibili.com/video/BV1Zf4y1r7qQ"),
-    ("**SAKI & Yuna Mizumori vs Kakeru Sekiguchi & Momo Kohgo - AGZ 2020.02.11** https://www.bilibili.com/video/BV1cv41147Yu/"),
-    ("**Noa Igarashi & Yuko Sakurai vs Ayano Irie & Ranmaru - AGZ 2019.07.21 ** https://www.bilibili.com/video/BV1Xt4y1z78p/"),
-    ("**Tequila Saya vs Hikari Shimizu - AGZ 2019.05.25** https://www.bilibili.com/video/BV19r4y1T7Kt/"),
-    ("**Kakeru Sekiguchi & Miku Aono vs Mii & Rina Amikura - AGZ 2020.11.24** https://www.bilibili.com/video/BV16y4y1m75B/"),
-    ("**Miyuki Takase & Himeka Arita vs Mari & SAKI - AGZ 2019.05.25** https://www.bilibili.com/video/BV1tU4y147qc/"),
+    ("**Miyuki Takase vs Himeka Arita - AWG 2019.11.06** https://m.bilibili.com/video/BV1s54y1s72x"),
+    ("**Miyuki Takase vs Tae Honma - AWG 2019.11.03** https://www.bilibili.com/video/BV1Wy4y1m74B"),
+    ("**Miyuki Takase vs Nagisa Nozaki - AWG 2020.03.05**  https://www.bilibili.com/video/BV1Tv41147Ni"),
+    ("**Giulia vs Saori Anou - AWG 2019.7.21** https://www.bilibili.com/video/BV1th411y7SG "),
+    ("**Saori Anou vs Reika Saiki AWG 2019.8.14 ** https://www.bilibili.com/video/BV1Zf4y1r7qQ"),
+    ("**SAKI & Yuna Mizumori vs Kakeru Sekiguchi & Momo Kohgo - AWG 2020.02.11** https://www.bilibili.com/video/BV1cv41147Yu/"),
+    ("**Noa Igarashi & Yuko Sakurai vs Ayano Irie & Ranmaru - AWG 2019.07.21 ** https://www.bilibili.com/video/BV1Xt4y1z78p/"),
+    ("**Tequila Saya vs Hikari Shimizu - AWG 2019.05.25** https://www.bilibili.com/video/BV19r4y1T7Kt/"),
+    ("**Kakeru Sekiguchi & Miku Aono vs Mii & Rina Amikura - AWG 2020.11.24** https://www.bilibili.com/video/BV16y4y1m75B/"),
+    ("**Miyuki Takase & Himeka Arita vs Mari & SAKI - AWG 2019.05.25** https://www.bilibili.com/video/BV1tU4y147qc/"),
     #("**** "),
     #("**** "),
 ]
@@ -226,6 +226,8 @@ class Recommend(commands.Cog):
             if promo == "stardom":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(stardom)}")            
             elif promo == "agz":
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")
+            elif promo == "awg":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(agz)}")
             elif promo == "gm":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(gatoh)}")    
