@@ -61,6 +61,7 @@ sendai: List[str] = [
     ("**Tag: DASH Chisako and Meiko Satomura and Syuri vs. Sakura Hirota and Chihiro Hashimoto and Yuu** https://www.youtube.com/watch?v=EdxRCoIv5EE"),
     ("**DASH Chisako vs Chihiro Hashimoto - Sendai Girls 2018.05.13** https://youtu.be/d2qpnM2x3RE"),
     ("**Kagetsu vs Chihiro Hashimoto - Sendai Girls February 16th 2020** https://www.dailymotion.com/video/k7cBgl4mNB5auivUiyC"),
+    ("**Chihiro Hashimoto vs. Syuri kondo - Sendai Girls** https://www.youtube.com/watch?v=2UJg6gpBFNc"),
     #("**** "),
     #("**** "),
 ]
@@ -171,6 +172,10 @@ gatoh: List[str] = [
     ("**Antonio Honda vs Obihiro Sayaka - Gatoh Move** https://youtu.be/u8DqNHclepQ?t=2640"),
     ("**Emi Sakura & Mei Suruga vs Mitsuru Konno & Tokiko Kirihara - Gatoh Move** "),
 ]
+purej: List[str] = [
+    ("**Hanako Nakamori & Arisa Nakajima vs DASH Chisako & Tsukasa Fujimoto - Pure J 2014** https://youtu.be/fOKjN4_nXbw"),
+    #("**** "),
+]
 termlist = [
     (stardom),
     (agz),
@@ -185,6 +190,7 @@ termlist = [
     (oz),
     (retro),
     (gatoh),
+    (purej),
 ]
 class Recommend(commands.Cog):
 
@@ -248,7 +254,9 @@ class Recommend(commands.Cog):
             elif promo == "oz":
                 await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(oz)}")
             elif promo == "wwe":
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(wwe)}")                
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(wwe)}")
+            elif promo == "purej":
+                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}{choice(purej)}")                
             
             else:
                 list = choice(termlist)
