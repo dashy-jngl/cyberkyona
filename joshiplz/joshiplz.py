@@ -1,3 +1,4 @@
+
 # make JoshiPlz
 
 # Discord
@@ -37,7 +38,7 @@ joshi_path = [
     (
         "/home/dashy9000/data/.wwe"
     ),
-]                
+]
 
 
 BaseCog = getattr(commands, "Cog", object)
@@ -49,7 +50,7 @@ class Joshiplz(BaseCog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
-     
+
     @commands.command()
     async def joshi(self, ctx):
         """ - 1x joshi! """
@@ -60,15 +61,113 @@ class Joshiplz(BaseCog):
 #            file = path+"/"+files[index]
 #            fp = path
             await ctx.send(file=discord.File(path+"/"+files[index]))
-            
+
         except:
             await ctx.send("<:jungleKyonaLook:695168285586751509>")
-            
+
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
         """ - Throws a Joshi bomb!
+        Defaults to 3, max is 500"""
+        results = []
+        if amount > 6:
+            amount = 6
+        if amount < 1:
+            amount = 1
+        user = ctx.message.author
+        if user.id == 404141277358325771: #ksup
+            if amount > 5:
+                amount = 5
+        try:
+            for x in range(0,amount):
+                time.sleep(1)
+                if user.id == 338135974158794752: #dashy
+                    spice = random.randrange(0,100)
+                    if spice > 40:
+                        path = dashy_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    else:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 303430784771948544: #hardy
+                    spice = random.randrange(0,100)
+                    if spice > 40:
+                        path = hardy_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    else:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 132091505237032960: #mo
+                    spice = random.randrange(0,100)
+                    if spice > 40:
+                        path = mo_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    else:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 302168981903769602: #frog
+                    spice = random.randrange(0,100)
+                    if spice > 40:
+                        path = cryo_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    elif spice < 41:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 404141277358325771: #ksup
+                    spice = random.randrange(0,100)
+                    if spice > 40:
+                        path = ksup_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    elif spice < 41:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                elif user.id == 574149508989190154: #tigr
+                    spice = random.randrange(50,60)
+                    if spice > 40:
+                        path = tiger_path
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                    elif spice < 41:
+                        path = choice(joshi_path)
+                        files = os.listdir(path)
+                        index = random.randrange(1, len(files))
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
+                else:
+                    path = choice(joshi_path)
+                    files = os.listdir(path)
+                    index = random.randrange(1, len(files))
+                    await ctx.send(file=discord.File(path+"/"+files[index]))
+            return
 
+        except:
+            await ctx.send("<:jungleKyonaLook:695168285586751509>")
+
+    @commands.command()
+#    @commands.cooldown(1, 60, commands.BucketType.guild)
+    async def joshispam(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
+        """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
         results = []
         if amount > 500:
@@ -84,7 +183,7 @@ class Joshiplz(BaseCog):
                 time.sleep(1)
                 if user.id == 338135974158794752: #dashy
                     spice = random.randrange(0,100)
-                    if spice > 40: 
+                    if spice > 40:
                         path = dashy_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -96,7 +195,7 @@ class Joshiplz(BaseCog):
                         await ctx.send(file=discord.File(path+"/"+files[index]))
                 elif user.id == 303430784771948544: #hardy
                     spice = random.randrange(0,100)
-                    if spice > 40: 
+                    if spice > 40:
                         path = hardy_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -108,7 +207,7 @@ class Joshiplz(BaseCog):
                         await ctx.send(file=discord.File(path+"/"+files[index]))
                 elif user.id == 132091505237032960: #mo
                     spice = random.randrange(0,100)
-                    if spice > 40: 
+                    if spice > 40:
                         path = mo_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -120,7 +219,7 @@ class Joshiplz(BaseCog):
                         await ctx.send(file=discord.File(path+"/"+files[index]))
                 elif user.id == 302168981903769602: #frog
                     spice = random.randrange(0,100)
-                    if spice > 40: 
+                    if spice > 40:
                         path = cryo_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -129,10 +228,10 @@ class Joshiplz(BaseCog):
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))    
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
                 elif user.id == 404141277358325771: #ksup
                     spice = random.randrange(0,100)
-                    if spice > 40: 
+                    if spice > 40:
                         path = ksup_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -141,10 +240,10 @@ class Joshiplz(BaseCog):
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))    
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
                 elif user.id == 574149508989190154: #tigr
                     spice = random.randrange(50,60)
-                    if spice > 40: 
+                    if spice > 40:
                         path = tiger_path
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
@@ -153,14 +252,14 @@ class Joshiplz(BaseCog):
                         path = choice(joshi_path)
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))    
+                        await ctx.send(file=discord.File(path+"/"+files[index]))
                 else:
                     path = choice(joshi_path)
                     files = os.listdir(path)
                     index = random.randrange(1, len(files))
                     await ctx.send(file=discord.File(path+"/"+files[index]))
-            return     
-        
+            return
+
         except:
             await ctx.send("<:jungleKyonaLook:695168285586751509>")
 
