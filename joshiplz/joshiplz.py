@@ -66,7 +66,7 @@ class Joshiplz(BaseCog):
             await ctx.send("<:jungleKyonaLook:695168285586751509>")
 
     @commands.command()
-    @commands.cooldown(1, 60, commands.BucketType.guild)
+    #@commands.cooldown(1, 60, commands.BucketType.guild)
     async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
