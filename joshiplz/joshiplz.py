@@ -113,7 +113,7 @@ class Joshiplz(BaseCog):
                         files = os.listdir(path)
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
-                return
+            return
 #        else:
 #            path = "/home/dashy9000/data/" + joshi
 #            try:
