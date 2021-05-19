@@ -106,15 +106,15 @@ class Joshiplz(BaseCog):
                         index = random.randrange(1, len(files))
                         await ctx.send(file=discord.File(path+"/"+files[index]))
                 return
-        else:
-            path = "/home/dashy9000/data/" + joshi
-            try:
-                for x in range(0,amount):
-                    time.sleep(1)
-                    files = os.listdir(path)
-                    index = random.randrange(1, len(files))
-                    await ctx.send(file=discord.File(path+"/"+files[index]))
-                return
+#        else:
+#            path = "/home/dashy9000/data/" + joshi
+#            try:
+#                for x in range(0,amount):
+#                    time.sleep(1)
+#                    files = os.listdir(path)
+#                    index = random.randrange(1, len(files))
+#                    await ctx.send(file=discord.File(path+"/"+files[index]))
+#                return
 
         except:
             await ctx.send("<:dashsrs:763999844724899841>")
