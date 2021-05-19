@@ -67,11 +67,11 @@ class Joshiplz(BaseCog):
 
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx: commands.Context, amount: Optional[int], joshi: Optional[str]):
+    async def joshiplz(self, ctx: commands.Context, amount: int =3, joshi: str = none):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
-        if not amount:
-            amount = 3
+#        if not amount:
+#            amount = 3
         results = []
         if amount > 6:
             amount = 6
@@ -97,7 +97,7 @@ class Joshiplz(BaseCog):
             for x in range(0,amount):
                 time.sleep(1)
                 spice = random.randrange(0,100)
-                if not joshi:
+                if joshi != "none":
                     path = "/home/dashy9000/data/" + joshi
                     files = os.listdir(path)
                     index = random.randrange(1, len(files))
