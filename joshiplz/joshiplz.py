@@ -77,17 +77,17 @@ class Joshiplz(BaseCog):
         if user.id == 404141277358325771: #ksup
             upath = ksup_path
         if user.id == 303430784771948544: #hardy
-            upath = ksup_path
-        if user.id == 465090995965526016: #MM
-            upath = ksup_path
+            upath = hardy_path
+#        if user.id == 465090995965526016: #MM
+#            upath = mayu_path
         if user.id == 132091505237032960: #mo
-            upath = ksup_path
+            upath = mo_path
         if user.id == 574149508989190154: #tigr
-            upath = ksup_path
-        if user.id == 174754160963485698: #pz
-            upath = ksup_path
+            upath = tiger_path
+#        if user.id == 174754160963485698: #pz
+#            upath = asuka_path
         if user.id == 338135974158794752: #dash
-            upath = ksup_path
+            upath = dashy_path
 
         try:
             for x in range(0,amount):
@@ -123,17 +123,17 @@ class Joshiplz(BaseCog):
         if user.id == 404141277358325771: #ksup
             upath = ksup_path
         if user.id == 303430784771948544: #hardy
-            upath = ksup_path
-        if user.id == 465090995965526016: #MM
-            upath = ksup_path
+            upath = hardy_path
+#        if user.id == 465090995965526016: #MM
+#            upath = mayu_path
         if user.id == 132091505237032960: #mo
-            upath = ksup_path
+            upath = mo_path
         if user.id == 574149508989190154: #tigr
-            upath = ksup_path
-        if user.id == 174754160963485698: #pz
-            upath = ksup_path
+            upath = tiger_path
+#        if user.id == 174754160963485698: #pz
+#            upath = asuka_path
         if user.id == 338135974158794752: #dash
-            upath = ksup_path
+            upath = dashy_path
 
         try:
             for x in range(0,amount):
