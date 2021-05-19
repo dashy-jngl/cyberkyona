@@ -97,6 +97,7 @@ class Joshiplz(BaseCog):
                     index = random.randrange(1, len(files))
                     await ctx.send(file=discord.File(path+"/"+files[index]))
                 return
+
         if not joshi:
             try:
                 for x in range(0,amount):
