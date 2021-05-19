@@ -61,11 +61,11 @@ class Joshiplz(BaseCog):
             await ctx.send(file=discord.File(path+"/"+files[index]))
 
         except:
-            await ctx.send("<:jungleKyonaLook:695168285586751509>")
+            await ctx.send("<:dashsrs:763999844724899841>")
 
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
+    async def joshiplz(self, ctx: commands.Context, amount : int = 3):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
         results = []
@@ -107,7 +107,7 @@ class Joshiplz(BaseCog):
             return
 
         except:
-            await ctx.send("<:jungleKyonaLook:695168285586751509>")
+            await ctx.send("<:dashsrs:763999844724899841>")
 
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
@@ -153,7 +153,7 @@ class Joshiplz(BaseCog):
             return
 
         except:
-            await ctx.send("<:jungleKyonaLook:695168285586751509>")
+            await ctx.send("<:dashsrs:763999844724899841>")
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
