@@ -20,8 +20,6 @@ import aiohttp
 #import io
 #import logging
 #from typing import Awaitable, Callable
-from typing import Optional
-
 
 mayu_path = "/home/dashy9000/data/.mayu"    # 465090995965526016
 hardy_path = "/home/dashy9000/data/.hardy"  # 303430784771948544
@@ -67,11 +65,9 @@ class Joshiplz(BaseCog):
 
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx: commands.Context, amount : Optional[int], joshi: Optional[str]):
+    async def joshiplz(self, ctx: commands.Context, amount : int = 3, user: discord.Message.author = None):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
-        if not amount:
-            amount = 3
         results = []
         if amount > 6:
             amount = 6
@@ -96,33 +92,19 @@ class Joshiplz(BaseCog):
         try:
             for x in range(0,amount):
                 time.sleep(1)
+
                 spice = random.randrange(0,100)
-                if joshi:
-                    path = "/home/dashy9000/data/" + joshi
+                if spice > 40:
+                    path = upath
                     files = os.listdir(path)
                     index = random.randrange(1, len(files))
                     await ctx.send(file=discord.File(path+"/"+files[index]))
                 else:
-                    if spice > 40:
-                        path = upath
-                        files = os.listdir(path)
-                        index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))
-                    else:
-                        path = choice(joshi_path)
-                        files = os.listdir(path)
-                        index = random.randrange(1, len(files))
-                        await ctx.send(file=discord.File(path+"/"+files[index]))
-                return
-#        else:
-#            path = "/home/dashy9000/data/" + joshi
-#            try:
-#                for x in range(0,amount):
-#                    time.sleep(1)
-#                    files = os.listdir(path)
-#                    index = random.randrange(1, len(files))
-#                    await ctx.send(file=discord.File(path+"/"+files[index]))
-#                return
+                    path = choice(joshi_path)
+                    files = os.listdir(path)
+                    index = random.randrange(1, len(files))
+                    await ctx.send(file=discord.File(path+"/"+files[index]))
+            return
 
         except:
             await ctx.send("<:dashsrs:763999844724899841>")
