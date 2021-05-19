@@ -89,12 +89,16 @@ class Joshiplz(BaseCog):
         if user.id == 338135974158794752: #dash
             upath = dashy_path
 
-        if not joshi:
-            try:
-                for x in range(0,amount):
-                    time.sleep(1)
-
-                    spice = random.randrange(0,100)
+        try:
+            for x in range(0,amount):
+                time.sleep(1)
+                spice = random.randrange(0,100)
+                if joshi:
+                    path = "/home/dashy9000/data/" + joshi
+                    files = os.listdir(path)
+                    index = random.randrange(1, len(files))
+                    await ctx.send(file=discord.File(path+"/"+files[index]))
+                else:
                     if spice > 40:
                         path = upath
                         files = os.listdir(path)
