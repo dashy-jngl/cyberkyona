@@ -97,7 +97,7 @@ class Joshiplz(BaseCog):
                     index = random.randrange(1, len(files))
                     await ctx.send(file=discord.File(path+"/"+files[index]))
                 return
-        elif not joshi:
+        if not joshi:
             try:
                 for x in range(0,amount):
                     time.sleep(1)
