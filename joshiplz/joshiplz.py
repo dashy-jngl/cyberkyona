@@ -70,8 +70,8 @@ class Joshiplz(BaseCog):
     async def joshiplz(self, ctx: commands.Context, amount : int = 3, joshi: str = "none"):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
-        if not amount:
-            amount = 3
+#        if not amount:
+#            amount = 3
         results = []
         if amount > 6:
             amount = 6
