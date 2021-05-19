@@ -67,7 +67,7 @@ class Joshiplz(BaseCog):
 
     @commands.command()
 #    @commands.cooldown(1, 60, commands.BucketType.guild)
-    async def joshiplz(self, ctx: commands.Context, amount : int = 3, joshi: str = "none"):
+    async def joshiplz(self, ctx: commands.Context, amount: int = 3, joshi: str = "none"):
         """ - Throws a Joshi bomb!
         Defaults to 3, max is 500"""
 #        if not amount:
