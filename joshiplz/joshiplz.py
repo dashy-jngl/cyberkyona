@@ -20,6 +20,8 @@ import aiohttp
 #import io
 #import logging
 #from typing import Awaitable, Callable
+from typing import Optional
+
 
 mayu_path = "/home/dashy9000/data/.mayu"    # 465090995965526016
 hardy_path = "/home/dashy9000/data/.hardy"  # 303430784771948544
