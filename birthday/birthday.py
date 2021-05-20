@@ -29,7 +29,7 @@ class Birthday(commands.Cog):
         "22.03.01": "kyona"
         }
         msg = " "
-
+        item = ask
         for key in birthdays.keys():
             if item in birthdays[ask]:
                 await ctx.send(key)
