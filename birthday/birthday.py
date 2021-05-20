@@ -24,11 +24,14 @@ class Birthday(commands.Cog):
         """ - simpRate MotherFuckers!"""
         birthdays = {
         "momo": "22.03.00",
-        ["22.03.00"]: ["momo ", "not momo "],
+        "22.03.00": ["momo ", "not momo "],
         "kyona": "22.03.01",
         "22.03.01": "kyona"
         }
         msg = " "
 
-        await ctx.send(birthdays[[ask].0])
+        for key in birthdays.ask():
+            if item in birthdays[ask]:
+                await ctx.send(key)
+#        await ctx.send(birthdays[[ask].0])
 
