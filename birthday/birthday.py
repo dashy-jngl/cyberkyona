@@ -17,17 +17,17 @@ class Birthday(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nCog Version: {self.__version__}"
 
-    birthdays = {
-    "momo": "22.03.00",
-    "22.03.00": "momo",
-    "kyona": "22.03.01",
-    "22.03.01": "kyona"
-    }
+
 
     @commands.command()
     async def birthday(self, ctx: commands.Context, ask: str):
         """ - simpRate MotherFuckers!"""
-        
+        birthdays = {
+        "momo": "22.03.00",
+        "22.03.00": "momo",
+        "kyona": "22.03.01",
+        "22.03.01": "kyona"
+        }
         msg = " "
 
         await ctx.send(birthdays[ask])
