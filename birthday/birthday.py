@@ -25,6 +25,7 @@ class Birthday(commands.Cog):
         "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
         "20.05": ["Nao Yamaguchi"],
+        "21.05": ["Leva Bates"],
         }
 
         if ask == "none":
@@ -32,7 +33,7 @@ class Birthday(commands.Cog):
             day = today.strftime("%d")
             month = today.strftime("%m")
             ask = day +"."+ month
-            await ctx.send(ask)
+            await ctx.send(ask + " JST")
 
         try:
             bd = birthdays[ask]
