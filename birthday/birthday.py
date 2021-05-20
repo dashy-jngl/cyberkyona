@@ -33,6 +33,6 @@ class Birthday(commands.Cog):
         for key in birthdays.keys():
             if item in birthdays[key]:
                 bd = birthdays[key]
-                await ctx.send(bd[1])
+                await ctx.send(bd[0])
 #        await ctx.send(birthdays[[ask].0])
 
