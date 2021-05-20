@@ -30,10 +30,11 @@ class Birthday(commands.Cog):
         }
         msg = " "
 
-        bd = birthdays[ask]
-        await ctx.send(bd[0])
-        await ctx.send(bd[1])
-
+        if ask in birthdays[key]:
+            bd = birthdays[ask]
+            await ctx.send(bd[0])
+            await ctx.send(bd[1])
+        else await ctx.send("no entries found")
 #        item = ask
 #        for key in birthdays.keys():
 #            if item in birthdays[key]:
