@@ -24,11 +24,11 @@ class Birthday(commands.Cog):
         """ - simpRate MotherFuckers!"""
         birthdays = {
         "momo": "22.03.00",
-        "22.03.00": js = ["momo ", "not momo "],
+        "22.03.00": ["momo ", "not momo "],
         "kyona": "22.03.01",
         "22.03.01": "kyona"
         }
         msg = " "
 
-        await ctx.send(birthdays[ask(0)])
-    
+        await ctx.send(birthdays[ask(list[0])])
+
