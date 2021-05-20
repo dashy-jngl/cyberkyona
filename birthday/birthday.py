@@ -21,12 +21,11 @@ class Birthday(commands.Cog):
 
     @commands.command()
     async def birthday(self, ctx: commands.Context, ask: str):
-        """ - simpRate MotherFuckers!"""
+        """ displays birthdays for a given date or supplies birthdates for a given joshi"""
         birthdays = {
         "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
         }
-        msg = " "
 
         try:
             bd = birthdays[ask]
