@@ -24,7 +24,7 @@ class Birthday(commands.Cog):
     }
 
     @commands.command()
-    async def birthday(self, ctx: commands.Context, ask: str)
+    async def birthday(self, ctx: commands.Context, ask: str):
         """ - simpRate MotherFuckers!"""
         
         msg = " "
