@@ -29,10 +29,16 @@ class Birthday(commands.Cog):
         "22.03.01": "kyona"
         }
         msg = " "
-        item = ask
-        for key in birthdays.keys():
-            if item in birthdays[key]:
-                bd = birthdays[key]
-                await ctx.send(bd[0])
+
+        date = birthdays[ask]
+        await ctx.send(bd[0])
+        await ctx.send(bd[1])
+
+#        item = ask
+#        for key in birthdays.keys():
+#            if item in birthdays[key]:
+#                bd = birthdays[key]
+#                await ctx.send(bd[0])
+
 #        await ctx.send(birthdays[[ask].0])
 
