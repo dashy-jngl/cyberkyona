@@ -27,8 +27,8 @@ class Birthday(commands.Cog):
         }
 
         if ask == "none":
-            day == today.strftime("%d/")
-            month == today.strftime("%m")
+            day = today.strftime("%d/")
+            month = today.strftime("%m")
             ask == day +"."+ month
 
         try:
