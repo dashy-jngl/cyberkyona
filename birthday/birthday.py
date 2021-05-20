@@ -1,11 +1,10 @@
 import discord
-import random
 from redbot.core import commands
-from redbot.core.utils.chat_formatting import pagify
-from random import choice
-from redbot.core.i18n import Translator, cog_i18n
+
 from typing import List
 from collections import defaultdict
+
+from datetime import date
 
 class Birthday(commands.Cog):
     """Show joshi birthdays"""
@@ -20,12 +19,17 @@ class Birthday(commands.Cog):
 
 
     @commands.command()
-    async def birthday(self, ctx: commands.Context, ask: str):
+    async def birthday(self, ctx: commands.Context, ask: str = "none"):
         """ displays birthdays for a given date or supplies birthdates for a given joshi"""
         birthdays = {
         "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
         }
+
+        if ask == "none":
+            day == today.strftime("%d/")
+            month == today.strftime("%m")
+            ask == day +"."+ month
 
         try:
             bd = birthdays[ask]
