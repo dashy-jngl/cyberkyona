@@ -30,7 +30,7 @@ class Birthday(commands.Cog):
         }
         msg = " "
 
-        date = birthdays[ask]
+        bd = birthdays[ask]
         await ctx.send(bd[0])
         await ctx.send(bd[1])
 
