@@ -29,7 +29,7 @@ class Birthday(commands.Cog):
 
         if ask == "none":
             today = date.today()
-            day = today.strftime("%d/")
+            day = today.strftime("%d")
             month = today.strftime("%m")
             ask = day +"."+ month
             await ctx.send(ask)
