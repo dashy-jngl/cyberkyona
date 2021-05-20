@@ -25,8 +25,6 @@ class Birthday(commands.Cog):
         birthdays = {
         "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
-        "kyona": "22.03.01",
-        "22.03.01": "kyona"
         }
         msg = " "
 
@@ -35,12 +33,6 @@ class Birthday(commands.Cog):
             for i in range(len(bd)):
                 await ctx.send(bd[i])
         except:
-            await ctx.send("no entries found")
-#        item = ask
-#        for key in birthdays.keys():
-#            if item in birthdays[key]:
-#                bd = birthdays[key]
-#                await ctx.send(bd[0])
+            await ctx.send("<a:konamishrug:845007847926136912>"+"<:giuliaKiss:845008239027290175>")
 
-#        await ctx.send(birthdays[[ask].0])
 
