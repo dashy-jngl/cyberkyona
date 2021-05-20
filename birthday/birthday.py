@@ -31,7 +31,7 @@ class Birthday(commands.Cog):
             today = date.today()
             day = today.strftime("%d/")
             month = today.strftime("%m")
-            ask == day +"."+ month
+            ask = day +"."+ month
             await ctx.send(ask)
 
         try:
