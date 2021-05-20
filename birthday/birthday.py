@@ -29,5 +29,5 @@ class Birthday(commands.Cog):
         
         msg = " "
 
-        await ctx.send(birthday[ask])
+        await ctx.send(birthdays[ask])
     
