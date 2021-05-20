@@ -20,7 +20,7 @@ class Birthday(commands.Cog):
     "momo": "22.03.00",
     "22.03.00": "momo",
     "kyona": "22.03.01",
-    "22.03.01": "kyona",
+    "22.03.01": "kyona"
     }
 
     @commands.command()
