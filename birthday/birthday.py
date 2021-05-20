@@ -33,7 +33,7 @@ class Birthday(commands.Cog):
         try:
             bd = birthdays[ask]
             for x in bd:
-            await ctx.send(bd[x])
+                await ctx.send(bd[x])
         except:
             await ctx.send("no entries found")
 #        item = ask
