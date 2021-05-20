@@ -24,6 +24,7 @@ class Birthday(commands.Cog):
         birthdays = {
         "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
+        "20.05": ["Nao Yamaguchi"],
         }
 
         if ask == "none":
