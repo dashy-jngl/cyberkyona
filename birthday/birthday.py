@@ -23,7 +23,7 @@ class Birthday(commands.Cog):
     async def birthday(self, ctx: commands.Context, ask: str):
         """ - simpRate MotherFuckers!"""
         birthdays = {
-        "momo": "22.03.00",
+        "momo": ["22.03.00"],
         "22.03.00": ["momo ", "not momo "],
         "kyona": "22.03.01",
         "22.03.01": "kyona"
