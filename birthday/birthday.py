@@ -32,6 +32,7 @@ class Birthday(commands.Cog):
             day = today.strftime("%d/")
             month = today.strftime("%m")
             ask == day +"."+ month
+            await ctx.send(ask)
 
         try:
             bd = birthdays[ask]
