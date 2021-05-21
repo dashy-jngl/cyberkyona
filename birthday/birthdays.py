@@ -1,5 +1,5 @@
 birthdays = {
-    "22.05": [":yeatami:"],
+#    "22.05": [":yeatami:"],
 #       jan
         "03.01": ["Hyper Misao", "Akane Fujita"],
         "04.01": ["Takumi Iroha", "Ayako Sato"],
