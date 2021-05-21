@@ -39,11 +39,12 @@ class Birthday(commands.Cog):
                 await ctx.send("no birthdays today")
                 await ctx.send("<:ioSad:845412671540166656>")
 
-        try:
-            bd = birthdays[ask]
-            for i in range(len(bd)):
-                await ctx.send(bd[i])
-        except:
-            await ctx.send("<a:konamishrug:845007847926136912>"+"<:giuliaKiss:845008239027290175>")
+        else:
+            try:
+                bd = birthdays[ask]
+                for i in range(len(bd)):
+                    await ctx.send(bd[i])
+            except:
+                await ctx.send("<a:konamishrug:845007847926136912>"+"<:giuliaKiss:845008239027290175>")
 
 
