@@ -47,4 +47,17 @@ class Birthday(commands.Cog):
             except:
                 await ctx.send("<a:konamishrug:845007847926136912>"+"<:giuliaKiss:845008239027290175>")
 
+    @commands.command()
+    async def bdcheck(self, ctx: commands.Context):
+        """ displays birthdays for a given date or supplies birthdates for a given joshi"""
 
+        today = date.today()
+        day = today.strftime("%d")
+        month = today.strftime("%m")
+        ask = day +"."+ month
+        try:
+            bd = birthdays[ask]
+            for i in range(len(bd)):
+                await ctx.send(bd[i])
+        except:
+            return
