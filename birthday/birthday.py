@@ -41,7 +41,7 @@ class Birthday(commands.Cog):
 
         else:
             try:
-                bd = birthdays[ask]
+                bd = birthdays[ask.lower()]
                 for i in range(len(bd)):
                     await ctx.send(bd[i])
             except:
