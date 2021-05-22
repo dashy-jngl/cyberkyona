@@ -21,9 +21,9 @@ class Birthday(commands.Cog):
 
 
     @commands.command()
-    async def birthday(self, ctx: commands.Context, askr: str = "none"):
+    async def birthday(self, ctx: commands.Context, ask: str = "none"):
         """ displays birthdays for a given date or supplies birthdates for a given joshi"""
-        ask = askr.lower()
+        ask = ask.lower()
         if ask == "none":
 
             today = date.today()
@@ -41,8 +41,7 @@ class Birthday(commands.Cog):
 
         else:
             try:
-                bd = birthdays[ask.lower()]
-                await ctx.send(ask + bd)
+                bd = birthdays[ask]
                 for i in range(len(bd)):
                     await ctx.send(bd[i])
             except:
