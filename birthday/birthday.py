@@ -58,6 +58,6 @@ class Birthday(commands.Cog):
         try:
             bd = birthdays[ask]
             for i in range(len(bd)):
-                await ctx.send(bd[i])
+                await ctx.send("Hey everyone its "+bd[i]+"'s birthday today")
         except:
             return
