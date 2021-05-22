@@ -23,7 +23,7 @@ class Birthday(commands.Cog):
     @commands.command()
     async def birthday(self, ctx: commands.Context, ask: str = "none"):
         """ displays birthdays for a given date or supplies birthdates for a given joshi"""
-
+        ask = ask.lower
         if ask == "none":
 
             today = date.today()
