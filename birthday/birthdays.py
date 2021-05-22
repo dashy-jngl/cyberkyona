@@ -24,7 +24,7 @@ birthdays = {
         "07.02": ["Haruka Umesaki"],
         "08.02": ["Syuri"],
         "09.02": ["Madusa/Alundra Blayze", "AKARI"],
-        "10.02": ["Victoria"]
+        "10.02": ["Victoria"],
         "12.02": ["SAKI"],
         "13.02": ["Sumika Yanagawa"],
         "14.02": ["Mio Shirai"],
