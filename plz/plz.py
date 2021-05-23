@@ -47,7 +47,7 @@ class Plz(BaseCog):
         if ask != "ASUKA" and ask != "SAKI":
             ask = ask.lower()
 
-        if ask = "momo":
+        if ask == "momo":
             ask = choice(momo)
 
         path = base_path + ask
