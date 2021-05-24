@@ -61,6 +61,10 @@ class Plz(BaseCog):
         if ask == "arisa":
             ask = choice(arisa)
 
+        if ask == "miyagi" or ask == "michiko":
+            ask = andras
+
+
         try:
             path = base_path + ask
             files = os.listdir(path)
