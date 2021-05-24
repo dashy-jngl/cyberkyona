@@ -67,6 +67,12 @@ class Plz(BaseCog):
         if ask == "hazuki":
             ask = hzk
 
+        if ask == "kyona":
+            ask = jungle
+
+        if ask == "tora":
+            ask = natsuko
+
         try:
             path = base_path + ask
             files = os.listdir(path)
