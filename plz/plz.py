@@ -22,8 +22,8 @@ base_path = "/home/dashy9000/data/joshifiles/"
 
 momo = [
     ("momok"),
-    ("momot"),
-    ("momow"),
+#    ("momot"),
+#    ("momow"),
 ]
 
 saya = [
