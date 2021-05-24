@@ -74,8 +74,12 @@ class Plz(BaseCog):
             ask = "natsuko"
 
         try:
-            path = base_path + ask
-            files = os.listdir(path)
+            try:
+                path = base_path + ask
+                files = os.listdir(path)
+            except:
+                path = base_path + "momow"
+                files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(file=discord.File(path+"/"+files[index]))
         except:
