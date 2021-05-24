@@ -47,7 +47,7 @@ class Plz(BaseCog):
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
     @commands.command()
-    async def plz(self, ctx, ask: str, num: int = 1):
+    async def plz(self, ctx, ask: str):
 
         if ask != "ASUKA" and ask != "SAKI":
             ask = ask.lower()
@@ -60,6 +60,9 @@ class Plz(BaseCog):
 
         if ask == "saya":
             ask = choice(saya)
+
+        if ask == "kana":
+            ask = "asuka"
 
         if ask == "miyagi" or ask == "michiko":
             ask = "andras"
