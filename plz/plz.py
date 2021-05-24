@@ -61,14 +61,12 @@ class Plz(BaseCog):
         if ask == "arisa":
             ask = choice(arisa)
 
-        path = base_path + ask
-        files = os.listdir(path)
-        index = random.randrange(1, len(files))
-
         try:
             await ctx.send(file=discord.File(path+"/"+files[index]))
+            path = base_path + ask
+            files = os.listdir(path)
+            index = random.randrange(0, len(files))
         except:
-            await ctx.send(path+"/"+files[index])
             await ctx.send("code better dash")
 
 
