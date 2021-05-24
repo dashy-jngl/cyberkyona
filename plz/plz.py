@@ -55,11 +55,11 @@ class Plz(BaseCog):
         if ask == "momo":
             ask = choice(momo)
 
-        if ask == "poi" or ask == "natsumi":
-            ask = "natsupoi"
-
         if ask == "arisa":
             ask = choice(arisa)
+
+        if ask == "saya":
+            ask = choice(saya)
 
         if ask == "miyagi" or ask == "michiko":
             ask = "andras"
@@ -72,6 +72,9 @@ class Plz(BaseCog):
 
         if ask == "tora":
             ask = "natsuko"
+
+        if ask == "poi" or ask == "natsumi":
+            ask = "natsupoi"
 
         try:
             try:
