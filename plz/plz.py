@@ -31,6 +31,11 @@ saya = [
     ("sayai"),
 ]
 
+arisa = [
+    ("arisah"),
+    ("arisan"),
+]
+
 BaseCog = getattr(commands, "Cog", object)
 
 
@@ -50,10 +55,19 @@ class Plz(BaseCog):
         if ask == "momo":
             ask = choice(momo)
 
-        path = base_path + ask
+        if ask == "poi" or ask == "natsumi":
+            ask = natsupoi
 
-        await ctx.send(path)
+        if ask == "arisa":
+            ask = choice(arisa)
 
+        try:
+            path = base_path + ask
+            files = os.listdir(path)
+            index = random.randrange(1, len(files))
+            await ctx.send(file=discord.File(path+"/"+files[index]))
+        except:
+            await ctx.send("code better dash")
 
 
     def cog_unload(self):
