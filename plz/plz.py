@@ -64,6 +64,8 @@ class Plz(BaseCog):
         if ask == "miyagi" or ask == "michiko":
             ask = andras
 
+        if ask == "hazuki":
+            ask = hzk
 
         try:
             path = base_path + ask
