@@ -21,9 +21,9 @@ import aiohttp
 base_path = "/home/dashy9000/data/joshifiles/"
 
 momo = [
-    ("momok"),
+#    ("momok"),
 #    ("momot"),
-#    ("momow"),
+    ("momow"),
 ]
 
 saya = [
