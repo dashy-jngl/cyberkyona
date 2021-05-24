@@ -67,6 +67,9 @@ class Plz(BaseCog):
         if ask == "hazuki":
             ask = "hzk"
 
+        if ask == "sarray":
+            ask = "sareee"
+
         if ask == "kyona":
             ask = "jungle"
 
