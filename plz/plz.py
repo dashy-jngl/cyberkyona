@@ -56,22 +56,22 @@ class Plz(BaseCog):
             ask = choice(momo)
 
         if ask == "poi" or ask == "natsumi":
-            ask = natsupoi
+            ask = "natsupoi"
 
         if ask == "arisa":
             ask = choice(arisa)
 
         if ask == "miyagi" or ask == "michiko":
-            ask = andras
+            ask = "andras"
 
         if ask == "hazuki":
-            ask = hzk
+            ask = "hzk"
 
         if ask == "kyona":
-            ask = jungle
+            ask = "jungle"
 
         if ask == "tora":
-            ask = natsuko
+            ask = "natsuko"
 
         try:
             path = base_path + ask
