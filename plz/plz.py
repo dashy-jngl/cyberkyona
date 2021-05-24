@@ -33,7 +33,7 @@ saya = [
 
 arisa = [
     ("arisah"),
-    ("arisan"),
+#    ("arisan"),
 ]
 
 BaseCog = getattr(commands, "Cog", object)
