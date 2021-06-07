@@ -36,6 +36,11 @@ arisa = [
 #    ("arisan"),
 ]
 
+saki = [
+    ("sakik"),
+    ("sakia"),
+]
+
 BaseCog = getattr(commands, "Cog", object)
 
 
@@ -61,8 +66,11 @@ class Plz(BaseCog):
         if ask == "saya":
             ask = choice(saya)
 
-        if ask == "kana":
-            ask = "asuka"
+        if ask == "saki":
+            ask = choice(saki)
+
+        if ask == "asuka":
+            ask = "kana"
 
         if ask == "miyagi" or ask == "michiko":
             ask = "andras"
