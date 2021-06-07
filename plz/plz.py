@@ -39,6 +39,7 @@ arisa = [
 saki = [
     ("sakik"),
     ("sakia"),
+    ("SAKI"),
 ]
 
 BaseCog = getattr(commands, "Cog", object)
