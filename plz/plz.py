@@ -41,6 +41,11 @@ saki = [
     ("sakia"),
     ("SAKI"),
 ]
+mio = [
+    ("miom"),
+#    ("mios"),
+
+]
 
 BaseCog = getattr(commands, "Cog", object)
 
@@ -58,11 +63,17 @@ class Plz(BaseCog):
         if ask != "ASUKA" and ask != "SAKI":
             ask = ask.lower()
 
-        if ask == "momo":
-            ask = choice(momo)
-
         if ask == "arisa":
             ask = choice(arisa)
+
+        if ask == "asuka":
+            ask = "kana"
+
+        if ask == "mio":
+            ask = choice(mio)
+
+        if ask == "momo":
+            ask = choice(momo)
 
         if ask == "saya":
             ask = choice(saya)
@@ -70,8 +81,6 @@ class Plz(BaseCog):
         if ask == "saki":
             ask = choice(saki)
 
-        if ask == "asuka":
-            ask = "kana"
 
         if ask == "miyagi" or ask == "michiko":
             ask = "andras"
