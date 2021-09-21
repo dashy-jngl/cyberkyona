@@ -47,6 +47,12 @@ mio = [
 
 ]
 
+maika = [
+    ("maika"),
+    ("maikao"),
+
+]
+
 BaseCog = getattr(commands, "Cog", object)
 
 
@@ -81,6 +87,8 @@ class Plz(BaseCog):
         if ask == "saki":
             ask = choice(saki)
 
+        if ask == "maika":
+            ask = choice(maika)
 
         if ask == "misao":
             ask = "hyper"
