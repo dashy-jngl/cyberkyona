@@ -47,12 +47,6 @@ mio = [
 
 ]
 
-maika = [
-    ("maika"),
-    ("maikao"),
-
-]
-
 BaseCog = getattr(commands, "Cog", object)
 
 
@@ -64,7 +58,7 @@ class Plz(BaseCog):
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
     @commands.command()
-    async def plz(self, ctx, ask: str):
+    async def plz(self, ctx, ask: str = "mayu"):
 
         if ask != "ASUKA" and ask != "SAKI":
             ask = ask.lower()
@@ -87,11 +81,15 @@ class Plz(BaseCog):
         if ask == "saki":
             ask = choice(saki)
 
-        if ask == "maika":
-            ask = choice(maika)
 
         if ask == "misao":
             ask = "hyper"
+
+        if ask == "slk":
+            ask = "starlight"
+
+        if ask == "hikaru":
+            ask = "shida"
 
         if ask == "miyagi" or ask == "michiko":
             ask = "andras"
@@ -119,7 +117,7 @@ class Plz(BaseCog):
                 path = base_path + ask
                 files = os.listdir(path)
             except:
-                path = base_path + "utami"
+                path = base_path + "momow"
                 files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(file=discord.File(path+"/"+files[index]))
