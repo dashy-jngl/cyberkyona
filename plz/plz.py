@@ -84,6 +84,9 @@ class Plz(BaseCog):
 
         if ask == "misao":
             ask = "hyper"
+            
+        if ask == "mii":
+            ask = "hibiscus"
 
         if ask == "champ":
             ask = "utami"
