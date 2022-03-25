@@ -27,7 +27,7 @@ dashy_path = "/home/dashy9000/data/.dashy"  #
 asuka_path = "/home/dashy9000/data/.asuka"  # 174754160963485698
 tiger_path = "/home/dashy9000/data/.tiger"  # 574149508989190154
 ksup_path = "/home/dashy9000/data/.ksup"    # 404141277358325771
-mo_path = "/home/mo/joshiplz"        # 132091505237032960
+mo_path = "/home/mo/joshiplz"               # 132091505237032960
 
 joshi_path = [
     (
