@@ -235,7 +235,7 @@ birthdays = {
         "ami": ["Ami Miura: 20.03.97"],
         "andras": ["Andras Miyagi/Michiko Miyagi: 16.06.93"],
         "anna": ["Anna Jay: 15.07.98"],
-        "Aoi": ["Aoi: 21.07.2002"],
+        "aoi": ["Aoi: 21.07.2002"],
         "aoife": ["Aoife Valkyrie: 23.10.96"],
         "": [""],
         "asashi": ["Asashi: 19.10.02"],
