@@ -83,6 +83,9 @@ class Plz(BaseCog):
 
         if ask == "coco":
             ask = "momok"
+        
+        if ask == "iyo":
+            ask = "io"
 
         if ask == "misao":
             ask = "hyper"
