@@ -122,6 +122,9 @@ class Plz(BaseCog):
 
         if ask == "poi" or ask == "natsumi":
             ask = "natsupoi"
+            
+        if ask == "sausage" or ask == "suasage" or ask == "ssj":
+            ask = "giulia"
 
         try:
             try:
