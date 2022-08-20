@@ -143,7 +143,7 @@ birthdays = {
         "15.08": ["Ruaka"],
         "17.08": ["Indi Hartwell", "Paige", "Ayano Irie"],
         "18.08": ["Starlight Kid"],
-        "21.08": ["Miku Aono"],
+        "21.08": ["Miku Aono", "Sae"],
         "24.08": ["DASH Chisako"],
         "27.08": ["Jazz"],
         "28.08": ["Yuko Sakurai"],
@@ -491,6 +491,7 @@ birthdays = {
         "ryo": ["Ryo Mizunami: 24.03.88"],
         "rythm": ["Rythm: 26.11.01"],
 #       s
+        "sae": ["Sae: 21.08.1995"],
         "saki": ["Saki Akai: 24.01.87", "SAKI: 12.02.88", "Saki Kashima: 05.05.93"],
         "sakura": ["Sakura Hirota: 12.04.78"],
         "saori": ["Saori Anou: 01.02.91"],
