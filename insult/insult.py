@@ -317,30 +317,14 @@ class Insult(commands.Cog):
                         " I love cyberKyona"
                     ),
                     _(
-                        " Pay me motherfucker!"
+                        " Nope! - idiot"
                     ),
                     _(
                         " Kyona-chan #1"
                     ),
                 ]
                 await ctx.send(f"{ctx.author.mention} {choice(bot_msg)}")    
-            elif user.id == 338135974158794752: #dashy
-                user = ctx.message.author
-                bot_msg = [
-                    _(
-                        "<:natsuReally:717898844964388884>"
-                    ),
-                    _(
-                        "<:makiItohPeace:717898761099280456>"
-                    ),
-                    _(
-                        f"{ctx.author.mention} Don't let <@713995207384760370> see that!"
-                    ),
-                    _(
-                        "<:konamiWut:717661695731826688>"
-                    ),
-                ]                
-                await ctx.send(f"{choice(bot_msg)}")
+
             
             else:
                 await ctx.send(user.mention + msg + choice(insults))
