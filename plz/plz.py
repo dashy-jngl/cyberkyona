@@ -142,11 +142,13 @@ class Plz(BaseCog):
             
         if ask == "bubbles":
             ask = "alexa"
+            
         if ask == "brzy":
             ask = "sayai"
             
         if ask == "feptom":
             ask = "unagi"
+            
         if ask == "roxie":
             ask = "tam" 
             
