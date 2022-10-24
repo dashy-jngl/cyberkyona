@@ -151,6 +151,9 @@ class Plz(BaseCog):
             
         if ask == "roxie":
             ask = "tam" 
+        
+        if ask == "dos":
+            ask = "aj" 
             
         try:
             try:
