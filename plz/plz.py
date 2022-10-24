@@ -134,7 +134,7 @@ class Plz(BaseCog):
         if ask == "sausage" or ask == "suasage" or ask == "ssj":
             ask = "sasha"
 
-        if ask == "bobby" ask == "bby":
+        if ask == "bobby" or ask == "bby":
             ask = "mayu"
            
         if ask == "mo":
