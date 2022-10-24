@@ -26,6 +26,11 @@ momo = [
     ("momow"),
 ]
 
+maika = [
+    ("maiker"),
+#    ("momot"),
+    ("maikao"),
+]
 saya = [
     ("sayak"),
     ("sayai"),
@@ -80,8 +85,11 @@ class Plz(BaseCog):
 
         if ask == "saki":
             ask = choice(saki)
+        
+        if ask == "maika":
+            ask = choice(maika)
 
-        if ask == "coco":
+        if ask == "coco" or ask == "ez" :
             ask = "momok"
         
         if ask == "iyo":
@@ -124,14 +132,30 @@ class Plz(BaseCog):
             ask = "natsupoi"
             
         if ask == "sausage" or ask == "suasage" or ask == "ssj":
-            ask = "giulia"
+            ask = "sasha"
 
+        if ask == "bobby" ask == "bby":
+            ask = "mayu"
+           
+        if ask == "mo":
+            ask = "momoka"
+            
+        if ask == "bubbles":
+            ask = "alexa"
+        if ask == "brzy":
+            ask = "sayai"
+            
+        if ask == "feptom":
+            ask = "unagi"
+        if ask == "roxie":
+            ask = "tam" 
+            
         try:
             try:
                 path = base_path + ask
                 files = os.listdir(path)
             except:
-                path = base_path + "hzk"
+                path = base_path + "maya"
                 files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(file=discord.File(path+"/"+files[index]))
