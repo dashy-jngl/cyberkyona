@@ -85,19 +85,19 @@ class Plz(BaseCog):
 
         if ask == "saki":
             ask = choice(saki)
-        
+
         if ask == "maika":
             ask = choice(maika)
 
         if ask == "coco" or ask == "ez" :
             ask = "momok"
-        
+
         if ask == "iyo":
             ask = "io"
 
         if ask == "misao":
             ask = "hyper"
-            
+
         if ask == "mii":
             ask = "hibiscus"
 
@@ -130,31 +130,34 @@ class Plz(BaseCog):
 
         if ask == "poi" or ask == "natsumi":
             ask = "natsupoi"
-            
+
         if ask == "sausage" or ask == "suasage" or ask == "ssj":
             ask = "sasha"
 
         if ask == "bobby" or ask == "bby":
             ask = "mayu"
-           
+
         if ask == "mo":
             ask = "momoka"
-            
+
         if ask == "bubbles":
             ask = "alexa"
-            
+
         if ask == "brzy":
             ask = "sayai"
-            
+
         if ask == "feptom":
             ask = "unagi"
-            
+
         if ask == "roxie":
-            ask = "tam" 
-        
+            ask = "tam"
+
         if ask == "dos":
-            ask = "aj" 
-            
+            ask = "aj"
+        if ask == "parasite":
+            ask = "tam"
+        if ask == "walker":
+            ask = "sayak"
         try:
             try:
                 path = base_path + ask
