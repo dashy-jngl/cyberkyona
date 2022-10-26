@@ -182,7 +182,7 @@ birthdays = {
         "24.10": ["AKINO"],
         "25.10": ["Yuki Aino"],
         "25.10": ["Rydeen Hagane"],
-        "26.10": ["Chika Goto"] 
+        "26.10": ["Chika Goto"],
         "27.10": ["ASUKA/Veny", "Leyla Hirsch"],
         "28.10": ["Mayumi Ozaki"],
 #       nov
