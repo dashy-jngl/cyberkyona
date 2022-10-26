@@ -273,7 +273,7 @@ birthdays = {
         "charlie": ["Charlie Evans: 02.02.1997"],
         "charlotte": ["Charlotte Flair: 05.04.86"],
         "chelsea": ["Chelsea Green: 04.04.91"],
-        "chika": ["Chika Goto: 26.10.1996"],
+        "chika": ["Chika Goto: 26.10.1994"],
         "chie": ["Chie Koishikawa: 29.07.98", "Chie Ozora: 11.11.93"],
         "chigusa": ["Chigusa Nagayo: 08.12.64"],
         "chihi": ["Chihiro Hashimoto: 01.07.92"],
