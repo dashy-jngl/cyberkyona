@@ -68,7 +68,7 @@ dos = [
 ]
 bblz = [
     ("alexa"),
-    ("kelly"),
+#    ("kelly"),
     ("rhea"),
 ]
 brzy = [
