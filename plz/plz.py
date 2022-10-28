@@ -49,8 +49,44 @@ saki = [
 mio = [
     ("miom"),
 #    ("mios"),
-
 ]
+#user choice list
+bby = [
+    ("maiker"),
+    ("aoi"),
+    ("unagi"),
+    ("azm"),
+    ("mayu"),
+    ("rika"),
+    ("momow"),
+]
+dos = [
+    ("aj"),
+    ("becky"),
+    ("rhea"),
+    ("mandy"),
+]
+bblz = [
+    ("alexa"),
+    ("kelly"),
+    ("rhea"),
+]
+brzy = [
+    ("syuri"),
+    ("sayai"),
+    ("misao"),
+]
+mo = [
+    ("momoka"),
+    ("himeka"),
+    ("kaho"),
+    ("mayaf"),
+    ("sumika"),
+]
+bby = [
+    (""),
+]
+
 
 BaseCog = getattr(commands, "Cog", object)
 
@@ -158,6 +194,10 @@ class Plz(BaseCog):
             ask = "tam"
         if ask == "walker":
             ask = "sayak"
+        if ask == "dashy":
+            ask = "momow"
+        if ask == "ksup":
+            ask = "momow"
         try:
             try:
                 path = base_path + ask
