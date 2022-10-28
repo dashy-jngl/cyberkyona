@@ -80,8 +80,9 @@ mo = [
     ("momoka"),
     ("himeka"),
     ("kaho"),
-    ("mayaf"),
-    ("sumika"),
+    ("miyuki"),
+#    ("mayaf"),
+#    ("sumika"),
 ]
 ksup = [
     ("hzk"),
