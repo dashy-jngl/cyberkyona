@@ -83,8 +83,11 @@ mo = [
     ("mayaf"),
     ("sumika"),
 ]
-bby = [
-    (""),
+ksup = [
+    ("hzk"),
+    ("arisah"),
+    ("momow"),
+    ("kagetsu"),
 ]
 
 
@@ -171,16 +174,16 @@ class Plz(BaseCog):
             ask = "sasha"
 
         if ask == "bobby" or ask == "bby":
-            ask = "mayu"
+            ask = choice(bby)
 
         if ask == "mo":
-            ask = "momoka"
+            ask = choice(mo)
 
-        if ask == "bubbles":
-            ask = "alexa"
+        if ask == "bubbles" or ask == "bblz":
+            ask = choice(bblz)
 
         if ask == "brzy":
-            ask = "sayai"
+            ask = choice(brzy)
 
         if ask == "feptom":
             ask = "unagi"
@@ -189,7 +192,7 @@ class Plz(BaseCog):
             ask = "tam"
 
         if ask == "dos":
-            ask = "aj"
+            ask = choice(dos)
         if ask == "parasite":
             ask = "tam"
         if ask == "walker":
@@ -197,7 +200,7 @@ class Plz(BaseCog):
         if ask == "dashy":
             ask = "momow"
         if ask == "ksup":
-            ask = "momow"
+            ask = choice(ksup)
         try:
             try:
                 path = base_path + ask
