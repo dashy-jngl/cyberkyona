@@ -74,7 +74,7 @@ bblz = [
 brzy = [
     ("syuri"),
     ("sayai"),
-    ("misao"),
+    ("hyper"),
 ]
 mo = [
     ("momoka"),
