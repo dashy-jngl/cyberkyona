@@ -207,7 +207,7 @@ class Plz(BaseCog):
                 path = base_path + ask
                 files = os.listdir(path)
             except:
-                path = base_path + "maya"
+                path = base_path + "tomoka"
                 files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(file=discord.File(path+"/"+files[index]))
