@@ -22,6 +22,7 @@ birthdays = {
 #       feb
         "01.02": ["Saori Anou"],
         "02.02": ["Isla Dawn", "Yuki Miyazaki", "Charli Evans"],
+        "04.02": ["Harukaze"],
         "07.02": ["Haruka Umesaki"],
         "08.02": ["Syuri"],
         "09.02": ["Madusa/Alundra Blayze", "AKARI"],
@@ -310,6 +311,7 @@ birthdays = {
         "hanako": ["Hanako Nakamori: 01.12.88"],
         "hanan": ["Hanan: 11.08.04"],
         "haruka": ["Haruka Umesaki: 07.02.01"],
+        "harukaze": ["Harukaze : 04.02.88"],
         "haruna": ["Haruna Neko: 28.12.98"],
         "hazuki": ["Hazuki: 29.09.97"],
         "": [""],
