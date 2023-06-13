@@ -44,7 +44,7 @@ class Simp(commands.Cog):
             else:
                 await ctx.send("**" + user + "'s** simprate is:\n\n" + "**" +  simp +"%**")
         else:
-            await ctx.send("**" + ctx.message.author.name + "'s** simprate is:\n\n" + "**" +  simp +"%**")
+            await ctx.send("**" + user + "'s** simprate is:\n\n" + "**" +  simp +"%**")
     
     @commands.command()
     async def penis(self, ctx: commands.Context, user: discord.Member = None) -> None:
