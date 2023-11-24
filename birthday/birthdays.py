@@ -213,8 +213,9 @@ birthdays = {
         "28.11": ["Saya Kamitani"],
         "29.11": ["Rosemary"],
         "30.11": ["Naomi"],
+#        dec
         "01.12": ["Hanako Nakamori"],
-        "03.12": ["Mirai Maiumi"],
+        "03.12": ["Kizuna", "Mirai"], #Mirai Maiumi
         "04.12": ["Itsuki Aoki", "Dynamite Kansai"],
         "05.12": ["Raku"],
         "07.12": ["Tsubasa Kuragaki"],
@@ -368,6 +369,7 @@ birthdays = {
         "kiera": ["Kiera Hogan: 16.09.94"],
         "killer": ["Killer Kelly: 21.03.92"],
         "kimber": ["Kimber Lee: 27.06.90"],
+        "kizuna": ["Kizuna: 03.12.2004"],
         "": [""],
         "klr": ["Kay Lee Ray: 11.08.92"],
         "koguma": ["Koguma: 20.01.1998"],
