@@ -597,7 +597,6 @@ birthdays = {
         "yurika": ["Yurika Oka: 23.10.03"],
         "yuu": ["Yuu: 19.07.??"],
         "yuuki": ["Yuuki Mashiro: 18.04.01"],
-        "yuuri": ["YuuRI: 16.09.97"],
         "yuuRI": ["YuuRI: 16.09.97"],
         "yuzapon": ["Yuzuki Aikawa/Yuzupon: 16.05.83"],
         "yuzuki": ["Yuzuki Aikawa/Yuzupon: 16.05.83"],
