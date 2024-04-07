@@ -3,5 +3,5 @@
 from .plz import Plz
 
 
-def setup(bot):
-    bot.add_cog(Plz(bot))
+async def setup(bot):
+    await bot.add_cog(Plz(bot))
