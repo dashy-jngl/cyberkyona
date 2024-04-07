@@ -1,5 +1,5 @@
 from .birthday import Birthday
 
-def setup(bot):
+async def setup(bot):
     n = Birthday(bot)
     bot.add_cog(n)
