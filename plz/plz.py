@@ -204,8 +204,7 @@ class Plz(BaseCog):
             ask = choice(ksup)
         
         user = ctx.message.author
-        if user.id == 338135974158794752:
-            await ctx.send("fuckyou dash")
+        if user.id == 151823155340509186 or user.id == 734768348201615400:
             return
         try:
             try:
