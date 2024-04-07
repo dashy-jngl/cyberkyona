@@ -103,7 +103,7 @@ class Plz(BaseCog):
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
     @commands.command()
-    async def plz(self, ctx, ask: str = "mayu"):
+    async def plz(self, ctx, ask: str = "mayu", user: discord.Message.author = None):
 
         if ask != "ASUKA" and ask != "SAKI":
             ask = ask.lower()
@@ -202,6 +202,9 @@ class Plz(BaseCog):
             ask = "momow"
         if ask == "ksup":
             ask = choice(ksup)
+        
+        if user.id == 338135974158794752:
+            await ctx.send("fuckyou dash")
         try:
             try:
                 path = base_path + ask
