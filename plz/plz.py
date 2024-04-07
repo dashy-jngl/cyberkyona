@@ -206,6 +206,7 @@ class Plz(BaseCog):
         user = ctx.message.author
         if user.id == 338135974158794752:
             await ctx.send("fuckyou dash")
+            return
         try:
             try:
                 path = base_path + ask
