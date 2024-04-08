@@ -203,9 +203,9 @@ class Plz(BaseCog):
         if ask == "ksup":
             ask = choice(ksup)
         
-        user = ctx.message.author
-        if user.id == 151823155340509186 or user.id == 734768348201615400:
-            return
+        # user = ctx.message.author
+        # if user.id == 151823155340509186 or user.id == 734768348201615400:
+        #     return
         try:
             try:
                 path = base_path + ask
