@@ -20,7 +20,7 @@ birthdays = {
         "27.01": ["Zoey Stark"],
         "30.01": ["Becky Lynch", "Natsuko Tora"],
 #       feb
-        "01.02": ["Saori Anou", "Yuzuki (?stardom)"],
+        "01.02": ["Saori Anou", "Yuzuki (Victoria)"],
         "02.02": ["Isla Dawn", "Yuki Miyazaki", "Charli Evans"],
         "05.02": ["Harukaze"],
         "07.02": ["Haruka Umesaki"],
@@ -594,7 +594,7 @@ birthdays = {
         "utami": ["Utami Hayashishita: 14.09.98"],
         "": [""],
 #       v
-        "victoria": ["Victoria: 10.02.71"],
+        "victoria": ["Victoria: 10.02.71", "Victoria (Yuzuki): 01.02.05"],
         "": [""],
 #       w
         "waka": ["Waka Tsukiyama: 26.01.92"],
