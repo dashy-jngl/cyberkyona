@@ -202,7 +202,7 @@ class Plz(BaseCog):
             ask = "momow"
         if ask == "ksup":
             ask = choice(ksup)
-        if ask == "mooshty" or ask == "moosh"
+        if ask == "mooshty" or ask == "moosh":
             ask = "utami"
         
         user = ctx.message.author
