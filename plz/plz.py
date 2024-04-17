@@ -202,6 +202,8 @@ class Plz(BaseCog):
             ask = "momow"
         if ask == "ksup":
             ask = choice(ksup)
+        if ask == "mooshty" or ask == "moosh"
+            ask = "utami"
         
         user = ctx.message.author
         if user.id == 151823155340509186 or user.id == 734768348201615400:
@@ -211,7 +213,7 @@ class Plz(BaseCog):
                 path = base_path + ask
                 files = os.listdir(path)
             except:
-                path = base_path + "utami"
+                path = base_path + "mari"
                 files = os.listdir(path)
             index = random.randrange(0, len(files))
             await ctx.send(file=discord.File(path+"/"+files[index]))
