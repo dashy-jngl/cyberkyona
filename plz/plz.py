@@ -94,7 +94,7 @@ ksup = [
     ("kagetsu"),
 ]
 kray = [
-    ("kiras"),
+    ("kira"),
     ("konami"),
     ("misak"),
     ("tomoka"),
