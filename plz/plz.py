@@ -218,7 +218,7 @@ class Plz(BaseCog):
         if ask == "mooshty" or ask == "moosh":
             ask = "utami"
         if ask == "kray":
-            ask == choice(kray)
+            ask = choice(kray)
         user = ctx.message.author
         if user.id == 151823155340509186 or user.id == 734768348201615400:
             return
