@@ -152,7 +152,7 @@ class Plz(BaseCog):
             ask = "hibiscus"
         
         if ask == "misa":
-            ask == choice(misa)
+            ask = choice(misa)
             
         if ask == "champ":
             ask = "utami"
