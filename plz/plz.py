@@ -19,7 +19,10 @@ import aiohttp
 #from typing import Awaitable, Callable
 
 base_path = "/home/dashy9000/data/joshifiles/"
-
+misa = [
+    ("misam"),
+    ("misak")
+]
 momo = [
     ("momok"),
 #    ("momot"),
@@ -90,7 +93,14 @@ ksup = [
     ("momow"),
     ("kagetsu"),
 ]
-
+kray = [
+    ("kiras"),
+    ("konami"),
+    ("misak"),
+    ("tomoka"),
+    ("shida"),
+    ("jungle")
+]
 
 BaseCog = getattr(commands, "Cog", object)
 
@@ -140,7 +150,10 @@ class Plz(BaseCog):
 
         if ask == "mii":
             ask = "hibiscus"
-
+        
+        if ask == "misa":
+            ask == choice(misa)
+            
         if ask == "champ":
             ask = "utami"
 
@@ -204,7 +217,8 @@ class Plz(BaseCog):
             ask = choice(ksup)
         if ask == "mooshty" or ask == "moosh":
             ask = "utami"
-        
+        if ask == "kray":
+            ask == choice(kray)
         user = ctx.message.author
         if user.id == 151823155340509186 or user.id == 734768348201615400:
             return
