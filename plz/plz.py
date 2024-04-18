@@ -21,7 +21,7 @@ import aiohttp
 base_path = "/home/dashy9000/data/joshifiles/"
 misa = [
     ("misam"),
-    ("misak")
+    ("misak"),
 ]
 momo = [
     ("momok"),
@@ -99,7 +99,7 @@ kray = [
     ("misak"),
     ("tomoka"),
     ("shida"),
-    ("jungle")
+    ("jungle"),
 ]
 
 BaseCog = getattr(commands, "Cog", object)
