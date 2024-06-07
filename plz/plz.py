@@ -155,7 +155,7 @@ class Plz(BaseCog):
             ask = choice(misa)
             
         if ask == "champ":
-            ask = "utami"
+            ask = "maiker"
 
         if ask == "slk":
             ask = "starlight"
