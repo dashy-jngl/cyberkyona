@@ -392,7 +392,7 @@ birthdays = {
         "kouki": ["Kouki: 23.01.??"],
         "kris": ["Kris Statlander: 07.08.95", "Kris Wolf: 12.08.84"],
         "kurumi": ["Kurumi Hiiragi: 01.04.00"],
-        "kurara": ["Kurara!: 20.06.2000"]
+        "kurara": ["Kurara!: 20.06.2000"],
         "kyoko": ["Kyoko Kimura: 19.03.77", ""],
         "kyona": ["Jungle Kyona: 04.04.91"],
         "kyuri": ["Kyuri: 28.05.98"],
