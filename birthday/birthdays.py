@@ -115,6 +115,7 @@ birthdays = {
         "15.06": ["Bayley", "Runa Okubo"],
         "16.06": ["Andras Miyagi/Michiko Miyagi"],
         "17.06": ["Mille Mckenzie"],
+        "20.06": ["Kurara"],
         "23.06": ["Brandi Rhodes", "Jessie Mckay/Billie Kay"],
         "24.06": ["Kagetsu"],
         "27.06": ["Kimber Lee"],
@@ -391,6 +392,7 @@ birthdays = {
         "kouki": ["Kouki: 23.01.??"],
         "kris": ["Kris Statlander: 07.08.95", "Kris Wolf: 12.08.84"],
         "kurumi": ["Kurumi Hiiragi: 01.04.00"],
+        "kurara": ["Kurara!: 20.06.2000"]
         "kyoko": ["Kyoko Kimura: 19.03.77", ""],
         "kyona": ["Jungle Kyona: 04.04.91"],
         "kyuri": ["Kyuri: 28.05.98"],
