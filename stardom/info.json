@@ -2,6 +2,6 @@
   "author": ["Twentysix", "DesignByAdrian (ThinkAdrian#1186)", "Dasha"],
   "DESCRIPTION": "Usage: [p]birthday date/name",
   "SHORT": "Displays birthdays for a given date or joshi",
-  "NAME": "Birthday",
+  "NAME": "Stardom",
   "TAGS": ["fun"]
 }

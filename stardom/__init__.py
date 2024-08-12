@@ -1,5 +1,5 @@
-from .stardom import Stardom
+from .stardom import StardomCog
 
 def setup(bot):
-    n = Stardom(bot)
+    n = StardomCog(bot)
     bot.add_cog(n)
