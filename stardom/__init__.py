@@ -1,5 +1,5 @@
 from .stardom import StardomCog
 
-def setup(bot):
+async def setup(bot):
     n = StardomCog(bot)
-    bot.add_cog(n)
+    await bot.add_cog(n)
