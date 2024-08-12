@@ -18,7 +18,13 @@ class StardomCog(commands.Cog):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Find the first show link
-        first_show_link = soup.find('a', {'class': 'mc-link'}).get('href')
+        first_show_element = soup.find('a', {'class': 'mc-link'})
+
+        if first_show_element is None:
+            # Log the error or inform the user that the element wasn't found
+            return []
+
+        first_show_link = first_show_element.get('href')
 
         # Now, get the content of the first show
         show_response = requests.get(first_show_link)
@@ -47,7 +53,7 @@ class StardomCog(commands.Cog):
             
             await ctx.send(embed=embed)
         else:
-            await ctx.send("No matches found.")
+            await ctx.send("No matches found or unable to scrape the page.")
 
 # Setup function to add this cog to the bot
 def setup(bot):
