@@ -47,18 +47,13 @@ class StardomCog(commands.Cog):
         return show_name, show_time, match_info
 
     @commands.command()
-    async def stardom(self, ctx, event_index: int = 0):
-        """Post the next Stardom show match card, optionally specify which upcoming event to show."""
-        show_name, show_time, match_info = self.scrape_stardom_schedule(event_index)
+    async def stardom(self, ctx):
+        """Post the next Stardom show match card."""
+        show_name, show_time, match_info = self.scrape_stardom_schedule()
 
         if match_info:
-            if event_index == 0:
-                title = "Next Stardom Show"
-            else:
-                title = f"Next {event_index} Stardom Show"
-
             embed = discord.Embed(
-                title=title,
+                title=f"Next Stardom Show: {show_name}",
                 description=f"Time: {show_time}\nMatch Card:"
             )
             
@@ -68,7 +63,6 @@ class StardomCog(commands.Cog):
             await ctx.send(embed=embed)
         else:
             await ctx.send("No matches found or unable to scrape the page.")
-
 
 # Setup function to add this cog to the bot
 def setup(bot):
