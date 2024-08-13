@@ -1,6 +1,6 @@
 {
   "author": ["-"],
-  "DESCRIPTION": "Usage: [p]birthday date/name",
+  "DESCRIPTION": "Usage: [k]stardom date/name",
   "SHORT": "Shows the Next Stardom ShowCard",
   "NAME": "Stardom",
   "TAGS": ["fun"]
