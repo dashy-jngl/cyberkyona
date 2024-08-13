@@ -1,7 +1,7 @@
 {
-  "author": ["Twentysix", "DesignByAdrian (ThinkAdrian#1186)", "Dasha"],
+  "author": ["-"],
   "DESCRIPTION": "Usage: [p]birthday date/name",
-  "SHORT": "Displays birthdays for a given date or joshi",
+  "SHORT": "Shows the Next Stardom ShowCard",
   "NAME": "Stardom",
   "TAGS": ["fun"]
 }
