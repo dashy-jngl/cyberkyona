@@ -52,9 +52,16 @@ class StardomCog(commands.Cog):
         """Post the nth Stardom show match card."""
         show_name, show_time, match_info = self.scrape_stardom_schedule(show_number)
 
+        titleholder = f"Stardom Show {show_number}: {show_name}"
+        if show_number == 1:
+            titleholder = f"Next Stardom Show: {show_name}"
+        
+        
         if match_info:
             embed = discord.Embed(
-                title=f"Stardom Show {show_number}: {show_name}",
+
+                title=titleholder,
+                
                 description=f"Time: {show_time}\nMatch Card:"
             )
             
