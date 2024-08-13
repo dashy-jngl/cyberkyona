@@ -10,7 +10,7 @@ class StardomCog(commands.Cog):
         self.bot = bot
 
     def scrape_stardom_schedule(self):
-        """Scrape the Stardom schedule page and extract match details along with the show name."""
+        """Scrape the Stardom schedule page and extract match details along with the show name and time."""
         schedule_url = "https://wwr-stardom.com/schedule/"
 
         # Get the page content
@@ -21,15 +21,16 @@ class StardomCog(commands.Cog):
         upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
 
         if not upcoming_events:
-            return None, []
+            return None, None, []
 
         first_show_element = upcoming_events.find('a', href=True)
         
         if not first_show_element:
-            return None, []
+            return None, None, []
 
         first_show_link = first_show_element['href']
         show_name = first_show_element.find('span', {'class': 'mc_list_in_tit'}).text.strip()
+        show_time = first_show_element.find('span', {'class': 'mc_list_in_time'}).text.strip()
 
         # Now, get the content of the first show
         show_response = requests.get(first_show_link)
@@ -43,15 +44,18 @@ class StardomCog(commands.Cog):
             if '◆' in match.text:  # Simple filter to get match details
                 match_info.append(match.text.strip())
 
-        return show_name, match_info
+        return show_name, show_time, match_info
 
     @commands.command()
     async def stardom(self, ctx):
         """Post the next Stardom show match card."""
-        show_name, match_info = self.scrape_stardom_schedule()
+        show_name, show_time, match_info = self.scrape_stardom_schedule()
 
         if match_info:
-            embed = discord.Embed(title=f"Next Stardom Show: {show_name}", description="Match Card")
+            embed = discord.Embed(
+                title=f"Next Stardom Show: {show_name}",
+                description=f"Time: {show_time}\nMatch Card:"
+            )
             
             for i, match in enumerate(match_info, start=1):
                 embed.add_field(name=f"Match {i}", value=match, inline=False)
