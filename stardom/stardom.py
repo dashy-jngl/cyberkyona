@@ -9,36 +9,34 @@ class StardomCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def scrape_stardom_schedule(self, event_index=0):
-        """Scrape the Stardom schedule page and extract match details for a specific event."""
+    def scrape_stardom_schedule(self):
+        """Scrape the Stardom schedule page and extract match details along with the show name and time."""
         schedule_url = "https://wwr-stardom.com/schedule/"
 
         # Get the page content
         response = requests.get(schedule_url)
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Find all show links within the <ul> with id 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'
+        # Find the first show link within the <ul> with id 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'
         upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
 
         if not upcoming_events:
             return None, None, []
 
-        show_elements = upcoming_events.find_all('a', href=True)
-
-        if len(show_elements) <= event_index:
+        first_show_element = upcoming_events.find('a', href=True)
+        
+        if not first_show_element:
             return None, None, []
 
-        selected_show_element = show_elements[event_index]
-        
-        selected_show_link = selected_show_element['href']
-        show_name = selected_show_element.find('span', {'class': 'mc_list_in_tit'}).text.strip()
-        show_time = selected_show_element.find('span', {'class': 'mc_list_in_time'}).text.strip()
+        first_show_link = first_show_element['href']
+        show_name = first_show_element.find('span', {'class': 'mc_list_in_tit'}).text.strip()
+        show_time = first_show_element.find('span', {'class': 'mc_list_in_time'}).text.strip()
 
-        # Now, get the content of the selected show
-        show_response = requests.get(selected_show_link)
+        # Now, get the content of the first show
+        show_response = requests.get(first_show_link)
         show_soup = BeautifulSoup(show_response.text, 'html.parser')
 
-        # Extract the matches (You can loop over all matches)
+        # Example: Extract the first match (You can loop over all matches)
         match_info = []
         matches = show_soup.find_all('p')  # Assuming each match is inside a <p> tag
 
@@ -71,10 +69,6 @@ class StardomCog(commands.Cog):
         else:
             await ctx.send("No matches found or unable to scrape the page.")
 
-    @commands.command()
-    async def stardom2(self, ctx):
-        """Post the match card for the second upcoming Stardom show."""
-        await self.stardom(ctx, event_index=1)
 
 # Setup function to add this cog to the bot
 def setup(bot):
