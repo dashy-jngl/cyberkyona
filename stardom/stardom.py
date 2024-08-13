@@ -18,7 +18,8 @@ class StardomCog(commands.Cog):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Find all show links within the <ul> with id 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'
-        upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
+        # upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
+        upcoming_events = soup.find('ul', {'class': 'upcoming-events'})
 
         if not upcoming_events:
             return None, None, []
