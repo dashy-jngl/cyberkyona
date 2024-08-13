@@ -38,7 +38,7 @@ class StardomCog(commands.Cog):
         show_response = requests.get(selected_show_link)
         show_soup = BeautifulSoup(show_response.text, 'html.parser')
 
-        # Example: Extract the matches (You can loop over all matches)
+        # Extract the matches (You can loop over all matches)
         match_info = []
         matches = show_soup.find_all('p')  # Assuming each match is inside a <p> tag
 
@@ -54,8 +54,13 @@ class StardomCog(commands.Cog):
         show_name, show_time, match_info = self.scrape_stardom_schedule(event_index)
 
         if match_info:
+            if event_index == 0:
+                title = "Next Stardom Show"
+            else:
+                title = f"Next {event_index} Stardom Show"
+
             embed = discord.Embed(
-                title=f"Stardom Show: {show_name}",
+                title=title,
                 description=f"Time: {show_time}\nMatch Card:"
             )
             
