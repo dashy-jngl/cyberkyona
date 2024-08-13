@@ -2,16 +2,15 @@ import discord
 from redbot.core import commands
 import requests
 from bs4 import BeautifulSoup
-from io import BytesIO
 
 class StardomCog(commands.Cog):
-    """Cog for scraping Stardom schedule and posting match details with images."""
+    """Cog for scraping Stardom schedule and posting match details."""
 
     def __init__(self, bot):
         self.bot = bot
 
     def scrape_stardom_schedule(self, event_index=0):
-        """Scrape the Stardom schedule page and extract match details, show name, time, and match images."""
+        """Scrape the Stardom schedule page and extract match details, show name, time, and location."""
         schedule_url = "https://wwr-stardom.com/schedule/"
 
         # Get the page content
@@ -22,24 +21,25 @@ class StardomCog(commands.Cog):
         upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
 
         if not upcoming_events:
-            return None, None, [], []
+            return None, None, None, []
 
         show_elements = upcoming_events.find_all('a', href=True)
 
         if len(show_elements) <= event_index:
-            return None, None, [], []
+            return None, None, None, []
 
         selected_show_element = show_elements[event_index]
         
         selected_show_link = selected_show_element['href']
         show_name = selected_show_element.find('span', {'class': 'mc_list_in_tit'}).text.strip()
         show_time = selected_show_element.find('span', {'class': 'mc_list_in_time'}).text.strip()
+        show_location = show_name.split('』')[-1].strip()  # Extract location from the show name
 
         # Now, get the content of the selected show
         show_response = requests.get(selected_show_link)
         show_soup = BeautifulSoup(show_response.text, 'html.parser')
 
-        # Example: Extract the matches and their corresponding images
+        # Extract the matches
         match_info = []
         matches = show_soup.find_all('p')  # Assuming each match is inside a <p> tag
 
@@ -47,14 +47,12 @@ class StardomCog(commands.Cog):
             if '◆' in match.text:  # Simple filter to get match details
                 match_info.append(match.text.strip())
 
-        # For simplicity, let's return just the match info without images.
-        # You can modify this part to handle images as per your needs.
-        return show_name, show_time, match_info
+        return show_name, show_time, show_location, match_info
 
     @commands.command()
     async def stardom(self, ctx, event_index: int = 0):
         """Post the next Stardom show match card, optionally specify which upcoming event to show."""
-        show_name, show_time, match_info = self.scrape_stardom_schedule(event_index)
+        show_name, show_time, show_location, match_info = self.scrape_stardom_schedule(event_index)
 
         if match_info:
             if event_index == 0:
@@ -64,7 +62,7 @@ class StardomCog(commands.Cog):
 
             embed = discord.Embed(
                 title=title,
-                description=f"Time: {show_time}\nMatch Card:"
+                description=f"Time: {show_time}\nLocation: {show_location}\nMatch Card:"
             )
             
             for i, match in enumerate(match_info, start=1):
