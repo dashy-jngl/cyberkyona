@@ -2,15 +2,16 @@ import discord
 from redbot.core import commands
 import requests
 from bs4 import BeautifulSoup
+from io import BytesIO
 
 class StardomCog(commands.Cog):
-    """Cog for scraping Stardom schedule and posting match details."""
+    """Cog for scraping Stardom schedule and posting match details with images."""
 
     def __init__(self, bot):
         self.bot = bot
 
     def scrape_stardom_schedule(self, event_index=0):
-        """Scrape the Stardom schedule page and extract match details for a specific event."""
+        """Scrape the Stardom schedule page and extract match details, show name, time, and match images."""
         schedule_url = "https://wwr-stardom.com/schedule/"
 
         # Get the page content
@@ -21,12 +22,12 @@ class StardomCog(commands.Cog):
         upcoming_events = soup.find('ul', {'id': 'upcoming-events-c6674bbda7f981637828f635a37cbeaa'})
 
         if not upcoming_events:
-            return None, None, []
+            return None, None, [], []
 
         show_elements = upcoming_events.find_all('a', href=True)
 
         if len(show_elements) <= event_index:
-            return None, None, []
+            return None, None, [], []
 
         selected_show_element = show_elements[event_index]
         
@@ -38,7 +39,7 @@ class StardomCog(commands.Cog):
         show_response = requests.get(selected_show_link)
         show_soup = BeautifulSoup(show_response.text, 'html.parser')
 
-        # Example: Extract the matches (You can loop over all matches)
+        # Example: Extract the matches and their corresponding images
         match_info = []
         matches = show_soup.find_all('p')  # Assuming each match is inside a <p> tag
 
@@ -46,6 +47,8 @@ class StardomCog(commands.Cog):
             if '◆' in match.text:  # Simple filter to get match details
                 match_info.append(match.text.strip())
 
+        # For simplicity, let's return just the match info without images.
+        # You can modify this part to handle images as per your needs.
         return show_name, show_time, match_info
 
     @commands.command()
@@ -54,14 +57,19 @@ class StardomCog(commands.Cog):
         show_name, show_time, match_info = self.scrape_stardom_schedule(event_index)
 
         if match_info:
+            if event_index == 0:
+                title = "Next Stardom Show"
+            else:
+                title = f"Next {event_index + 1} Stardom Show"
+
             embed = discord.Embed(
-                title=f"Stardom Show: {show_name}",
+                title=title,
                 description=f"Time: {show_time}\nMatch Card:"
             )
             
             for i, match in enumerate(match_info, start=1):
                 embed.add_field(name=f"Match {i}", value=match, inline=False)
-            
+
             await ctx.send(embed=embed)
         else:
             await ctx.send("No matches found or unable to scrape the page.")
