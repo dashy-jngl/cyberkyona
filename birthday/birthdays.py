@@ -293,7 +293,7 @@ birthdays = {
         "awesome": ["Amazing Kong/Awesome Kong: 04.09.77"],
         "ayako": ["Ayako Sato: 04.01.86"],
         "ayano": ["Ayano Irie: 17.08.96"],
-	"ayame": ["Ayame: 14.08.95"]
+	"ayame": ["Ayame: 14.08.95"],
         "ayumi": ["Ayumi Hayashi: 12.11.96"],
         "azm": ["AZM: 01.10.02"],
         "AZM": ["AZM: 01.10.02"],
