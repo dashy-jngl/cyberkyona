@@ -165,7 +165,7 @@ birthdays = {
         "11.08": ["Sena Shiori", "Hanan", "Alba Fyre/Kay Lee Ray"],
         "12.08": ["Kris Wolf"],
         "13.08": ["Momo Tani"],
-	"14.08": ["Ava"], 
+	"14.08": ["Ava", "Ayame"], 
         "15.08": ["Ruaka"],
 	"16.08": ["Kira☆An"],
         "17.08": ["Indi Hartwell", "Paige", "Ayano Irie"],
@@ -293,6 +293,7 @@ birthdays = {
         "awesome": ["Amazing Kong/Awesome Kong: 04.09.77"],
         "ayako": ["Ayako Sato: 04.01.86"],
         "ayano": ["Ayano Irie: 17.08.96"],
+	"ayame": ["Ayame: 14.08.95"]
         "ayumi": ["Ayumi Hayashi: 12.11.96"],
         "azm": ["AZM: 01.10.02"],
         "AZM": ["AZM: 01.10.02"],
