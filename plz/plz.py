@@ -81,7 +81,7 @@ class Plz(BaseCog):
 
         # Sort results by score (descending) and return the best fuzzy match
         results.sort(key=lambda x: x[1], reverse=True)
-        if results and results[0][1] > 90:  # Threshold for a match
+        if results and results[0][1] > 100:  # Threshold for a match
             return results[0][0]  # Return the folder name
         return None
     
