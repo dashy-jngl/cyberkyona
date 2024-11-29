@@ -1,239 +1,121 @@
-# Discord
+from rapidfuzz import process  # For fuzzy matching
 import discord
-
-# Red
 from redbot.core import commands
-
-
-# Libs
 import os
 import random
-#import urllib.request
-from random import choice
-import time
-
 import aiohttp
-#import asyncio
-#import io
-#import logging
-#from typing import Awaitable, Callable
 
 base_path = "/home/dashy9000/data/joshifiles/"
-misa = [
-    ("misam"),
-    ("misak"),
-]
-momo = [
-    ("momok"),
-#    ("momot"),
-    ("momow"),
-]
 
-maika = [
-    ("maiker"),
-#    ("momot"),
-    ("maikao"),
-]
-saya = [
-    ("sayak"),
-    ("sayai"),
-]
+# Define mappings for substitutions and choices
+choices_map = {
+    "misa": ["misam", "misak"],
+    "momo": ["momok", "momow"],
+    "maika": ["maiker", "maikao"],
+    "saya": ["sayak", "sayai"],
+    "arisa": ["arisah", "arisan"],
+    "saki": ["sakik", "sakia", "SAKI"],
+    "mio": ["miom"],
+    "bby": ["maiker", "aoi", "unagi", "azm", "mayu", "rika", "momow"],
+    "dos": ["aj", "becky", "rhea", "mandy"],
+    "bblz": ["alexa", "rhea"],
+    "brzy": ["syuri", "sayai", "hyper"],
+    "mo": ["momoka", "himeka", "kaho", "miyuki"],
+    "ksup": ["hzk", "arisah", "momow", "kagetsu"],
+    "kray": ["kira", "konami", "misak", "tomoka", "shida", "jungle"],
+}
 
-arisa = [
-    ("arisah"),
-    ("arisan"),
-]
-
-saki = [
-    ("sakik"),
-    ("sakia"),
-    ("SAKI"),
-]
-mio = [
-    ("miom"),
-#    ("mios"),
-]
-#user choice list
-bby = [
-    ("maiker"),
-    ("aoi"),
-    ("unagi"),
-    ("azm"),
-    ("mayu"),
-    ("rika"),
-    ("momow"),
-]
-dos = [
-    ("aj"),
-    ("becky"),
-    ("rhea"),
-    ("mandy"),
-]
-bblz = [
-    ("alexa"),
-#    ("kelly"),
-    ("rhea"),
-]
-brzy = [
-    ("syuri"),
-    ("sayai"),
-    ("hyper"),
-]
-mo = [
-    ("momoka"),
-    ("himeka"),
-    ("kaho"),
-    ("miyuki"),
-#    ("mayaf"),
-#    ("sumika"),
-]
-ksup = [
-    ("hzk"),
-    ("arisah"),
-    ("momow"),
-    ("kagetsu"),
-]
-kray = [
-    ("kira"),
-    ("konami"),
-    ("misak"),
-    ("tomoka"),
-    ("shida"),
-    ("jungle"),
-]
+substitutions = {
+    "asuka": "kana",
+    "coco": "momok",
+    "ez": "momok",
+    "iyo": "io",
+    "misao": "hyper",
+    "mii": "hibiscus",
+    "champ": "maiker",
+    "slk": "starlight",
+    "hikaru": "shida",
+    "miyagi": "andras",
+    "michiko": "andras",
+    "hazuki": "hzk",
+    "sarray": "sareee",
+    "bee": "suzume",
+    "kyona": "jungle",
+    "tora": "natsuko",
+    "poi": "natsupoi",
+    "natsumi": "natsupoi",
+    "sausage": "sasha",
+    "suasage": "sasha",
+    "ssj": "sasha",
+    "bobby": "bby",
+    "mooshty": "utami",
+    "moosh": "utami",
+    "parasite": "tam",
+    "roxie": "tam",
+    "walker": "sayak",
+    "dashy": "momow",
+}
 
 BaseCog = getattr(commands, "Cog", object)
 
-
 class Plz(BaseCog):
-    #JoshiSpam!
-
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
+    def resolve_ask(self, ask: str):
+        """Resolve the input 'ask' to a directory or choice."""
+        ask = ask.lower()
+
+        # Check substitutions
+        if ask in substitutions:
+            ask = substitutions[ask]
+
+        # Check choices map
+        if ask in choices_map:
+            ask = random.choice(choices_map[ask])
+
+        return ask
+
+    def find_closest_match(self, search_term: str):
+        """Find the closest matching folder using fuzzy search."""
+        folder_names = os.listdir(base_path)
+        result = process.extractOne(search_term, folder_names)
+        if result:
+            match, score, *_ = result  # Handle additional return values
+            if score > 60:  # Threshold for a match
+                return match
+        return None
+
     @commands.command()
     async def plz(self, ctx, ask: str = "mayu"):
-
-        if ask != "ASUKA" and ask != "SAKI":
-            ask = ask.lower()
-
-        if ask == "arisa":
-            ask = choice(arisa)
-
-        if ask == "asuka":
-            ask = "kana"
-
-        if ask == "mio":
-            ask = choice(mio)
-
-        if ask == "momo":
-            ask = choice(momo)
-
-        if ask == "saya":
-            ask = choice(saya)
-
-        if ask == "saki":
-            ask = choice(saki)
-
-        if ask == "maika":
-            ask = choice(maika)
-
-        if ask == "coco" or ask == "ez" :
-            ask = "momok"
-
-        if ask == "iyo":
-            ask = "io"
-
-        if ask == "misao":
-            ask = "hyper"
-
-        if ask == "mii":
-            ask = "hibiscus"
-        
-        if ask == "misa":
-            ask = choice(misa)
-            
-        if ask == "champ":
-            ask = "maiker"
-
-        if ask == "slk":
-            ask = "starlight"
-
-        if ask == "hikaru":
-            ask = "shida"
-
-        if ask == "miyagi" or ask == "michiko":
-            ask = "andras"
-
-        if ask == "hazuki":
-            ask = "hzk"
-
-        if ask == "sarray":
-            ask = "sareee"
-
-        if ask == "bee":
-            ask = "suzume"
-
-        if ask == "kyona":
-            ask = "jungle"
-
-        if ask == "tora":
-            ask = "natsuko"
-
-        if ask == "poi" or ask == "natsumi":
-            ask = "natsupoi"
-
-        if ask == "sausage" or ask == "suasage" or ask == "ssj":
-            ask = "sasha"
-
-        if ask == "bobby" or ask == "bby":
-            ask = choice(bby)
-
-        if ask == "mo":
-            ask = choice(mo)
-
-        if ask == "bubbles" or ask == "bblz":
-            ask = choice(bblz)
-
-        if ask == "brzy":
-            ask = choice(brzy)
-
-        if ask == "feptom":
-            ask = "unagi"
-
-        if ask == "roxie":
-            ask = "tam"
-
-        if ask == "dos":
-            ask = choice(dos)
-        if ask == "parasite":
-            ask = "tam"
-        if ask == "walker":
-            ask = "sayak"
-        if ask == "dashy":
-            ask = "momow"
-        if ask == "ksup":
-            ask = choice(ksup)
-        if ask == "mooshty" or ask == "moosh":
-            ask = "utami"
-        if ask == "kray":
-            ask = choice(kray)
+        """Respond with a random file from a matching directory."""
         user = ctx.message.author
-        if user.id == 151823155340509186 or user.id == 734768348201615400:
-            return
-        try:
-            try:
-                path = base_path + ask
-                files = os.listdir(path)
-            except:
-                path = base_path + "youtoo"
-                files = os.listdir(path)
-            index = random.randrange(0, len(files))
-            await ctx.send(file=discord.File(path+"/"+files[index]))
-        except:
-            await ctx.send("code better dash")
 
+        # Restrict specific users if needed
+        if user.id in [151823155340509186, 734768348201615400]:
+            return
+
+        # Resolve the input to a valid directory name
+        ask = self.resolve_ask(ask)
+
+        # Attempt to find a matching folder
+        folder = self.find_closest_match(ask)
+        if not folder:
+            folder = "youtoo"  # Default folder if no match is found
+
+        path = os.path.join(base_path, folder)
+
+        try:
+            files = os.listdir(path)
+            if not files:
+                raise FileNotFoundError("No files in directory.")
+
+            index = random.randint(0, len(files) - 1)
+            await ctx.send(file=discord.File(os.path.join(path, files[index])))
+        except Exception as e:
+            await ctx.send("code better dash")
+            print(f"Error: {e}")
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())

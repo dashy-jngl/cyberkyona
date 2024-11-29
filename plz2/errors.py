@@ -1,2 +1,0 @@
-class RetryLimitExceeded(Exception):
-    pass
