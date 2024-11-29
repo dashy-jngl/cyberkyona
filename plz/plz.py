@@ -84,7 +84,7 @@ class Plz(BaseCog):
         result = process.extractOne(search_term, folder_names)
         if result:
             match, score, *_ = result  # Handle additional return values
-            if score > 60:  # Threshold for a match
+            if score > 90:  # Threshold for a match
                 return match
         return None
 
@@ -120,7 +120,7 @@ class Plz(BaseCog):
         user = ctx.message.author
 
         # Restrict specific users if needed
-        if user.id in [151823155340509186, 734768348201615400]:
+        if user.id in [1518231553405091861, 7347683482016154001]:
             return
 
         # Resolve the input to a valid directory name
