@@ -78,26 +78,6 @@ class Plz(BaseCog):
 
         return ask
 
-    # def find_closest_match(self, search_terms: str):
-    #     """Find the best matching folder using fuzzy search."""
-    #     folder_names = os.listdir(base_path)
-
-    #     # Split input into multiple terms (e.g., "maika ozaki" -> ["maika", "ozaki"])
-    #     search_terms_list = search_terms.lower().split()
-
-    #     # Score each folder by checking how well it matches all search terms
-    #     results = []
-    #     for folder in folder_names:
-    #         folder_lower = folder.lower()
-    #         # Calculate cumulative score for all search terms
-    #         score = sum(fuzz.partial_ratio(term, folder_lower) for term in search_terms_list) / len(search_terms_list)
-    #         results.append((folder, score))
-
-    #     # Sort results by score (descending) and return the best match
-    #     results.sort(key=lambda x: x[1], reverse=True)
-    #     if results and results[0][1] > 60:  # Threshold for a match
-    #         return results[0][0]  # Return the folder name
-    #     return None
     def find_closest_match(self, search_terms: str):
         """Find the best matching folder using exact and fuzzy search with randomness for ties."""
         folder_names = os.listdir(base_path)
@@ -132,12 +112,38 @@ class Plz(BaseCog):
             return results[0][0]  # Return the folder name
         return None
     
+    # def get_random_file(self, directory: str):
+    #     """
+    #     Recursively find a random file in the given directory.
+    #     If a directory is empty, remove it.
+    #     """
+    #     try:
+    #         items = os.listdir(directory)
+    #         if not items:
+    #             shutil.rmtree(directory)  # Remove empty directory
+    #             return None
+
+    #         # Filter files and directories
+    #         files = [f for f in items if os.path.isfile(os.path.join(directory, f))]
+    #         dirs = [d for d in items if os.path.isdir(os.path.join(directory, d))]
+
+    #         if files:
+    #             return os.path.join(directory, random.choice(files))
+    #         elif dirs:
+    #             # Recursively search in subdirectories
+    #             subdir = random.choice(dirs)
+    #             return self.get_random_file(os.path.join(directory, subdir))
+
+    #     except Exception as e:
+    #         print(f"Error accessing directory '{directory}': {e}")
+    #         return None
     def get_random_file(self, directory: str):
         """
         Recursively find a random file in the given directory.
         If a directory is empty, remove it.
         """
         try:
+            # Get all items in the directory
             items = os.listdir(directory)
             if not items:
                 shutil.rmtree(directory)  # Remove empty directory
@@ -148,7 +154,9 @@ class Plz(BaseCog):
             dirs = [d for d in items if os.path.isdir(os.path.join(directory, d))]
 
             if files:
-                return os.path.join(directory, random.choice(files))
+                # Shuffle files to ensure better variety
+                random.shuffle(files)
+                return os.path.join(directory, files[0])
             elif dirs:
                 # Recursively search in subdirectories
                 subdir = random.choice(dirs)
@@ -157,6 +165,7 @@ class Plz(BaseCog):
         except Exception as e:
             print(f"Error accessing directory '{directory}': {e}")
             return None
+
 
     @commands.command()
     async def plz(self, ctx, *, ask: str = "mayu"):
