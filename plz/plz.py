@@ -99,24 +99,24 @@ class Plz(BaseCog):
     #         return results[0][0]  # Return the folder name
     #     return None
     def find_closest_match(self, search_terms: str):
-        """Find the best matching folder using exact and fuzzy search."""
+        """Find the best matching folder using exact and fuzzy search with randomness for ties."""
         folder_names = os.listdir(base_path)
 
-        # Split input into multiple terms (e.g., "ami sophrei" -> ["ami", "sophrei"])
+        # Split input into multiple terms (e.g., "misa kagura" -> ["misa", "kagura"])
         search_terms_list = search_terms.lower().split()
 
         # Separate folder names into parts by periods for exact matching
         folder_parts = {folder: folder.lower().split('.') for folder in folder_names}
 
-        # Check for exact matches first
-        exact_matches = []
+        # Gather all full matches
+        full_matches = []
         for folder, parts in folder_parts.items():
             if all(term in parts for term in search_terms_list):  # All terms must match as whole parts
-                exact_matches.append(folder)
+                full_matches.append(folder)
 
-        if exact_matches:
-            # Return the first exact match (or sort if needed for the best exact match)
-            return exact_matches[0]
+        if full_matches:
+            # If there's more than one full match, randomly pick one
+            return random.choice(full_matches)
 
         # Fuzzy match as a fallback
         results = []
@@ -131,8 +131,6 @@ class Plz(BaseCog):
         if results and results[0][1] > 60:  # Threshold for a match
             return results[0][0]  # Return the folder name
         return None
-
-
     
     def get_random_file(self, directory: str):
         """
