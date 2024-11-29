@@ -9,24 +9,16 @@ base_path = "/home/dashy9000/data/joshifiles/"
 
 # Define mappings for substitutions and choices
 choices_map = {
-    # "misa": ["misam", "misak"],
-    # "momo": ["momok", "momow"],
-    # "maika": ["maiker", "maikao"],
-    # "saya": ["sayak", "sayai"],
-    # "arisa": ["arisah", "arisan"],
-    # "saki": ["sakik", "sakia", "SAKI"],
-    # "mio": ["miom"],
-    # "bby": ["maiker", "aoi", "unagi", "azm", "mayu", "rika", "momow"],
-    # "dos": ["aj", "becky", "rhea", "mandy"],
-    # "bblz": ["alexa", "rhea"],
-    # "brzy": ["syuri", "sayai", "hyper"],
+    "dos": ["aj", "becky", "rhea", "mandy"],
+    "bblz": ["alexa", "rhea"],
     "mo": ["momoka", "himeka", "kaho", "miyuki"],
-    # "ksup": ["hzk", "arisah", "momow", "kagetsu"],
-    # "kray": ["kira", "konami", "misak", "tomoka", "shida", "jungle"],
+    "kray": ["kira summer", "konami", "misa k", "tomoka", "hikaru shida", "jungle kyona"],
+    "champ": ["utami hayashishita", "maika stardom", "hikaru shida"],
 }
 
 substitutions = {
     # "asuka": "kana",
+
 }
 
 BaseCog = getattr(commands, "Cog", object)
