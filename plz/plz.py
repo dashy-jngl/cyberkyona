@@ -1,62 +1,4 @@
-from rapidfuzz import process  # For fuzzy matching
-import discord
-from redbot.core import commands
-import os
-import random
-import aiohttp
-
-base_path = "/home/dashy9000/data/joshifiles/"
-
-# Define mappings for substitutions and choices
-choices_map = {
-    "misa": ["misam", "misak"],
-    "momo": ["momok", "momow"],
-    "maika": ["maiker", "maikao"],
-    "saya": ["sayak", "sayai"],
-    "arisa": ["arisah", "arisan"],
-    "saki": ["sakik", "sakia", "SAKI"],
-    "mio": ["miom"],
-    "bby": ["maiker", "aoi", "unagi", "azm", "mayu", "rika", "momow"],
-    "dos": ["aj", "becky", "rhea", "mandy"],
-    "bblz": ["alexa", "rhea"],
-    "brzy": ["syuri", "sayai", "hyper"],
-    "mo": ["momoka", "himeka", "kaho", "miyuki"],
-    "ksup": ["hzk", "arisah", "momow", "kagetsu"],
-    "kray": ["kira", "konami", "misak", "tomoka", "shida", "jungle"],
-}
-
-substitutions = {
-    "asuka": "kana",
-    "coco": "momok",
-    "ez": "momok",
-    "iyo": "io",
-    "misao": "hyper",
-    "mii": "hibiscus",
-    "champ": "maiker",
-    "slk": "starlight",
-    "hikaru": "shida",
-    "miyagi": "andras",
-    "michiko": "andras",
-    "hazuki": "hzk",
-    "sarray": "sareee",
-    "bee": "suzume",
-    "kyona": "jungle",
-    "tora": "natsuko",
-    "poi": "natsupoi",
-    "natsumi": "natsupoi",
-    "sausage": "sasha",
-    "suasage": "sasha",
-    "ssj": "sasha",
-    "bobby": "bby",
-    "mooshty": "utami",
-    "moosh": "utami",
-    "parasite": "tam",
-    "roxie": "tam",
-    "walker": "sayak",
-    "dashy": "momow",
-}
-
-BaseCog = getattr(commands, "Cog", object)
+import shutil  # To remove empty directories
 
 class Plz(BaseCog):
     def __init__(self, bot):
@@ -87,6 +29,32 @@ class Plz(BaseCog):
                 return match
         return None
 
+    def get_random_file(self, directory: str):
+        """
+        Recursively find a random file in the given directory.
+        If a directory is empty, remove it.
+        """
+        try:
+            items = os.listdir(directory)
+            if not items:
+                shutil.rmtree(directory)  # Remove empty directory
+                return None
+
+            # Filter files and directories
+            files = [f for f in items if os.path.isfile(os.path.join(directory, f))]
+            dirs = [d for d in items if os.path.isdir(os.path.join(directory, d))]
+
+            if files:
+                return os.path.join(directory, random.choice(files))
+            elif dirs:
+                # Recursively search in subdirectories
+                subdir = random.choice(dirs)
+                return self.get_random_file(os.path.join(directory, subdir))
+
+        except Exception as e:
+            print(f"Error accessing directory '{directory}': {e}")
+            return None
+
     @commands.command()
     async def plz(self, ctx, ask: str = "mayu"):
         """Respond with a random file from a matching directory."""
@@ -106,16 +74,16 @@ class Plz(BaseCog):
 
         path = os.path.join(base_path, folder)
 
-        try:
-            files = os.listdir(path)
-            if not files:
-                raise FileNotFoundError("No files in directory.")
-
-            index = random.randint(0, len(files) - 1)
-            await ctx.send(file=discord.File(os.path.join(path, files[index])))
-        except Exception as e:
-            await ctx.send("code better dash")
-            print(f"Error: {e}")
+        # Get a random file, even from subdirectories
+        random_file = self.get_random_file(path)
+        if random_file:
+            try:
+                await ctx.send(file=discord.File(random_file))
+            except Exception as e:
+                await ctx.send("code better dash")
+                print(f"Error: {e}")
+        else:
+            await ctx.send("No files found, or the directory is empty!")
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
