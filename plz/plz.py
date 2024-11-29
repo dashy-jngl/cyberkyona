@@ -98,41 +98,42 @@ class Plz(BaseCog):
     #     if results and results[0][1] > 60:  # Threshold for a match
     #         return results[0][0]  # Return the folder name
     #     return None
-
     def find_closest_match(self, search_terms: str):
-    """Find the best matching folder using exact and fuzzy search."""
-    folder_names = os.listdir(base_path)
+        """Find the best matching folder using exact and fuzzy search."""
+        folder_names = os.listdir(base_path)
 
-    # Split input into multiple terms (e.g., "ami sophrei" -> ["ami", "sophrei"])
-    search_terms_list = search_terms.lower().split()
+        # Split input into multiple terms (e.g., "ami sophrei" -> ["ami", "sophrei"])
+        search_terms_list = search_terms.lower().split()
 
-    # Separate folder names into parts by periods for exact matching
-    folder_parts = {folder: folder.lower().split('.') for folder in folder_names}
+        # Separate folder names into parts by periods for exact matching
+        folder_parts = {folder: folder.lower().split('.') for folder in folder_names}
 
-    # Check for exact matches first
-    exact_matches = []
-    for folder, parts in folder_parts.items():
-        if all(term in parts for term in search_terms_list):  # All terms must match as whole parts
-            exact_matches.append(folder)
+        # Check for exact matches first
+        exact_matches = []
+        for folder, parts in folder_parts.items():
+            if all(term in parts for term in search_terms_list):  # All terms must match as whole parts
+                exact_matches.append(folder)
 
-    if exact_matches:
-        # Return the first exact match (or sort if needed for the best exact match)
-        return exact_matches[0]
+        if exact_matches:
+            # Return the first exact match (or sort if needed for the best exact match)
+            return exact_matches[0]
 
-    # Fuzzy match as a fallback
-    results = []
-    for folder in folder_names:
-        folder_lower = folder.lower()
-        # Calculate cumulative fuzzy score for all search terms
-        score = sum(fuzz.partial_ratio(term, folder_lower) for term in search_terms_list) / len(search_terms_list)
-        results.append((folder, score))
+        # Fuzzy match as a fallback
+        results = []
+        for folder in folder_names:
+            folder_lower = folder.lower()
+            # Calculate cumulative fuzzy score for all search terms
+            score = sum(fuzz.partial_ratio(term, folder_lower) for term in search_terms_list) / len(search_terms_list)
+            results.append((folder, score))
 
-    # Sort results by score (descending) and return the best fuzzy match
-    results.sort(key=lambda x: x[1], reverse=True)
-    if results and results[0][1] > 60:  # Threshold for a match
-        return results[0][0]  # Return the folder name
-    return None
+        # Sort results by score (descending) and return the best fuzzy match
+        results.sort(key=lambda x: x[1], reverse=True)
+        if results and results[0][1] > 60:  # Threshold for a match
+            return results[0][0]  # Return the folder name
+        return None
 
+
+    
     def get_random_file(self, directory: str):
         """
         Recursively find a random file in the given directory.
