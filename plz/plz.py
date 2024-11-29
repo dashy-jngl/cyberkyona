@@ -20,40 +20,13 @@ choices_map = {
     # "dos": ["aj", "becky", "rhea", "mandy"],
     # "bblz": ["alexa", "rhea"],
     # "brzy": ["syuri", "sayai", "hyper"],
-    # "mo": ["momoka", "himeka", "kaho", "miyuki"],
+    "mo": ["momoka", "himeka", "kaho", "miyuki"],
     # "ksup": ["hzk", "arisah", "momow", "kagetsu"],
     # "kray": ["kira", "konami", "misak", "tomoka", "shida", "jungle"],
 }
 
 substitutions = {
     # "asuka": "kana",
-    # "coco": "momok",
-    # "ez": "momok",
-    # "iyo": "io",
-    # "misao": "hyper",
-    # "mii": "hibiscus",
-    # "champ": "maiker",
-    # "slk": "starlight",
-    # "hikaru": "shida",
-    # "miyagi": "andras",
-    # "michiko": "andras",
-    # "hazuki": "hzk",
-    # "sarray": "sareee",
-    # "bee": "suzume",
-    # "kyona": "jungle",
-    # "tora": "natsuko",
-    # "poi": "natsupoi",
-    # "natsumi": "natsupoi",
-    # "sausage": "sasha",
-    # "suasage": "sasha",
-    # "ssj": "sasha",
-    # "bobby": "bby",
-    # "mooshty": "utami",
-    # "moosh": "utami",
-    # "parasite": "tam",
-    # "roxie": "tam",
-    # "walker": "sayak",
-    # "dashy": "momow",
 }
 
 BaseCog = getattr(commands, "Cog", object)
@@ -108,35 +81,10 @@ class Plz(BaseCog):
 
         # Sort results by score (descending) and return the best fuzzy match
         results.sort(key=lambda x: x[1], reverse=True)
-        if results and results[0][1] > 60:  # Threshold for a match
+        if results and results[0][1] > 80:  # Threshold for a match
             return results[0][0]  # Return the folder name
         return None
     
-    # def get_random_file(self, directory: str):
-    #     """
-    #     Recursively find a random file in the given directory.
-    #     If a directory is empty, remove it.
-    #     """
-    #     try:
-    #         items = os.listdir(directory)
-    #         if not items:
-    #             shutil.rmtree(directory)  # Remove empty directory
-    #             return None
-
-    #         # Filter files and directories
-    #         files = [f for f in items if os.path.isfile(os.path.join(directory, f))]
-    #         dirs = [d for d in items if os.path.isdir(os.path.join(directory, d))]
-
-    #         if files:
-    #             return os.path.join(directory, random.choice(files))
-    #         elif dirs:
-    #             # Recursively search in subdirectories
-    #             subdir = random.choice(dirs)
-    #             return self.get_random_file(os.path.join(directory, subdir))
-
-    #     except Exception as e:
-    #         print(f"Error accessing directory '{directory}': {e}")
-    #         return None
     def get_random_file(self, directory: str):
         """
         Recursively find a random file in the given directory.
