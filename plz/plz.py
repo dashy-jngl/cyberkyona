@@ -78,14 +78,25 @@ class Plz(BaseCog):
 
         return ask
 
-    def find_closest_match(self, search_term: str):
-        """Find the closest matching folder using fuzzy search."""
+    def find_closest_match(self, search_terms: str):
+        """Find the best matching folder using fuzzy search."""
         folder_names = os.listdir(base_path)
-        result = process.extractOne(search_term, folder_names)
-        if result:
-            match, score, *_ = result  # Handle additional return values
-            if score > 90:  # Threshold for a match
-                return match
+
+        # Split input into multiple terms (e.g., "maika ozaki" -> ["maika", "ozaki"])
+        search_terms_list = search_terms.lower().split()
+
+        # Score each folder by checking how well it matches all search terms
+        results = []
+        for folder in folder_names:
+            folder_lower = folder.lower()
+            # Calculate cumulative score for all search terms
+            score = sum(fuzz.partial_ratio(term, folder_lower) for term in search_terms_list) / len(search_terms_list)
+            results.append((folder, score))
+
+        # Sort results by score (descending) and return the best match
+        results.sort(key=lambda x: x[1], reverse=True)
+        if results and results[0][1] > 60:  # Threshold for a match
+            return results[0][0]  # Return the folder name
         return None
 
     def get_random_file(self, directory: str):
