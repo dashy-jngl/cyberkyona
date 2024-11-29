@@ -126,7 +126,7 @@ class Plz(BaseCog):
             return None
 
     @commands.command()
-    async def plz(self, ctx, ask: str = "mayu"):
+    async def plz(self, ctx, *, ask: str = "mayu"):
         """Respond with a random file from a matching directory."""
         user = ctx.message.author
 
@@ -154,6 +154,7 @@ class Plz(BaseCog):
                 print(f"Error: {e}")
         else:
             await ctx.send("No files found, or the directory is empty!")
+
 
     def cog_unload(self):
         self.bot.loop.create_task(self.session.close())
