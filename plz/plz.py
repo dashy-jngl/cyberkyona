@@ -1,4 +1,4 @@
-from rapidfuzz import process  # For fuzzy matching
+from rapidfuzz import process, fuzz  # For fuzzy matching
 import discord
 from redbot.core import commands
 import os
