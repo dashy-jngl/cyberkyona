@@ -80,9 +80,11 @@ class Plz2(BaseCog):
     def find_closest_match(self, search_term: str):
         """Find the closest matching folder using fuzzy search."""
         folder_names = os.listdir(base_path)
-        match, score = process.extractOne(search_term, folder_names)
-        if score > 60:  # Threshold for a match
-            return match
+        result = process.extractOne(search_term, folder_names)
+        if result:
+            match, score, *_ = result  # Handle additional return values
+            if score > 60:  # Threshold for a match
+                return match
         return None
 
     @commands.command()
