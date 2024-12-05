@@ -95,7 +95,7 @@ class Plz(BaseCog):
             if files:
                 # Shuffle files to ensure better variety
                 random.shuffle(files)
-                return os.path.join(directory, random.randrange(0, len(files)))
+                return os.path.join(directory, files[random.randrange(0, len(files))])
             elif dirs:
                 # Recursively search in subdirectories
                 subdir = random.choice(dirs)
