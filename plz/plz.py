@@ -134,7 +134,7 @@ class Plz(BaseCog):
                 await ctx.send("code better dash")
                 print(f"Error: {e}")
         else:
-            await ctx.send("No files found, or the directory is empty!")
+            await ctx.send("? try again ?")
 
 
     def cog_unload(self):
