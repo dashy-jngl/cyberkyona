@@ -9,8 +9,8 @@ base_path = "/home/dashy9000/data/joshifiles/"
 
 # Define mappings for substitutions and choices
 choices_map = {
-    "moosh": ["utami", "namba", "kurara"],
-    "mooshty": ["utami", "namba", "kurara"],
+    "moosh": ["utami", "kurara"],
+    "mooshty": ["utami", "kurara"],
     "dos": ["aj", "becky", "rhea", "mandy"],
     "bblz": ["alexa", "rhea"],
     "mo": ["momoka", "himeka", "kaho", "miyuki"],
