@@ -259,7 +259,7 @@ birthdays = {
         "26.12": ["Mina Shirakawa"],
         "27.12": ["Zelina Vega/Thea Trinidad", "Yuka Sakazaki", "Chyna"],
         "28.12": ["Hina", "Rina", "Haruna Neko", "Rachael Ellering"],
-        "30.12": ["Nanae Fujitaki"],
+        "30.12": ["Nanae Furukawa"],
 #       a
         "act": ["Act Yasukawa: 13.11.86"],
         "aj": ["AJ Lee: 19.03.87"],
