@@ -13,6 +13,7 @@ choices_map = {
     "mooshty": ["utami", "kurara"],
     "dos": ["aj", "becky", "rhea", "mandy"],
     "bblz": ["alexa", "rhea"],
+    "bubbles": ["alexa", "mizuki"],
     "mo": ["momoka", "himeka", "kaho", "miyuki"],
     "kray": ["kira summer", "konami", "misa k", "tomoka", "hikaru shida", "jungle kyona"],
     "champ": ["utami hayashishita", "maika stardom", "hikaru shida"],
