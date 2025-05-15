@@ -40,7 +40,7 @@ class StardomCog(commands.Cog):
                     if "本戦開始時間" in div.get_text():
                         ts = div.parent.find("span", class_="time")
                         if ts:
-                            title += f" ({ts.get_text(strip=True)})"
+                            title = f"({ts.get_text(strip=True)}) {title}"
                         break
             except requests.RequestException:
                 pass
@@ -124,8 +124,8 @@ class StardomCog(commands.Cog):
                 mid = "vs" if i == rows//2 else ""
                 r = m["right"][i] if i < len(m["right"]) else ""
                 lines.append(
-                    f"{self.pad_center(l, w1)} | "
-                    f"{self.pad_center(mid, w2)} | "
+                    f"{self.pad_center(l, w1)}  "
+                    f"{self.pad_center(mid, w2)}  "
                     f"{self.pad_center(r, w3)}"
                 )
 
