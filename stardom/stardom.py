@@ -1,3 +1,4 @@
+# file: stardom.py
 from __future__ import annotations
 
 import discord
@@ -22,22 +23,20 @@ class StardomCog(commands.Cog):
         return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
-        # Fetch the card page
         r = requests.get(url)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # Extract title and date
+        # Title + date
         base = soup.select_one("h1.match_head_title").get_text(strip=True)
         date_el = soup.select_one("p.date")
         title = f"{date_el.get_text(strip=True)} {base}" if date_el else base
 
-        # Append event start time from ticket page
+        # Append start time
         ticket = soup.select_one("a.btnstyle4")
         if ticket and ticket.get("href"):
             try:
-                r2 = requests.get(ticket["href"])
-                r2.raise_for_status()
+                r2 = requests.get(ticket["href"]); r2.raise_for_status()
                 soup2 = BeautifulSoup(r2.text, "html.parser")
                 for div in soup2.find_all("div", class_="data_bg2"):
                     if "本戦開始時間" in div.get_text():
@@ -48,11 +47,11 @@ class StardomCog(commands.Cog):
             except requests.RequestException:
                 pass
 
-        # Build match list
+        # Extract matches
         matches: list[dict] = []
         for wrap in soup.select("div.match_cover div.match_wrap"):
             mtype_el = wrap.select_one("h2.sub_content_title1")
-            mtype = mtype_el.get_text(strip=True) if mtype_el else ""
+            mtype = mtype_el.get_text(strip=True) if mtype_el else "Match"
 
             row = wrap.find("div", class_="match_block_row")
             if row:
@@ -61,12 +60,12 @@ class StardomCog(commands.Cog):
             else:
                 col = wrap.find("div", class_="match_block_column")
                 uls = col.select("ul.match_block_3col") if col else []
-                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls) > 0 else [])]
-                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls) > 1 else [])]
+                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls)>0 else [])]
+                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls)>1 else [])]
 
             matches.append({"type": mtype, "left": left, "right": right})
 
-        # Translate to English if requested
+        # Optional translation
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
@@ -88,6 +87,7 @@ class StardomCog(commands.Cog):
 
         return title, matches
 
+
     @commands.command()
     async def stardom(self, ctx, n: int = 1, *, flags=""):
         """
@@ -97,30 +97,30 @@ class StardomCog(commands.Cog):
         translate = "-e" in flags.split()
         links = self.get_card_links()
         if not links:
-            return await ctx.send("No upcoming shows found.")
+            return await ctx.send("🚫 No upcoming shows found.")
         if n < 1 or n > len(links):
-            return await ctx.send(f"Only found {len(links)} show(s).")
+            return await ctx.send(f"🚫 Only found {len(links)} show(s).")
 
         title, matches = self.parse_card(links[n - 1], translate=translate)
-        embed = discord.Embed(title=title)
+        embed = discord.Embed(title=title, color=discord.Color.blurple())
 
-        # For each match, build three inline columns: left / vs / right
+        # For each match, emit a bullet list entry
         for m in matches:
+            lines: list[str] = []
+            # pairwise vs for each row
             rows = max(len(m["left"]), len(m["right"]))
-            left_col  = [m["left"][i]  if i < len(m["left"])  else "" for i in range(rows)]
-            mid_col   = ["vs" if i == rows // 2 else ""     for i in range(rows)]
-            right_col = [m["right"][i] if i < len(m["right"]) else "" for i in range(rows)]
+            for i in range(rows):
+                l = m["left"][i] if i < len(m["left"]) else ""
+                r = m["right"][i] if i < len(m["right"]) else ""
+                if l and r:
+                    lines.append(f"• {l} vs {r}")
+                elif l:
+                    lines.append(f"• {l}")
+                elif r:
+                    lines.append(f"• {r}")
 
-            left_block  = "\n".join(left_col)
-            mid_block   = "\n".join(mid_col)
-            right_block = "\n".join(right_col)
-
-            # Header row for this match type
-            embed.add_field(name=m["type"] or "Match", value="\u200b", inline=False)
-            # Then three side-by-side fields
-            embed.add_field(name="\u200b", value=left_block,  inline=True)
-            embed.add_field(name="\u200b", value=mid_block,   inline=True)
-            embed.add_field(name="\u200b", value=right_block, inline=True)
+            value = "\n".join(lines) if lines else "• (no data)"
+            embed.add_field(name=m["type"], value=value, inline=False)
 
         await ctx.send(embed=embed)
 
