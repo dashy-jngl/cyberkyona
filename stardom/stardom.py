@@ -17,12 +17,17 @@ class StardomCog(commands.Cog):
         self.bot = bot
 
     def get_card_links(self) -> list[str]:
-        r = requests.get(self.SCHEDULE_URL); r.raise_for_status()
+        r = requests.get(self.SCHEDULE_URL)
+        r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
-        return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
+        return [
+            a["href"]
+            for a in soup.find_all("a", class_="btn", string="対戦カード")
+        ]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
-        r = requests.get(url); r.raise_for_status()
+        r = requests.get(url)
+        r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
         # Title + date
@@ -34,7 +39,8 @@ class StardomCog(commands.Cog):
         ticket = soup.select_one("a.btnstyle4")
         if ticket and ticket.get("href"):
             try:
-                r2 = requests.get(ticket["href"]); r2.raise_for_status()
+                r2 = requests.get(ticket["href"])
+                r2.raise_for_status()
                 soup2 = BeautifulSoup(r2.text, "html.parser")
                 for div in soup2.find_all("div", class_="data_bg2"):
                     if "本戦開始時間" in div.get_text():
@@ -53,13 +59,25 @@ class StardomCog(commands.Cog):
 
             row = wrap.find("div", class_="match_block_row")
             if row:
-                left = [n.get_text(strip=True) for n in row.select("div.leftside h3.name")]
-                right = [n.get_text(strip=True) for n in row.select("div.rightside h3.name")]
+                left = [
+                    n.get_text(strip=True)
+                    for n in row.select("div.leftside h3.name")
+                ]
+                right = [
+                    n.get_text(strip=True)
+                    for n in row.select("div.rightside h3.name")
+                ]
             else:
                 col = wrap.find("div", class_="match_block_column") or []
                 uls = col.select("ul.match_block_3col") if col else []
-                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls)>0 else [])]
-                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls)>1 else [])]
+                left = [
+                    n.get_text(strip=True)
+                    for n in (uls[0].select("h3.name") if len(uls) > 0 else [])
+                ]
+                right = [
+                    n.get_text(strip=True)
+                    for n in (uls[1].select("h3.name") if len(uls) > 1 else [])
+                ]
 
             matches.append({"type": mtype, "left": left, "right": right})
 
@@ -79,14 +97,13 @@ class StardomCog(commands.Cog):
 
             title = mapping.get(title, title)
             for m in matches:
-                m["type"]  = mapping.get(m["type"], m["type"])
-                m["left"]  = [mapping.get(x, x) for x in m["left"]]
+                m["type"] = mapping.get(m["type"], m["type"])
+                m["left"] = [mapping.get(x, x) for x in m["left"]]
                 m["right"] = [mapping.get(x, x) for x in m["right"]]
 
         return title, matches
 
     def pad_center(self, text: str, width: int) -> str:
-        """Center-pad text by character count."""
         l = len(text)
         if l >= width:
             return text
@@ -95,19 +112,37 @@ class StardomCog(commands.Cog):
         return " " * left + text + " " * (space - left)
 
     @commands.command()
-    async def stardom(self, ctx, n: int = 1, *, flags=""):
+    async def stardom(self, ctx, *args):
         """
-        Post the nth Stardom show card.
-        Use -e to translate to English.
+        Usage:
+          !stardom                → next show in Japanese
+          !stardom e or -e        → next show in English
+          !stardom 2              → 2nd show in Japanese
+          !stardom 2 e            → 2nd show in English
         """
-        translate = "-e" in flags.split()
+        # defaults
+        n = 1
+        translate = False
+
+        # parse args
+        for arg in args:
+            a = arg.lower()
+            if a in ("e", "-e", "--e", "--english"):
+                translate = True
+            else:
+                # try integer
+                try:
+                    n = int(arg)
+                except ValueError:
+                    pass
+
         links = self.get_card_links()
         if not links:
             return await ctx.send("🚫 No upcoming shows found.")
         if n < 1 or n > len(links):
             return await ctx.send(f"🚫 Only found {len(links)} show(s).")
 
-        title, matches = self.parse_card(links[n-1], translate=translate)
+        title, matches = self.parse_card(links[n - 1], translate=translate)
         embed = discord.Embed(title=title)
 
         # Compute global column widths
@@ -117,11 +152,10 @@ class StardomCog(commands.Cog):
 
         for m in matches:
             rows = max(len(m["left"]), len(m["right"]))
-            # Build each row as "left | vs | right"
             lines: list[str] = []
             for i in range(rows):
-                l = m["left"][i]  if i < len(m["left"])  else ""
-                mid = "vs" if i == rows//2 else ""
+                l = m["left"][i] if i < len(m["left"]) else ""
+                mid = "vs" if i == rows // 2 else ""
                 r = m["right"][i] if i < len(m["right"]) else ""
                 lines.append(
                     f"{self.pad_center(l, w1)}  "
