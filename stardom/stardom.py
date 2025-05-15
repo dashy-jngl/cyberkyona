@@ -5,6 +5,7 @@ import discord
 from redbot.core import commands
 import requests
 from bs4 import BeautifulSoup
+from wcwidth import wcswidth
 from deep_translator import GoogleTranslator
 
 
@@ -20,29 +21,24 @@ class StardomCog(commands.Cog):
         r = requests.get(self.SCHEDULE_URL)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
-        # find all "対戦カード" buttons
         return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
+        # fetch and parse the card page
         r = requests.get(url)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # Title + date
+        # title + date
         base = soup.select_one("h1.match_head_title").get_text(strip=True)
         date_el = soup.select_one("p.date")
-        if date_el:
-            date_str = date_el.get_text(strip=True)
-            title = f"{date_str} {base}"
-        else:
-            title = base
+        title = f"{date_el.get_text(strip=True)} {base}" if date_el else base
 
-        # Append time from ticket page
+        # show‐start time (ticket page)
         ticket = soup.select_one("a.btnstyle4")
         if ticket and ticket.get("href"):
             try:
-                r2 = requests.get(ticket["href"])
-                r2.raise_for_status()
+                r2 = requests.get(ticket["href"]); r2.raise_for_status()
                 soup2 = BeautifulSoup(r2.text, "html.parser")
                 for div in soup2.find_all("div", class_="data_bg2"):
                     if "本戦開始時間" in div.get_text():
@@ -53,12 +49,14 @@ class StardomCog(commands.Cog):
             except requests.RequestException:
                 pass
 
-        # Collect matches
+        # collect all matches
         matches: list[dict] = []
         for wrap in soup.select("div.match_cover div.match_wrap"):
+            # match type
             mtype_el = wrap.select_one("h2.sub_content_title1")
             mtype = mtype_el.get_text(strip=True) if mtype_el else ""
 
+            # either row or column style
             row = wrap.find("div", class_="match_block_row")
             if row:
                 left = [n.get_text(strip=True) for n in row.select("div.leftside h3.name")]
@@ -66,17 +64,18 @@ class StardomCog(commands.Cog):
             else:
                 col = wrap.find("div", class_="match_block_column")
                 uls = col.select("ul.match_block_3col") if col else []
-                left = [n.get_text(strip=True) for n in uls[0].select("h3.name")] if len(uls) > 0 else []
-                right = [n.get_text(strip=True) for n in uls[1].select("h3.name")] if len(uls) > 1 else []
+                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls)>0 else [])]
+                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls)>1 else [])]
 
             matches.append({"type": mtype, "left": left, "right": right})
 
-        # Translate if requested
+        # optional translation
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
             for m in matches:
                 originals += m["left"] + m["right"]
+            # dedupe in order
             seen: dict[str, None] = {}
             for t in originals:
                 if t and t not in seen:
@@ -93,11 +92,47 @@ class StardomCog(commands.Cog):
 
         return title, matches
 
+
+    def disp_len(self, s: str) -> int:
+        return wcswidth(s)
+
+    def pad_center(self, text: str, width: int) -> str:
+        length = self.disp_len(text)
+        if length >= width:
+            return text
+        space = width - length
+        left = space // 2
+        right = space - left
+        return " " * left + text + " " * right
+
+    def format_match_table(self, left: list[str], right: list[str],
+                           w1: int, w2: int, w3: int) -> str:
+        lines: list[str] = []
+        # top border
+        lines.append(f"┌{'─'*w1}┬{'─'*w2}┬{'─'*w3}┐")
+        rows = max(len(left), len(right))
+        for i in range(rows):
+            l = left[i] if i < len(left) else ""
+            r = right[i] if i < len(right) else ""
+            mid = "vs" if i == rows // 2 else ""
+            lines.append(
+                "│"
+                + self.pad_center(l, w1)
+                + "│"
+                + self.pad_center(mid, w2)
+                + "│"
+                + self.pad_center(r, w3)
+                + "│"
+            )
+        # bottom border
+        lines.append(f"└{'─'*w1}┴{'─'*w2}┴{'─'*w3}┘")
+        return "\n".join(lines)
+
     @commands.command()
     async def stardom(self, ctx, n: int = 1, *, flags=""):
         """
         Post the nth Stardom show match card.
-        Append -e to flags for English translation.
+        Append -e for English translation.
         """
         translate = "-e" in flags.split()
         links = self.get_card_links()
@@ -108,41 +143,14 @@ class StardomCog(commands.Cog):
 
         title, matches = self.parse_card(links[n - 1], translate=translate)
 
-        # Compute column widths by character count
-        w2 = len("vs")
-        w1 = max((len(name) for m in matches for name in m["left"]), default=0)
-        w3 = max((len(name) for m in matches for name in m["right"]), default=0)
-
-        def pad(text: str, width: int) -> str:
-            space = width - len(text)
-            if space <= 0:
-                return text
-            left = space // 2
-            return " " * left + text + " " * (space - left)
+        # compute column widths using wcswidth (just like CLI)
+        w2 = self.disp_len("vs")
+        w1 = max((self.disp_len(name) for m in matches for name in m["left"]), default=0)
+        w3 = max((self.disp_len(name) for m in matches for name in m["right"]), default=0)
 
         embed = discord.Embed(title=title)
         for m in matches:
-            lines: list[str] = []
-            # top border
-            lines.append(f"┌{'─'*w1}┬{'─'*w2}┬{'─'*w3}┐")
-            rows = max(len(m["left"]), len(m["right"]))
-            for i in range(rows):
-                l = m["left"][i] if i < len(m["left"]) else ""
-                r = m["right"][i] if i < len(m["right"]) else ""
-                mid = "vs" if i == rows // 2 else ""
-                lines.append(
-                    "│"
-                    + pad(l, w1)
-                    + "│"
-                    + pad(mid, w2)
-                    + "│"
-                    + pad(r, w3)
-                    + "│"
-                )
-            # bottom border
-            lines.append(f"└{'─'*w1}┴{'─'*w2}┴{'─'*w3}┘")
-
-            table = "\n".join(lines)
+            table = self.format_match_table(m["left"], m["right"], w1, w2, w3)
             embed.add_field(name=m["type"] or "Match",
                             value=f"```\n{table}\n```",
                             inline=False)
