@@ -54,7 +54,6 @@ class StardomCog(commands.Cog):
             mtype_el = wrap.select_one("h2.sub_content_title1")
             mtype = mtype_el.get_text(strip=True) if mtype_el else "Match"
 
-            # detect two-team “row” style
             row = wrap.find("div", class_="match_block_row")
             if row:
                 teams = [
@@ -62,7 +61,6 @@ class StardomCog(commands.Cog):
                     [n.get_text(strip=True) for n in row.select("div.rightside h3.name")],
                 ]
             else:
-                # N-way “column” style: 1 ul per team
                 col = wrap.find("div", class_="match_block_column") or []
                 uls = col.select("ul.match_block_3col")
                 teams = [
@@ -72,7 +70,7 @@ class StardomCog(commands.Cog):
 
             matches.append({"type": mtype, "teams": teams})
 
-        # optional translation
+        # Translate if requested
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
@@ -84,8 +82,8 @@ class StardomCog(commands.Cog):
                 if t and t not in seen:
                     seen[t] = None
             originals = list(seen.keys())
-            translations = translator.translate_batch(originals)
-            mapping = dict(zip(originals, translations))
+            translated = translator.translate_batch(originals)
+            mapping = dict(zip(originals, translated))
 
             title = mapping.get(title, title)
             for m in matches:
@@ -97,7 +95,6 @@ class StardomCog(commands.Cog):
         return title, matches
 
     def pad_center(self, text: str, width: int) -> str:
-        """Center-pad text by character count."""
         l = len(text)
         if l >= width:
             return text
@@ -137,44 +134,26 @@ class StardomCog(commands.Cog):
 
         for m in matches:
             teams = m["teams"]
-            # how many teams?
             tcount = len(teams)
-            rows   = max(len(t) for t in teams)
-            # compute widths for each team column
-            w_data = [max((len(p) for p in t), default=0) for t in teams]
+            rows = max(len(t) for t in teams)
+
+            # compute each column width
+            w_data = [max((len(p) for p in team), default=0) for team in teams]
             w_sep  = len("vs")
 
-            # build top border
-            parts = []
-            for i in range(tcount):
-                parts.append("─" * w_data[i])
-                if i < tcount - 1:
-                    parts.append("─" * w_sep)
-            top = "┌" + "┬".join(parts) + "┐"
-
-            # build rows
-            body: list[str] = []
+            # build each row: Team1 ␣␣ vs ␣␣ Team2 [␣␣ vs ␣␣ Team3 …]
+            lines: list[str] = []
             mid_row = rows // 2
             for r in range(rows):
-                cells = []
+                parts: list[str] = []
                 for i in range(tcount):
-                    val = teams[i][r] if r < len(teams[i]) else ""
-                    cells.append(self.pad_center(val, w_data[i]))
+                    parts.append(self.pad_center(teams[i][r] if r < len(teams[i]) else "", w_data[i]))
                     if i < tcount - 1:
                         sep = "vs" if r == mid_row else ""
-                        cells.append(self.pad_center(sep, w_sep))
-                body.append("│" + "│".join(cells) + "│")
+                        parts.append(self.pad_center(sep, w_sep))
+                lines.append("  ".join(parts))
 
-            # bottom border
-            parts = []
-            for i in range(tcount):
-                parts.append("─" * w_data[i])
-                if i < tcount - 1:
-                    parts.append("─" * w_sep)
-            bottom = "└" + "┴".join(parts) + "┘"
-
-            # stitch it and add field
-            block = "```\n" + top + "\n" + "\n".join(body) + "\n" + bottom + "\n```"
+            block = "```\n" + "\n".join(lines) + "\n```"
             embed.add_field(name=m["type"], value=block, inline=False)
 
         await ctx.send(embed=embed)
