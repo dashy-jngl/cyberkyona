@@ -17,22 +17,20 @@ class StardomCog(commands.Cog):
         self.bot = bot
 
     def get_card_links(self) -> list[str]:
-        r = requests.get(self.SCHEDULE_URL)
-        r.raise_for_status()
+        r = requests.get(self.SCHEDULE_URL); r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
         return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
-        # fetch
         r = requests.get(url); r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # title + date
+        # Title + date
         base = soup.select_one("h1.match_head_title").get_text(strip=True)
         date_el = soup.select_one("p.date")
         title = f"{date_el.get_text(strip=True)} {base}" if date_el else base
 
-        # time from ticket page
+        # Start time
         ticket = soup.select_one("a.btnstyle4")
         if ticket and ticket.get("href"):
             try:
@@ -47,7 +45,7 @@ class StardomCog(commands.Cog):
             except requests.RequestException:
                 pass
 
-        # collect matches
+        # Collect matches
         matches: list[dict] = []
         for wrap in soup.select("div.match_cover div.match_wrap"):
             mtype_el = wrap.select_one("h2.sub_content_title1")
@@ -65,7 +63,7 @@ class StardomCog(commands.Cog):
 
             matches.append({"type": mtype, "left": left, "right": right})
 
-        # optional translation
+        # Translate if requested
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
@@ -76,8 +74,8 @@ class StardomCog(commands.Cog):
                 if t and t not in seen:
                     seen[t] = None
             originals = list(seen.keys())
-            translated = translator.translate_batch(originals)
-            mapping = dict(zip(originals, translated))
+            translations = translator.translate_batch(originals)
+            mapping = dict(zip(originals, translations))
 
             title = mapping.get(title, title)
             for m in matches:
@@ -87,29 +85,52 @@ class StardomCog(commands.Cog):
 
         return title, matches
 
+    def pad_center(self, text: str, width: int) -> str:
+        """Center-pad text by character count."""
+        l = len(text)
+        if l >= width:
+            return text
+        space = width - l
+        left = space // 2
+        return " " * left + text + " " * (space - left)
+
     @commands.command()
     async def stardom(self, ctx, n: int = 1, *, flags=""):
         """
-        Post the nth Stardom show match card.
-        Append -e to translate to English.
+        Post the nth Stardom show card.
+        Use -e to translate to English.
         """
         translate = "-e" in flags.split()
         links = self.get_card_links()
         if not links:
-            return await ctx.send("🚫 No upcoming shows.")
+            return await ctx.send("🚫 No upcoming shows found.")
         if n < 1 or n > len(links):
-            return await ctx.send(f"🚫 Only found {len(links)} shows.")
+            return await ctx.send(f"🚫 Only found {len(links)} show(s).")
 
         title, matches = self.parse_card(links[n-1], translate=translate)
-        embed = discord.Embed(title=title, color=discord.Color.blurple())
+        embed = discord.Embed(title=title)
+
+        # Compute global column widths
+        w2 = len("vs")
+        w1 = max((len(name) for m in matches for name in m["left"]), default=0)
+        w3 = max((len(name) for m in matches for name in m["right"]), default=0)
 
         for m in matches:
-            # collapse each side into slash-separated one-liner
-            left_side  = "/".join(m["left"])
-            right_side = "/".join(m["right"])
-            line = f"{left_side} vs {right_side}"
+            rows = max(len(m["left"]), len(m["right"]))
+            # Build each row as "left | vs | right"
+            lines: list[str] = []
+            for i in range(rows):
+                l = m["left"][i]  if i < len(m["left"])  else ""
+                mid = "vs" if i == rows//2 else ""
+                r = m["right"][i] if i < len(m["right"]) else ""
+                lines.append(
+                    f"{self.pad_center(l, w1)} | "
+                    f"{self.pad_center(mid, w2)} | "
+                    f"{self.pad_center(r, w3)}"
+                )
 
-            embed.add_field(name=m["type"], value=line or "―", inline=False)
+            block = "```\n" + "\n".join(lines) + "\n```"
+            embed.add_field(name=m["type"], value=block, inline=False)
 
         await ctx.send(embed=embed)
 
