@@ -17,25 +17,24 @@ class StardomCog(commands.Cog):
         self.bot = bot
 
     def get_card_links(self) -> list[str]:
-        r = requests.get(self.SCHEDULE_URL); r.raise_for_status()
+        r = requests.get(self.SCHEDULE_URL)
+        r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
-        return [
-            a["href"]
-            for a in soup.find_all("a", class_="btn", string="対戦カード")
-        ]
+        return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
+        # fetch
         r = requests.get(url); r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # Title + date
+        # title + date
         base = soup.select_one("h1.match_head_title").get_text(strip=True)
         date_el = soup.select_one("p.date")
         title = f"{date_el.get_text(strip=True)} {base}" if date_el else base
 
-        # Start time
+        # time from ticket page
         ticket = soup.select_one("a.btnstyle4")
-        if ticket and ticket["href"]:
+        if ticket and ticket.get("href"):
             try:
                 r2 = requests.get(ticket["href"]); r2.raise_for_status()
                 soup2 = BeautifulSoup(r2.text, "html.parser")
@@ -48,7 +47,7 @@ class StardomCog(commands.Cog):
             except requests.RequestException:
                 pass
 
-        # Matches
+        # collect matches
         matches: list[dict] = []
         for wrap in soup.select("div.match_cover div.match_wrap"):
             mtype_el = wrap.select_one("h2.sub_content_title1")
@@ -66,7 +65,7 @@ class StardomCog(commands.Cog):
 
             matches.append({"type": mtype, "left": left, "right": right})
 
-        # Translate
+        # optional translation
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
@@ -92,30 +91,25 @@ class StardomCog(commands.Cog):
     async def stardom(self, ctx, n: int = 1, *, flags=""):
         """
         Post the nth Stardom show match card.
-        Use -e to translate to English.
+        Append -e to translate to English.
         """
         translate = "-e" in flags.split()
         links = self.get_card_links()
         if not links:
-            return await ctx.send("🚫 No upcoming shows found.")
+            return await ctx.send("🚫 No upcoming shows.")
         if n < 1 or n > len(links):
-            return await ctx.send(f"🚫 Only found {len(links)} show(s).")
+            return await ctx.send(f"🚫 Only found {len(links)} shows.")
 
         title, matches = self.parse_card(links[n-1], translate=translate)
         embed = discord.Embed(title=title, color=discord.Color.blurple())
 
         for m in matches:
-            rows = max(len(m["left"]), len(m["right"]))
-            left_block  = "\n".join(m["left"][i]  if i < len(m["left"])  else "" for i in range(rows))
-            mid_block   = "\n".join("vs" if i == rows//2 else ""     for i in range(rows))
-            right_block = "\n".join(m["right"][i] if i < len(m["right"]) else "" for i in range(rows))
+            # collapse each side into slash-separated one-liner
+            left_side  = "/".join(m["left"])
+            right_side = "/".join(m["right"])
+            line = f"{left_side} vs {right_side}"
 
-            # Match type header
-            embed.add_field(name=m["type"], value="\u200b", inline=False)
-            # Three compact inline columns
-            embed.add_field(name="\u200b", value=left_block,  inline=True)
-            embed.add_field(name="\u200b", value=mid_block,   inline=True)
-            embed.add_field(name="\u200b", value=right_block, inline=True)
+            embed.add_field(name=m["type"], value=line or "―", inline=False)
 
         await ctx.send(embed=embed)
 
