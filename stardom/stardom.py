@@ -22,20 +22,22 @@ class StardomCog(commands.Cog):
         return [a["href"] for a in soup.find_all("a", class_="btn", string="対戦カード")]
 
     def parse_card(self, url: str, translate: bool = False) -> tuple[str, list[dict]]:
+        # Fetch the card page
         r = requests.get(url)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # Title + date
+        # Extract title and date
         base = soup.select_one("h1.match_head_title").get_text(strip=True)
         date_el = soup.select_one("p.date")
         title = f"{date_el.get_text(strip=True)} {base}" if date_el else base
 
-        # Start time from ticket page
+        # Append event start time from ticket page
         ticket = soup.select_one("a.btnstyle4")
         if ticket and ticket.get("href"):
             try:
-                r2 = requests.get(ticket["href"]); r2.raise_for_status()
+                r2 = requests.get(ticket["href"])
+                r2.raise_for_status()
                 soup2 = BeautifulSoup(r2.text, "html.parser")
                 for div in soup2.find_all("div", class_="data_bg2"):
                     if "本戦開始時間" in div.get_text():
@@ -46,7 +48,7 @@ class StardomCog(commands.Cog):
             except requests.RequestException:
                 pass
 
-        # Collect matches
+        # Build match list
         matches: list[dict] = []
         for wrap in soup.select("div.match_cover div.match_wrap"):
             mtype_el = wrap.select_one("h2.sub_content_title1")
@@ -59,12 +61,12 @@ class StardomCog(commands.Cog):
             else:
                 col = wrap.find("div", class_="match_block_column")
                 uls = col.select("ul.match_block_3col") if col else []
-                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls)>0 else [])]
-                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls)>1 else [])]
+                left = [n.get_text(strip=True) for n in (uls[0].select("h3.name") if len(uls) > 0 else [])]
+                right = [n.get_text(strip=True) for n in (uls[1].select("h3.name") if len(uls) > 1 else [])]
 
             matches.append({"type": mtype, "left": left, "right": right})
 
-        # Translate if requested
+        # Translate to English if requested
         if translate:
             translator = GoogleTranslator(source="ja", target="en")
             originals = [title] + [m["type"] for m in matches]
@@ -80,51 +82,17 @@ class StardomCog(commands.Cog):
 
             title = mapping.get(title, title)
             for m in matches:
-                m["type"] = mapping.get(m["type"], m["type"])
-                m["left"] = [mapping.get(x, x) for x in m["left"]]
+                m["type"]  = mapping.get(m["type"], m["type"])
+                m["left"]  = [mapping.get(x, x) for x in m["left"]]
                 m["right"] = [mapping.get(x, x) for x in m["right"]]
 
         return title, matches
-
-
-    def pad_center(self, text: str, width: int) -> str:
-        l = len(text)
-        if l >= width:
-            return text
-        space = width - l
-        left = space // 2
-        right = space - left
-        return " " * left + text + " " * right
-
-    def format_match_table(self, left: list[str], right: list[str],
-                           w1: int, w2: int, w3: int) -> str:
-        lines: list[str] = []
-        # top
-        lines.append(f"┌{'─'*w1}┬{'─'*w2}┬{'─'*w3}┐")
-        rows = max(len(left), len(right))
-        for i in range(rows):
-            a = left[i] if i < len(left) else ""
-            c = right[i] if i < len(right) else ""
-            b = "vs" if i == rows // 2 else ""
-            lines.append(
-                "│"
-                + self.pad_center(a, w1)
-                + "│"
-                + self.pad_center(b, w2)
-                + "│"
-                + self.pad_center(c, w3)
-                + "│"
-            )
-        # bottom
-        lines.append(f"└{'─'*w1}┴{'─'*w2}┴{'─'*w3}┘")
-        return "\n".join(lines)
-
 
     @commands.command()
     async def stardom(self, ctx, n: int = 1, *, flags=""):
         """
         Post the nth Stardom show match card.
-        Add -e for English translation.
+        Add -e to flags for English translation.
         """
         translate = "-e" in flags.split()
         links = self.get_card_links()
@@ -134,20 +102,25 @@ class StardomCog(commands.Cog):
             return await ctx.send(f"Only found {len(links)} show(s).")
 
         title, matches = self.parse_card(links[n - 1], translate=translate)
-
-        # compute uniform column widths
-        w2 = len("vs")
-        w1 = max((len(x) for m in matches for x in m["left"]), default=0)
-        w3 = max((len(x) for m in matches for x in m["right"]), default=0)
-
         embed = discord.Embed(title=title)
+
+        # For each match, build three inline columns: left / vs / right
         for m in matches:
-            table = self.format_match_table(m["left"], m["right"], w1, w2, w3)
-            embed.add_field(
-                name=m["type"] or "Match",
-                value=f"```\n{table}\n```",
-                inline=False
-            )
+            rows = max(len(m["left"]), len(m["right"]))
+            left_col  = [m["left"][i]  if i < len(m["left"])  else "" for i in range(rows)]
+            mid_col   = ["vs" if i == rows // 2 else ""     for i in range(rows)]
+            right_col = [m["right"][i] if i < len(m["right"]) else "" for i in range(rows)]
+
+            left_block  = "\n".join(left_col)
+            mid_block   = "\n".join(mid_col)
+            right_block = "\n".join(right_col)
+
+            # Header row for this match type
+            embed.add_field(name=m["type"] or "Match", value="\u200b", inline=False)
+            # Then three side-by-side fields
+            embed.add_field(name="\u200b", value=left_block,  inline=True)
+            embed.add_field(name="\u200b", value=mid_block,   inline=True)
+            embed.add_field(name="\u200b", value=right_block, inline=True)
 
         await ctx.send(embed=embed)
 
