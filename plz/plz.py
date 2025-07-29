@@ -18,7 +18,7 @@ choices_map = {
     "kray": ["kira summer", "konami", "misa k", "tomoka", "hikaru shida", "jungle kyona"],
     "champ": ["utami hayashishita", "maika stardom", "hikaru shida"],
     "golden": ["starlight kid"],
-    "samus": ["tam nakano"],
+    "samus": ["tam nakano", "saya iida"],
 }
 
 substitutions = {
