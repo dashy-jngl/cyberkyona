@@ -21,8 +21,8 @@ choices_map = {
     "samus": ["tam nakano", "saya iida"],
     "samusbots": ["tam nakano", "saya iida"],
     "inky": ["hina", "starlight"],
-    "bby": ["azm", "hazuki"],
-    "bobby": ["azm", "hazuki"],
+    "bby": ["azm", "hazuki", "rika"],
+    "bobby": ["azm", "hazuki", "rika"],
 }
 
 substitutions = {
