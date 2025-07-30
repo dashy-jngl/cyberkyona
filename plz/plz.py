@@ -19,6 +19,7 @@ choices_map = {
     "champ": ["utami hayashishita", "maika stardom", "hikaru shida"],
     "golden": ["starlight kid"],
     "samus": ["tam nakano", "saya iida"],
+    "samusbots": ["tam nakano", "saya iida"],
     "inky": ["hina", "starlight"],
 }
 
