@@ -23,6 +23,8 @@ choices_map = {
     "inky": ["hina", "starlight"],
     "bby": ["azm", "hazuki", "rika"],
     "bobby": ["azm", "hazuki", "rika"],
+    "cyberkyona" : ["mari", "momo watamane", "jungle kyona", "utami", "maika stardom", "kouki", "risa sera"],
+    "ck" : ["mari", "momo watamane", "jungle kyona", "utami", "maika stardom", "kouki", "risa sera"],
 }
 
 substitutions = {
