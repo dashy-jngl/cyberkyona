@@ -120,7 +120,7 @@ class Plz(BaseCog):
 
 
     @commands.command()
-    async def plz(self, ctx, *, ask: str = "mayu"):
+    async def plz(self, ctx, *, ask: str = "?"):
         """Respond with a random file from a matching directory."""
         user = ctx.message.author
 
