@@ -56,6 +56,8 @@ class Plz(BaseCog):
     def find_closest_match(self, search_terms: str):
         """Find the best matching folder using exact and fuzzy search with randomness for ties."""
         folder_names = os.listdir(base_path)
+        if (search_terms == "?"):
+            return random.choice(folder_names)
 
         # Split input into multiple terms (e.g., "misa kagura" -> ["misa", "kagura"])
         search_terms_list = search_terms.lower().split()
