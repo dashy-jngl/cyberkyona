@@ -245,7 +245,7 @@ birthdays = {
         "29.11": ["Rosemary", "Azusa Inaba"],
         "30.11": ["Naomi"],
 #        dec
-        "01.12": ["Hanako Nakamori", "Yufa"],
+        "01.12": ["Hanako Nakamori", "Yufa", "Kiyoka Kotatsu"],
         "03.12": ["Kizuna Tanaka", "Mirai"], #Mirai Maiumi
         "04.12": ["Itsuki Aoki", "Dynamite Kansai"],
         "05.12": ["Raku"],
@@ -440,6 +440,8 @@ birthdays = {
 	"kira": ["Kira☆An: 16.08.??", "Kira Summer: 18.12.96"],
         "killer": ["Killer Kelly: 21.03.92"],
         "kimber": ["Kimber Lee: 27.06.90"],
+	"kiyoka" : ["Kiyoka Kotatsu : 01.12.00"],
+	"kotatsu" : ["Kiyoka Kotatsu : 01.12.00"],
         "kizuna": ["Kizuna Tanaka: 03.12.2004"],
         "": [""],
         "klr": ["Kay Lee Ray: 11.08.92"],
@@ -493,7 +495,7 @@ birthdays = {
         "martina": ["Session Moth Martina: 11.11.90"],
 	"maru": ["MARU: 30.01.81"],
 	"maxxine": ["Maxxine Dupri: 19.05.97"],
-        "maya": ["Maya Yukihi: 09.01.??"],
+        "maya": ["Maya Yukihi: 09.01.??", "Kiyoka Kotatsu: 01.12.00"],
         "mayu": ["Mayu Iwatani: 19.02.93"],
         "mayuka": ["Mayuka Kioke: 07.06.98"],
         "mayumi": ["Mayumi Ozaki: 28.10.68"],
