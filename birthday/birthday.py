@@ -90,21 +90,46 @@ class Birthday(commands.Cog):
             age -= 1
         return age
 
+    # ── activity filter ─────────────────────────────────────
+
+    ACTIVE_YEARS = 2  # default: only show wrestlers active in last 2 years
+
+    @staticmethod
+    def _is_active(wrestler: dict, today: date, years: int = 2) -> bool:
+        """Check if wrestler had a match within the last N years."""
+        lmd = wrestler.get("last_match_date", "")
+        if not lmd or lmd.startswith("0001"):
+            return False
+        try:
+            last = datetime.fromisoformat(lmd.replace("Z", "+00:00")).date()
+            cutoff = today.replace(year=today.year - years)
+            return last >= cutoff
+        except (ValueError, TypeError):
+            return False
+
     # ── matching helpers ────────────────────────────────────
 
-    def _find_by_date(self, wrestlers: List[dict], month: int, day: int) -> List[Tuple[dict, date]]:
+    def _find_by_date(
+        self, wrestlers: List[dict], month: int, day: int, show_all: bool = False, today: Optional[date] = None
+    ) -> List[Tuple[dict, date]]:
         """Find wrestlers born on a given month/day."""
+        if today is None:
+            today = date.today()
         results = []
         for w in wrestlers:
             bd = self._parse_birthday(w.get("birthday", ""))
             if bd and bd.month == month and bd.day == day:
-                results.append((w, bd))
-        # sort by name
+                if show_all or self._is_active(w, today, self.ACTIVE_YEARS):
+                    results.append((w, bd))
         results.sort(key=lambda x: x[0]["name"])
         return results
 
-    def _find_by_name(self, wrestlers: List[dict], query: str) -> List[Tuple[dict, date]]:
+    def _find_by_name(
+        self, wrestlers: List[dict], query: str, show_all: bool = False, today: Optional[date] = None
+    ) -> List[Tuple[dict, date]]:
         """Search wrestlers by name or alias (case-insensitive partial match)."""
+        if today is None:
+            today = date.today()
         q = query.lower().strip()
         results = []
         seen_ids = set()
@@ -114,6 +139,8 @@ class Birthday(commands.Cog):
                 continue
             bd = self._parse_birthday(w.get("birthday", ""))
             if not bd:
+                continue
+            if not show_all and not self._is_active(w, today, self.ACTIVE_YEARS):
                 continue
 
             # check main name
@@ -282,15 +309,24 @@ class Birthday(commands.Cog):
     @commands.command()
     async def birthday(self, ctx: commands.Context, *, ask: str = ""):
         """
-        Show joshi birthdays.
+        Show joshi birthdays (active wrestlers only).
 
         Usage:
           !birthday          → today's birthdays
           !birthday 22.03    → birthdays on March 22
           !birthday tam      → search by name/alias
+          !birthday all      → today's birthdays (include retired/inactive)
+          !birthday all 22.03 → all birthdays on March 22
+          !birthday all tam  → search all wrestlers by name
         """
         ask = ask.strip()
         today = date.today()
+
+        # check for "all" flag
+        show_all = False
+        if ask.lower().startswith("all"):
+            show_all = True
+            ask = ask[3:].strip()
 
         try:
             wrestlers = await self._fetch_wrestlers()
@@ -299,24 +335,38 @@ class Birthday(commands.Cog):
 
         if not ask:
             # today's birthdays
-            results = self._find_by_date(wrestlers, today.month, today.day)
+            results = self._find_by_date(wrestlers, today.month, today.day, show_all, today)
             embed = self._build_date_embed(results, today.month, today.day, today)
+            if not show_all:
+                embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all for everyone")
             return await ctx.send(embed=embed)
 
         # try parsing as date
         parsed = self._parse_date_arg(ask)
         if parsed:
             month, day = parsed
-            results = self._find_by_date(wrestlers, month, day)
+            results = self._find_by_date(wrestlers, month, day, show_all, today)
             embed = self._build_date_embed(results, month, day, today)
+            if not show_all:
+                embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all {ask} for everyone")
             return await ctx.send(embed=embed)
 
         # otherwise, name search
-        results = self._find_by_name(wrestlers, ask)
+        results = self._find_by_name(wrestlers, ask, show_all, today)
         if not results:
+            # if filtered and nothing found, hint about "all"
+            if not show_all:
+                all_results = self._find_by_name(wrestlers, ask, True, today)
+                if all_results:
+                    return await ctx.send(
+                        f"No active wrestlers found for \"{ask}\" — but found {len(all_results)} "
+                        f"result{'s' if len(all_results) != 1 else ''} with `!birthday all {ask}`"
+                    )
             return await ctx.send(f"No results for \"{ask}\" <:dashsrs:763999844724899841>")
 
         embed = self._build_search_embed(results, ask, today)
+        if not show_all:
+            embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all {ask} for everyone")
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -329,7 +379,7 @@ class Birthday(commands.Cog):
         except Exception:
             return
 
-        results = self._find_by_date(wrestlers, today.month, today.day)
+        results = self._find_by_date(wrestlers, today.month, today.day, False, today)
         if not results:
             return
 
