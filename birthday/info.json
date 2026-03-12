@@ -1,7 +1,9 @@
 {
-  "author": ["Twentysix", "DesignByAdrian (ThinkAdrian#1186)", "Dasha"],
-  "DESCRIPTION": "Usage: [p]birthday date/name",
-  "SHORT": "Displays birthdays for a given date or joshi",
-  "NAME": "Birthday",
-  "TAGS": ["fun"]
+  "author": ["Dasha"],
+  "description": "Usage: [p]birthday [date/name]\nPowered by the Joshitori database (joshitori.com).",
+  "short": "Joshi birthdays from Joshitori",
+  "name": "Birthday",
+  "tags": ["fun", "joshi", "birthday"],
+  "min_python_version": [3, 8, 0],
+  "requirements": ["aiohttp"]
 }
