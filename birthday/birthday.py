@@ -165,7 +165,8 @@ class Birthday(commands.Cog):
             )
             return embed
 
-        title = f"🎂 {'Today\'s Birthdays!' if is_today else f'Birthdays — {date_str}'}"
+        todays = "Today's Birthdays!"
+        title = f"🎂 {todays if is_today else f'Birthdays — {date_str}'}"
         lines = []
         for w, bd in results:
             promo = w.get("promotion", "")
