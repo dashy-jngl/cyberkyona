@@ -107,13 +107,15 @@ class Who(commands.Cog):
                     seen.add(w["id"])
                     break
 
-        # If there's an exact match, return only that
-        if exact:
-            return exact
-
-        # Sort partial by ELO desc (most notable first)
-        partial.sort(key=lambda w: w.get("elo", 0), reverse=True)
-        return partial
+        # Combine all matches, boost exact matches in sort
+        all_matches = [(w, True) for w in exact] + [(w, False) for w in partial]
+        # Sort: exact name match on main name first, then by ELO
+        all_matches.sort(key=lambda x: (
+            -(x[0]["name"].lower() == q),   # exact main name first
+            -(x[1]),                         # then exact alias matches
+            -x[0].get("elo", 0),            # then by ELO
+        ))
+        return [w for w, _ in all_matches]
 
     def _get_rank(self, wrestlers: List[dict], wrestler_id: int) -> Tuple[int, int]:
         """Get rank and total ranked wrestlers (sorted by ELO desc, 50+ matches only)."""
@@ -226,11 +228,12 @@ class Who(commands.Cog):
         if not results:
             return await ctx.send('No wrestler found for "%s" <:dashsrs:763999844724899841>' % name)
 
-        # Show up to 5 results
-        for w in results[:5]:
-            rank, total = self._get_rank(wrestlers, w["id"])
-            embed = self._build_embed(w, rank, total)
-            await ctx.send(embed=embed)
+        # Show top result
+        w = results[0]
+        rank, total = self._get_rank(wrestlers, w["id"])
+        embed = self._build_embed(w, rank, total)
+        await ctx.send(embed=embed)
 
-        if len(results) > 5:
-            await ctx.send("*...and %d more results. Try a more specific name!*" % (len(results) - 5))
+        if len(results) > 1:
+            others = [r["name"] for r in results[1:5]]
+            await ctx.send("*Also found: %s*" % ", ".join(others))
