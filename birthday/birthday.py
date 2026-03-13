@@ -94,6 +94,14 @@ class Birthday(commands.Cog):
 
     ACTIVE_YEARS = 2  # default: only show wrestlers active in last 2 years
     MIN_MATCHES = 50  # minimum matches to show up in results
+    BYPASS_PROMOS = {
+        "world wonder ring stardom",
+        "marigold",
+        "actwres girl'z",
+        "world wrestling entertainment",
+        "all elite wrestling",
+        "tokyo joshi pro wrestling",
+    }
 
     @staticmethod
     def _is_active(wrestler: dict, today: date, years: int = 2) -> bool:
@@ -122,8 +130,9 @@ class Birthday(commands.Cog):
             if bd and bd.month == month and bd.day == day:
                 if not show_all and not self._is_active(w, today, self.ACTIVE_YEARS):
                     continue
-                if w.get("match_count", 0) < self.MIN_MATCHES:
-                    continue
+                if not show_all and w.get("match_count", 0) < self.MIN_MATCHES:
+                    if w.get("promotion", "").lower() not in self.BYPASS_PROMOS:
+                        continue
                 results.append((w, bd))
         results.sort(key=lambda x: x[0].get("elo", 0), reverse=True)
         return results
@@ -147,8 +156,9 @@ class Birthday(commands.Cog):
             if not show_all and not self._is_active(w, today, self.ACTIVE_YEARS):
                 continue
 
-            if w.get("match_count", 0) < self.MIN_MATCHES:
-                continue
+            if not show_all and w.get("match_count", 0) < self.MIN_MATCHES:
+                if w.get("promotion", "").lower() not in self.BYPASS_PROMOS:
+                    continue
 
             # check main name
             if q in w["name"].lower():
