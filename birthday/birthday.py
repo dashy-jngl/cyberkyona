@@ -183,43 +183,24 @@ class Birthday(commands.Cog):
         """Build a detail embed for a single wrestler."""
         promo = wrestler.get("promotion", "")
         aliases = self._get_aliases(wrestler)
-        style = wrestler.get("wrestling_style", "")
-        height = wrestler.get("height", "")
-        weight = wrestler.get("weight", "")
-        birthplace = wrestler.get("birthplace", "")
-        elo = wrestler.get("elo", 0)
-        record = f"{wrestler.get('wins', 0)}W-{wrestler.get('losses', 0)}L-{wrestler.get('draws', 0)}D"
 
         name_line = wrestler["name"]
         if aliases:
             name_line += f" ({', '.join(aliases[:3])})"
 
-        embed = discord.Embed(
-            title=f"🎂 {name_line}",
-            color=PINK,
-        )
-
         if self._year_known(bd):
-            bd_str = f"{bd.strftime('%d.%m.%Y')} (Age {self.FOREVER_AGE})"
+            bd_str = f"{bd.strftime('%d.%m.%Y')} · Age {self.FOREVER_AGE}"
         else:
             bd_str = f"{bd.strftime('%d.%m')}.??"
-        info_lines = [f"**Birthday:** {bd_str}"]
-        if birthplace:
-            info_lines.append(f"**From:** {birthplace}")
+
+        desc = bd_str
         if promo:
-            info_lines.append(f"**Promotion:** {promo}")
-        if style:
-            info_lines.append(f"**Style:** {style}")
-        if height or weight:
-            hw = " · ".join(filter(None, [height, weight]))
-            info_lines.append(f"**Size:** {hw}")
+            desc += f" · {promo}"
 
-        embed.description = "\n".join(info_lines)
-
-        embed.add_field(
-            name="Stats",
-            value=f"ELO: {elo:.0f} · Record: {record} · Matches: {wrestler.get('match_count', 0)}",
-            inline=False,
+        embed = discord.Embed(
+            title=f"🎂 Happy Birthday — {name_line}",
+            description=desc,
+            color=PINK,
         )
 
         img = self._get_image(wrestler)
