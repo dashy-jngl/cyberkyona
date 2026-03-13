@@ -328,9 +328,14 @@ class Birthday(commands.Cog):
             img = self._get_image(w)
 
             if self._year_known(bd):
-                desc = f"Turning **{self.FOREVER_AGE}** today! · {promo}"
+                bd_str = f"{bd.strftime('%d.%m.%Y')} · Age {self.FOREVER_AGE}"
             else:
-                desc = f"Happy Birthday! · {promo}"
+                bd_str = f"{bd.strftime('%d.%m')}.??"
+
+            # if self._year_known(bd):
+            desc = f"({bd_str}) → Turning **{self.FOREVER_AGE}** today! · {promo}"
+            # else:
+            #     desc = f"Happy Birthday! · {promo}"
 
             embed = discord.Embed(
                 title=f"🎂 Happy Birthday {w['name']}!",
@@ -339,7 +344,6 @@ class Birthday(commands.Cog):
             )
             if img:
                 embed.set_thumbnail(url=img)
-            embed.set_footer(text="joshitori.com")
 
             await ctx.send(embed=embed)
 
