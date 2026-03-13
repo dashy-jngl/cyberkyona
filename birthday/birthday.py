@@ -215,7 +215,7 @@ class Birthday(commands.Cog):
             desc += f" · {promo}"
 
         embed = discord.Embed(
-            title=f"🎂 Happy Birthday — {name_line}",
+            title=f"🎂 Happy Birthday → {name_line}",
             description=desc,
             color=PINK,
         )
@@ -233,7 +233,7 @@ class Birthday(commands.Cog):
         if not results:
             date_str = f"{day:02d}.{month:02d}"
             embed = discord.Embed(
-                title=f"🎂 Birthdays — {date_str}",
+                title=f"🎂 Birthdays → {date_str}",
                 description="No birthdays found for this date!",
                 color=PINK,
             )
@@ -300,7 +300,7 @@ class Birthday(commands.Cog):
                 all_results = self._find_by_name(wrestlers, ask, True, today)
                 if all_results:
                     return await ctx.send(
-                        f"No active wrestlers found for \"{ask}\" — but found {len(all_results)} "
+                        f"No active wrestlers found for \"{ask}\" → but found {len(all_results)} "
                         f"result{'s' if len(all_results) != 1 else ''} with `!birthday all {ask}`"
                     )
             return await ctx.send(f"No results for \"{ask}\" <:dashsrs:763999844724899841>")
