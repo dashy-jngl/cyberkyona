@@ -93,6 +93,7 @@ class Birthday(commands.Cog):
     # ── activity filter ─────────────────────────────────────
 
     ACTIVE_YEARS = 2  # default: only show wrestlers active in last 2 years
+    MIN_MATCHES = 50  # minimum matches to show up in results
 
     @staticmethod
     def _is_active(wrestler: dict, today: date, years: int = 2) -> bool:
@@ -119,9 +120,12 @@ class Birthday(commands.Cog):
         for w in wrestlers:
             bd = self._parse_birthday(w.get("birthday", ""))
             if bd and bd.month == month and bd.day == day:
-                if show_all or self._is_active(w, today, self.ACTIVE_YEARS):
-                    results.append((w, bd))
-        results.sort(key=lambda x: x[0]["name"])
+                if not show_all and not self._is_active(w, today, self.ACTIVE_YEARS):
+                    continue
+                if w.get("match_count", 0) < self.MIN_MATCHES:
+                    continue
+                results.append((w, bd))
+        results.sort(key=lambda x: x[0].get("elo", 0), reverse=True)
         return results
 
     def _find_by_name(
@@ -143,6 +147,9 @@ class Birthday(commands.Cog):
             if not show_all and not self._is_active(w, today, self.ACTIVE_YEARS):
                 continue
 
+            if w.get("match_count", 0) < self.MIN_MATCHES:
+                continue
+
             # check main name
             if q in w["name"].lower():
                 results.append((w, bd))
@@ -156,7 +163,7 @@ class Birthday(commands.Cog):
                     seen_ids.add(w["id"])
                     break
 
-        results.sort(key=lambda x: x[0]["name"])
+        results.sort(key=lambda x: x[0].get("elo", 0), reverse=True)
         return results
 
     # ── date parsing ────────────────────────────────────────
