@@ -328,14 +328,11 @@ class Birthday(commands.Cog):
             img = self._get_image(w)
 
             if self._year_known(bd):
-                bd_str = f"{bd.strftime('%d.%m.%Y')} · Age {self.FOREVER_AGE}"
+                bd_str = f"{bd.strftime('%d.%m.%Y')}"
             else:
                 bd_str = f"{bd.strftime('%d.%m')}.??"
 
-            # if self._year_known(bd):
             desc = f"({bd_str}) → Turning **{self.FOREVER_AGE}** today! · {promo}"
-            # else:
-            #     desc = f"Happy Birthday! · {promo}"
 
             embed = discord.Embed(
                 title=f"🎂 Happy Birthday {w['name']}!",
