@@ -1,0 +1,10 @@
+{
+    "author": ["dashy"],
+    "install_msg": "Who cog loaded! Use !who <name> to look up a wrestler.",
+    "name": "Who",
+    "short": "Wrestler profile lookup from Joshitori",
+    "description": "Look up joshi wrestler profiles with ELO, rank, record, and more.",
+    "tags": ["joshi", "wrestling", "joshitori", "profile"],
+    "type": "COG",
+    "end_user_data_statement": "This cog does not store any user data."
+}
