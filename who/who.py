@@ -82,25 +82,38 @@ class Who(commands.Cog):
         return "Seedling", "\N{SEEDLING}"
 
     def _find_by_name(self, wrestlers: List[dict], query: str) -> List[dict]:
-        """Search by name or alias, case-insensitive partial match."""
+        """Search by name or alias. Exact match prioritised, then partial."""
         q = query.lower().strip()
-        results = []
+        exact = []
+        partial = []
         seen = set()
 
         for w in wrestlers:
             if w["id"] in seen:
                 continue
-            if q in w["name"].lower():
-                results.append(w)
+
+            names = [w["name"].lower()] + [a.lower() for a in self._get_aliases(w)]
+
+            # exact match on any name/alias
+            if q in names:
+                exact.append(w)
                 seen.add(w["id"])
                 continue
-            for alias in self._get_aliases(w):
-                if q in alias.lower():
-                    results.append(w)
+
+            # partial match
+            for n in names:
+                if q in n:
+                    partial.append(w)
                     seen.add(w["id"])
                     break
 
-        return results
+        # If there's an exact match, return only that
+        if exact:
+            return exact
+
+        # Sort partial by ELO desc (most notable first)
+        partial.sort(key=lambda w: w.get("elo", 0), reverse=True)
+        return partial
 
     def _get_rank(self, wrestlers: List[dict], wrestler_id: int) -> Tuple[int, int]:
         """Get rank and total ranked wrestlers (sorted by ELO desc, 50+ matches only)."""
