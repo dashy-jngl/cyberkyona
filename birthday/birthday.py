@@ -177,53 +177,7 @@ class Birthday(commands.Cog):
 
     # ── embed builders ──────────────────────────────────────
 
-    def _build_date_embed(
-        self, results: List[Tuple[dict, date]], month: int, day: int, today: date
-    ) -> discord.Embed:
-        """Build an embed for birthdays on a specific date."""
-        date_str = f"{day:02d}.{month:02d}"
-        is_today = today.month == month and today.day == day
-
-        if not results:
-            embed = discord.Embed(
-                title=f"🎂 Birthdays — {date_str}",
-                description="No birthdays found for this date!",
-                color=PINK,
-            )
-            return embed
-
-        todays = "Today's Birthdays!"
-        title = f"🎂 {todays if is_today else f'Birthdays — {date_str}'}"
-        lines = []
-        for w, bd in results:
-            promo = w.get("promotion", "")
-            aliases = self._get_aliases(w)
-            alias_str = f" ({', '.join(aliases[:2])})" if aliases else ""
-            if self._year_known(bd):
-                age = self._age(bd, today)
-                date_str = f"{bd.strftime('%d.%m.%Y')} · Age {age}"
-            else:
-                date_str = f"{bd.strftime('%d.%m')}.??"
-            lines.append(
-                f"**{w['name']}**{alias_str}\n"
-                f"  ↳ {date_str} · {promo}"
-            )
-
-        embed = discord.Embed(
-            title=title,
-            description="\n\n".join(lines[:20]),
-            color=PINK,
-        )
-        embed.set_footer(text=f"joshitori.com · {len(results)} result{'s' if len(results) != 1 else ''}")
-
-        # use first wrestler's image as thumbnail if available
-        for w, _ in results:
-            img = self._get_image(w)
-            if img:
-                embed.set_thumbnail(url=img)
-                break
-
-        return embed
+    FOREVER_AGE = 22  # all wrestlers are 22 forever
 
     def _build_wrestler_embed(self, wrestler: dict, bd: date, today: date) -> discord.Embed:
         """Build a detail embed for a single wrestler."""
@@ -236,14 +190,17 @@ class Birthday(commands.Cog):
         elo = wrestler.get("elo", 0)
         record = f"{wrestler.get('wins', 0)}W-{wrestler.get('losses', 0)}L-{wrestler.get('draws', 0)}D"
 
+        name_line = wrestler["name"]
+        if aliases:
+            name_line += f" ({', '.join(aliases[:3])})"
+
         embed = discord.Embed(
-            title=f"🎂 {wrestler['name']}",
+            title=f"🎂 {name_line}",
             color=PINK,
         )
 
         if self._year_known(bd):
-            age = self._age(bd, today)
-            bd_str = f"{bd.strftime('%d.%m.%Y')} (Age {age})"
+            bd_str = f"{bd.strftime('%d.%m.%Y')} (Age {self.FOREVER_AGE})"
         else:
             bd_str = f"{bd.strftime('%d.%m')}.??"
         info_lines = [f"**Birthday:** {bd_str}"]
@@ -256,8 +213,6 @@ class Birthday(commands.Cog):
         if height or weight:
             hw = " · ".join(filter(None, [height, weight]))
             info_lines.append(f"**Size:** {hw}")
-        if aliases:
-            info_lines.append(f"**Also known as:** {', '.join(aliases[:5])}")
 
         embed.description = "\n".join(info_lines)
 
@@ -271,38 +226,26 @@ class Birthday(commands.Cog):
         if img:
             embed.set_thumbnail(url=img)
 
-        embed.set_footer(text="joshitori.com")
         return embed
 
-    def _build_search_embed(self, results: List[Tuple[dict, date]], query: str, today: date) -> discord.Embed:
-        """Build an embed for name search results."""
-        if len(results) == 1:
-            return self._build_wrestler_embed(results[0][0], results[0][1], today)
+    def _build_date_embeds(
+        self, results: List[Tuple[dict, date]], month: int, day: int, today: date
+    ) -> List[discord.Embed]:
+        """Build one embed per wrestler for a date lookup."""
+        if not results:
+            date_str = f"{day:02d}.{month:02d}"
+            embed = discord.Embed(
+                title=f"🎂 Birthdays — {date_str}",
+                description="No birthdays found for this date!",
+                color=PINK,
+            )
+            return [embed]
 
-        lines = []
-        for w, bd in results[:20]:
-            promo = w.get("promotion", "")
-            if self._year_known(bd):
-                age = self._age(bd, today)
-                date_info = f"{bd.strftime('%d.%m.%Y')} (Age {age})"
-            else:
-                date_info = f"{bd.strftime('%d.%m')}.??"
-            lines.append(f"**{w['name']}** — {date_info} · {promo}")
+        return [self._build_wrestler_embed(w, bd, today) for w, bd in results[:20]]
 
-        embed = discord.Embed(
-            title=f"🔍 Birthday search: \"{query}\"",
-            description="\n".join(lines) if lines else "No results found!",
-            color=PINK,
-        )
-        embed.set_footer(text=f"joshitori.com · {len(results)} result{'s' if len(results) != 1 else ''}")
-
-        for w, _ in results:
-            img = self._get_image(w)
-            if img:
-                embed.set_thumbnail(url=img)
-                break
-
-        return embed
+    def _build_search_embeds(self, results: List[Tuple[dict, date]], query: str, today: date) -> List[discord.Embed]:
+        """Build one embed per wrestler for search results."""
+        return [self._build_wrestler_embed(w, bd, today) for w, bd in results[:20]]
 
     # ── commands ────────────────────────────────────────────
 
@@ -336,20 +279,20 @@ class Birthday(commands.Cog):
         if not ask:
             # today's birthdays
             results = self._find_by_date(wrestlers, today.month, today.day, show_all, today)
-            embed = self._build_date_embed(results, today.month, today.day, today)
-            if not show_all:
-                embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all for everyone")
-            return await ctx.send(embed=embed)
+            embeds = self._build_date_embeds(results, today.month, today.day, today)
+            for embed in embeds:
+                await ctx.send(embed=embed)
+            return
 
         # try parsing as date
         parsed = self._parse_date_arg(ask)
         if parsed:
             month, day = parsed
             results = self._find_by_date(wrestlers, month, day, show_all, today)
-            embed = self._build_date_embed(results, month, day, today)
-            if not show_all:
-                embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all {ask} for everyone")
-            return await ctx.send(embed=embed)
+            embeds = self._build_date_embeds(results, month, day, today)
+            for embed in embeds:
+                await ctx.send(embed=embed)
+            return
 
         # otherwise, name search
         results = self._find_by_name(wrestlers, ask, show_all, today)
@@ -364,10 +307,9 @@ class Birthday(commands.Cog):
                     )
             return await ctx.send(f"No results for \"{ask}\" <:dashsrs:763999844724899841>")
 
-        embed = self._build_search_embed(results, ask, today)
-        if not show_all:
-            embed.set_footer(text=f"joshitori.com · active wrestlers only · use !birthday all {ask} for everyone")
-        await ctx.send(embed=embed)
+        embeds = self._build_search_embeds(results, ask, today)
+        for embed in embeds:
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def bdcheck(self, ctx: commands.Context):
@@ -388,8 +330,7 @@ class Birthday(commands.Cog):
             img = self._get_image(w)
 
             if self._year_known(bd):
-                age = self._age(bd, today)
-                desc = f"Turning **{age}** today! · {promo}"
+                desc = f"Turning **{self.FOREVER_AGE}** today! · {promo}"
             else:
                 desc = f"Happy Birthday! · {promo}"
 
