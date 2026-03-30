@@ -25,6 +25,8 @@ choices_map = {
     "bobby": ["azm", "hazuki", "rika"],
     "cyberkyona" : ["mari", "momo watamane", "jungle kyona", "utami", "maika stardom", "kouki", "risa sera"],
     "ck" : ["mari", "momo watamane", "jungle kyona", "utami", "maika stardom", "kouki", "risa sera"],
+    "blazkowicz' : ["maika stardom", "utami hayashishita"],
+    "blaz' : ["maika stardom", "utami hayashishita"],
 }
 
 substitutions = {
